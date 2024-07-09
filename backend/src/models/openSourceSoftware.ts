@@ -12,7 +12,7 @@ import {
 import { Organization } from './organization';
 
 @Entity()
-@Index(['url', 'name'], { unique: true })
+@Index(['url'], { unique: true })
 @Index(['createdAt'])
 @Index(['updatedAt'])
 export class OpenSourceSoftware extends BaseEntity {
