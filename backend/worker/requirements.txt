@@ -10,7 +10,7 @@ git+https://github.com/mitmproxy/mitmproxy@e0e46f4
 # idna==3.4
 joblib==1.2.0
 mitmproxy_wireguard==0.1.23
-numpy==1.24.3
+numpy==2.0.1
 pandas==2.1.4
 phonenumbers==8.13.8
 pip-tools==7.1.0
