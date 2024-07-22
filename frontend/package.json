@@ -28,7 +28,7 @@
     "@nivo/pie": "^0.80.0",
     "@trussworks/react-uswds": "^5.1.1",
     "autoprefixer": "^10.4.13",
-    "aws-amplify": "^5.3.12",
+    "aws-amplify": "^6.4.1",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "cors": "^2.8.5",
