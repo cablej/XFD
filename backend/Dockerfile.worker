@@ -45,32 +45,32 @@ RUN echo 'cd /app/intrigue-ident && bundle exec ruby ./util/ident.rb $@' > /usr/
 FROM node:18-bullseye
 
 #RUN apt update && apt upgrade -y && apt install zip -y
-RUN apt update && apt install wget build-essential libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev zip git -y
+#RUN apt update && apt install wget build-essential libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev zip git -y
 WORKDIR /app
 
 RUN npm install -g pm2@5 wait-port@1
-RUN wget -c https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz && tar -Jxvf Python-3.10.11.tar.xz
+#RUN wget -c https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz && tar -Jxvf Python-3.10.11.tar.xz
 
-RUN cd Python-3.10.11 && ./configure && make -j4 && make altinstall
-RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1
-RUN update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 1
-RUN pip3.10 install --upgrade pip
+# RUN cd Python-3.10.11 && ./configure && make -j4 && make altinstall
+# RUN update-alternatives --install /usr/bin/python python /usr/local/bin/python3.10 1
+# RUN update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.10 1
+# RUN pip3.10 install --upgrade pip
 
-RUN apt remove dav1d && apt autoclean && apt autoremove
+#RUN apt remove dav1d && apt autoclean && apt autoremove
 
 # Python dependencies
 
 COPY worker/requirements.txt worker/requirements.txt
 
-RUN pip install -r worker/requirements.txt
+#RUN pip install -r worker/requirements.txt
 
 COPY worker worker
 
-RUN wget https://publicsuffix.org/list/public_suffix_list.dat --no-use-server-timestamps
+# https://publicsuffix.org/list/public_suffix_list.dat --no-use-server-timestamps
 
 COPY --from=build /app/dist/worker.bundle.js worker.bundle.js
 
-COPY --from=deps /usr/bin/findomain /usr/bin/
+#COPY --from=deps /usr/bin/findomain /usr/bin/
 COPY --from=deps /go/bin/amass /usr/bin/
 COPY --from=deps /go/bin/csv2cpe /go/bin/nvdsync /go/bin/cpe2cve /usr/bin/
 
@@ -80,5 +80,8 @@ COPY --from=rubyBuild /usr/bin/intrigue-ident  /usr/bin/
 
 ENV GLOBAL_AGENT_HTTP_PROXY=http://localhost:8080
 ENV GLOBAL_AGENT_NO_PROXY=censys.io
+
+RUN curl --proto '=https' --tlsv1.2 -LsSf https://github.com/mitre/hipcheck/releases/download/hipcheck-v3.4.0/hipcheck-installer.sh | sh
+RUN $HOME/.cargo/bin/hc setup
 
 CMD ["./worker/worker-entry.sh"]

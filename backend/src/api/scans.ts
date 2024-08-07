@@ -137,6 +137,13 @@ export const SCAN_SCHEMA: ScanSchema = {
     description:
       'Finds emails that have appeared in breaches related to a given domain'
   },
+  hipcheck: {
+    type: 'fargate',
+    isPassive: true,
+    global: true,
+    description:
+      'Runs Hipcheck scan on open source projects and saves scan results to database'
+  },
   intrigueIdent: {
     type: 'fargate',
     isPassive: true,

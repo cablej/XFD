@@ -12,6 +12,7 @@ import { handler as dnstwist } from './tasks/dnstwist';
 import { handler as dotgov } from './tasks/dotgov';
 import { handler as findomain } from './tasks/findomain';
 import { handler as hibp } from './tasks/hibp';
+import { handler as hipcheck } from './tasks/hipcheck';
 import { handler as intrigueIdent } from './tasks/intrigue-ident';
 import { handler as lookingGlass } from './tasks/lookingGlass';
 import { handler as portscanner } from './tasks/portscanner';
@@ -52,6 +53,7 @@ async function main() {
     dotgov,
     findomain,
     hibp,
+    hipcheck,
     intrigueIdent,
     lookingGlass,
     portscanner,
