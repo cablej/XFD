@@ -29,7 +29,7 @@ export const createColumns = (updateVulnerability: any) =>
           <p>{row.original.title}</p>
         ),
       width: 800,
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Severity',
@@ -38,9 +38,9 @@ export const createColumns = (updateVulnerability: any) =>
         <span
           style={{
             borderBottom: `6px solid ${getSeverityColor({
-              id: severity ?? ''
+              id: severity ?? '',
             })}`,
-            width: '80px'
+            width: '80px',
           }}
           // className={substate === 'unconfirmed' ? classes.severity : undefined}
         >
@@ -48,7 +48,7 @@ export const createColumns = (updateVulnerability: any) =>
         </span>
       ),
       width: 100,
-      Filter: selectFilter(['Low', 'Medium', 'High', 'Critical', 'None'])
+      Filter: selectFilter(['Low', 'Medium', 'High', 'Critical', 'None']),
     },
     {
       Header: 'KEV',
@@ -68,8 +68,8 @@ export const createColumns = (updateVulnerability: any) =>
       width: 50,
       Filter: selectFilter([
         { value: 'true', label: 'Yes' },
-        { value: 'false', label: 'No' }
-      ])
+        { value: 'false', label: 'No' },
+      ]),
     },
     {
       Header: 'Domain',
@@ -78,7 +78,7 @@ export const createColumns = (updateVulnerability: any) =>
         <Link to={`/inventory/domain/${domain?.id}`}>{domain?.name}</Link>
       ),
       width: 800,
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Product',
@@ -94,7 +94,7 @@ export const createColumns = (updateVulnerability: any) =>
         else return cpe;
       },
       width: 100,
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Days Open',
@@ -125,7 +125,7 @@ export const createColumns = (updateVulnerability: any) =>
         }
         return daysOpen;
       },
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Status',
@@ -140,7 +140,7 @@ export const createColumns = (updateVulnerability: any) =>
         'closed',
         'closed (false positive)',
         'closed (accepted risk)',
-        'closed (remediated)'
+        'closed (remediated)',
       ]),
       Cell: ({ row }: CellProps<Vulnerability>) => (
         <Dropdown
@@ -148,7 +148,7 @@ export const createColumns = (updateVulnerability: any) =>
           name="state-dropdown"
           onChange={(e) => {
             updateVulnerability(row.index, {
-              substate: e.target.value
+              substate: e.target.value,
             });
           }}
           value={row.original.substate}
@@ -160,7 +160,7 @@ export const createColumns = (updateVulnerability: any) =>
           <option value="accepted-risk">Closed (Accepted Risk)</option>
           <option value="remediated">Closed (Remediated)</option>
         </Dropdown>
-      )
+      ),
     },
     {
       Header: 'Details',
@@ -171,14 +171,14 @@ export const createColumns = (updateVulnerability: any) =>
             fontSize: '14px',
             cursor: 'pointer',
             color: '#484D51',
-            textDecoration: 'none'
+            textDecoration: 'none',
           }}
         >
           DETAILS
         </Link>
       ),
-      disableFilters: true
-    }
+      disableFilters: true,
+    },
   ] as Column<Vulnerability>[];
 
 export const createGroupedColumns = () =>
@@ -199,7 +199,7 @@ export const createGroupedColumns = () =>
           <p>{row.original.title}</p>
         ),
       width: 800,
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Severity',
@@ -208,25 +208,25 @@ export const createGroupedColumns = () =>
         <span
           style={{
             borderBottom: `6px solid ${getSeverityColor({
-              id: severity ?? ''
+              id: severity ?? '',
             })}`,
-            width: '80px'
+            width: '80px',
           }}
         >
           {severity}
         </span>
       ),
       width: 100,
-      Filter: selectFilter(['Low', 'Medium', 'High', 'Critical', 'None'])
+      Filter: selectFilter(['Low', 'Medium', 'High', 'Critical', 'None']),
     },
     {
       Header: 'Count',
       accessor: 'cnt',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Description',
       accessor: 'description',
-      disableFilters: true
-    }
+      disableFilters: true,
+    },
   ] as Column<Vulnerability>[];

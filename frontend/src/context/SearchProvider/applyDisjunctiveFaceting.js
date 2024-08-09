@@ -4,7 +4,7 @@ function combineAggregationsFromResponses(responses) {
   return responses.reduce((acc, response) => {
     return {
       ...acc,
-      ...response.aggregations
+      ...response.aggregations,
     };
   }, {});
 }
@@ -77,7 +77,7 @@ export default async function applyDisjunctiveFaceting(
     ...json,
     aggregations: {
       ...json.aggregations,
-      ...disjunctiveFacetCounts
-    }
+      ...disjunctiveFacetCounts,
+    },
   };
 }

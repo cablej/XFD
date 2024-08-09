@@ -44,7 +44,7 @@ export const Domains: React.FC = () => {
           ...prevState,
           page: q.page - 1,
           pageSize: q.pageSize ?? PAGE_SIZE,
-          pageCount: Math.ceil(count / (q.pageSize ?? PAGE_SIZE))
+          pageCount: Math.ceil(count / (q.pageSize ?? PAGE_SIZE)),
         }));
       } catch (e) {
         console.error(e);
@@ -58,7 +58,7 @@ export const Domains: React.FC = () => {
       page: 1,
       pageSize: PAGE_SIZE,
       sort: [],
-      filters: []
+      filters: [],
     });
   }, [fetchDomains]);
 
@@ -68,7 +68,7 @@ export const Domains: React.FC = () => {
     pageSize: PAGE_SIZE,
     pageCount: 0,
     sort: [],
-    filters: []
+    filters: [],
   });
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export const Domains: React.FC = () => {
       page: 1,
       pageSize: PAGE_SIZE,
       sort: [],
-      filters: []
+      filters: [],
     });
   }, [fetchDomains]);
 
@@ -97,7 +97,7 @@ export const Domains: React.FC = () => {
     createdAt: `${differenceInCalendarDays(
       Date.now(),
       parseISO(domain.createdAt)
-    )} days ago`
+    )} days ago`,
   }));
 
   const domCols: GridColDef[] = [
@@ -105,7 +105,7 @@ export const Domains: React.FC = () => {
       field: 'organizationName',
       headerName: 'Organization',
       minWidth: 100,
-      flex: 1
+      flex: 1,
     },
     { field: 'name', headerName: 'Domain', minWidth: 100, flex: 2 },
     { field: 'ip', headerName: 'IP', minWidth: 50, flex: 1 },
@@ -115,7 +115,7 @@ export const Domains: React.FC = () => {
       field: 'vulnerabilities',
       headerName: 'Vulnerabilities',
       minWidth: 100,
-      flex: 2
+      flex: 2,
     },
     { field: 'updatedAt', headerName: 'Updated At', minWidth: 50, flex: 1 },
     { field: 'createdAt', headerName: 'Created At', minWidth: 50, flex: 1 },
@@ -138,8 +138,8 @@ export const Domains: React.FC = () => {
             <OpenInNewIcon />
           </IconButton>
         );
-      }
-    }
+      },
+    },
   ];
 
   return (
@@ -148,7 +148,8 @@ export const Domains: React.FC = () => {
         items={[
           { title: 'Search Results', path: '/inventory', exact: true },
           { title: 'All Domains', path: '/inventory/domains' },
-          { title: 'All Vulnerabilities', path: '/inventory/vulnerabilities' }
+          { title: 'All Vulnerabilities', path: '/inventory/vulnerabilities' },
+          { title: 'OSS Projects', path: '/inventory/projects' },
         ]}
       ></Subnav>
       <br></br>
@@ -181,7 +182,7 @@ export const Domains: React.FC = () => {
                   page: model.page + 1,
                   pageSize: model.pageSize,
                   sort: paginationModel.sort,
-                  filters: paginationModel.filters
+                  filters: paginationModel.filters,
                 });
               }}
               filterMode="server"
@@ -192,8 +193,8 @@ export const Domains: React.FC = () => {
                   sort: paginationModel.sort,
                   filters: model.items.map((item) => ({
                     id: item.field,
-                    value: item.value
-                  }))
+                    value: item.value,
+                  })),
                 });
               }}
               pageSizeOptions={[15, 30, 50, 100]}

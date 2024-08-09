@@ -45,7 +45,7 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
           key={catIndex}
           sx={{
             marginBottom: 4,
-            pageBreakInside: 'avoid' // Prevent page breaks inside categories for PDF
+            pageBreakInside: 'avoid', // Prevent page breaks inside categories for PDF
           }}
         >
           <Typography
@@ -70,8 +70,8 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                 border: '.1rem solid #B8D9E8',
                 pageBreakInside: 'avoid', // Prevent page breaks inside questions for PDF
                 '@media print': {
-                  marginBottom: 4 // Increase this value to add more space between questions in the PDF only
-                }
+                  marginBottom: 4, // Increase this value to add more space between questions in the PDF only
+                },
               }}
             >
               <Typography
@@ -82,8 +82,8 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                   marginTop: 2,
                   color: '#1976d2',
                   '&:focus': {
-                    outline: '2px solid #000' // Change this to the desired outline style
-                  }
+                    outline: '2px solid #000', // Change this to the desired outline style
+                  },
                 }}
                 tabIndex={0}
               >
@@ -105,7 +105,7 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                     backgroundColor: 'white',
                     width: 'fit-content',
                     border: '.1rem solid #0078AE',
-                    borderRadius: 1
+                    borderRadius: 1,
                   }}
                 >
                   <Grid item marginLeft={'-0.25em'}>
@@ -127,7 +127,7 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                       bgcolor: 'white',
                       borderRadius: 1,
                       padding: 2,
-                      marginTop: 1
+                      marginTop: 1,
                     }}
                   >
                     <Typography
@@ -142,7 +142,7 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                         key={resIndex}
                         sx={{
                           paddingBottom: 1,
-                          marginBottom: 1
+                          marginBottom: 1,
                         }}
                       >
                         <Stack spacing={2}>
@@ -176,13 +176,13 @@ export const RSCQuestion: React.FC<Props> = ({ categories }) => {
                             target="_blank"
                             style={{
                               color: 'white',
-                              backgroundColor: '#0078ae'
+                              backgroundColor: '#0078ae',
                             }}
                             sx={{
                               width: 'fit-content',
                               '@media print': {
-                                boxShadow: 'none' // Remove shadows when printing
-                              }
+                                boxShadow: 'none', // Remove shadows when printing
+                              },
                             }}
                           >
                             Visit Resource

@@ -28,24 +28,24 @@ export const createColumns: CreateColumns = () => [
       <Link to={`/inventory/domain/${original.id}`}>
         <FaSearch className="margin-x-auto display-block" />
       </Link>
-    )
+    ),
   },
   {
     Header: 'Organization',
     accessor: (e) => e.organization.name,
     id: 'organizationName',
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'Domain',
     accessor: 'name',
     id: 'reverseName',
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'IP',
     accessor: 'ip',
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'Ports',
@@ -53,14 +53,14 @@ export const createColumns: CreateColumns = () => [
     disableSortBy: true,
     accessor: ({ services }) =>
       services.map((service) => service.port).join(', '),
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'Services',
     id: 'service',
     disableSortBy: true,
     accessor: (domain) => getServiceNames(domain),
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'Vulnerabilities',
@@ -70,20 +70,20 @@ export const createColumns: CreateColumns = () => [
       domain.vulnerabilities
         .map((vulnerability) => vulnerability.cve)
         .join(', '),
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: 'Last Seen',
     id: 'updatedAt',
     accessor: ({ updatedAt }) =>
       `${formatDistanceToNow(parseISO(updatedAt))} ago`,
-    disableFilters: true
+    disableFilters: true,
   },
   {
     Header: 'First Seen',
     id: 'createdAt',
     accessor: ({ createdAt }) =>
       `${formatDistanceToNow(parseISO(createdAt))} ago`,
-    disableFilters: true
-  }
+    disableFilters: true,
+  },
 ];

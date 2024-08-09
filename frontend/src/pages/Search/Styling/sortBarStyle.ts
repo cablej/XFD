@@ -20,7 +20,7 @@ export const classes = {
   toggleDirection: `${PREFIX}-toggleDirection`,
   openFields: `${PREFIX}-openFields`,
   selectInp: `${PREFIX}-selectInp`,
-  option: `${PREFIX}-option`
+  option: `${PREFIX}-option`,
 };
 
 export const Root = styled('div')(({ theme }) => ({
@@ -42,12 +42,12 @@ export const Root = styled('div')(({ theme }) => ({
       color: '#4e4e4e',
       background: 'none',
       cursor: 'pointer',
-      textDecoration: 'underline'
+      textDecoration: 'underline',
     },
     '& *:focus': {
-      outline: 'none !important'
+      outline: 'none !important',
     },
-    fontSize: 14
+    fontSize: 14,
   },
 
   [`& .${classes.sortMenu}`]: {
@@ -55,8 +55,8 @@ export const Root = styled('div')(({ theme }) => ({
     flexFlow: 'row nowrap',
     alignItems: 'center',
     '& > span': {
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
 
   [`& .${classes.toggleDirection}`]: {
@@ -64,28 +64,28 @@ export const Root = styled('div')(({ theme }) => ({
       display: 'block',
       fontSize: '1rem',
       fontWeight: 600,
-      color: '#4e4e4e'
-    }
+      color: '#4e4e4e',
+    },
   },
 
   [`& .${classes.openFields}`]: {
     minWidth: 120,
     marginLeft: '0.5rem',
     '& :focus': {
-      background: 'none'
-    }
+      background: 'none',
+    },
   },
 
   [`& .${classes.selectInp}`]: {
     fontWeight: 600,
     fontSize: 14,
     padding: 0,
-    color: '#4e4e4e'
+    color: '#4e4e4e',
   },
 
   [`& .${classes.option}`]: {
     fontWeight: 600,
     fontSize: 14,
-    color: '#4e4e4e'
-  }
+    color: '#4e4e4e',
+  },
 }));

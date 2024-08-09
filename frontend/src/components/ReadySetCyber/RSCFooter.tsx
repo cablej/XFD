@@ -11,17 +11,17 @@ export const RSCFooter: React.FC = () => {
         display: 'flex',
         flexDirection: {
           xs: 'column',
-          sm: 'row'
+          sm: 'row',
         },
         position: 'relative',
         bottom: 0,
         justifyContent: 'center',
         alignItems: {
           xs: 'center', // center horizontally on small screens
-          sm: 'initial' // reset to default on larger screens
+          sm: 'initial', // reset to default on larger screens
         },
         backgroundColor: '#005288',
-        padding: '1em'
+        padding: '1em',
       }}
     >
       <Box
@@ -30,7 +30,7 @@ export const RSCFooter: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          paddingBottom: '2em'
+          paddingBottom: '2em',
         }}
       >
         <Stack
@@ -49,7 +49,7 @@ export const RSCFooter: React.FC = () => {
               style={{
                 width: 55,
                 height: 55,
-                flexShrink: 0
+                flexShrink: 0,
               }}
             />
           </Link>
@@ -57,7 +57,7 @@ export const RSCFooter: React.FC = () => {
             <Typography
               style={{
                 color: 'white',
-                fontSize: '0.85em'
+                fontSize: '0.85em',
               }}
             >
               CISA.gov
@@ -65,7 +65,7 @@ export const RSCFooter: React.FC = () => {
             <Typography
               style={{
                 color: 'white',
-                fontSize: '0.85em'
+                fontSize: '0.85em',
               }}
             >
               An official website of the U.S. Department of Homeland Security
@@ -78,8 +78,8 @@ export const RSCFooter: React.FC = () => {
           sx={{
             textAlign: {
               xs: 'center',
-              sm: 'left'
-            }
+              sm: 'left',
+            },
           }}
         >
           {links.map((link, index) => (
@@ -88,7 +88,7 @@ export const RSCFooter: React.FC = () => {
                 style={{
                   color: 'white',
                   textDecoration: 'underline',
-                  fontSize: '0.9em'
+                  fontSize: '0.9em',
                 }}
                 href={link.href}
                 target="_blank"
@@ -104,17 +104,17 @@ export const RSCFooter: React.FC = () => {
         sx={{
           textAlign: {
             xs: 'center',
-            sm: 'right'
+            sm: 'right',
           },
           alignContent: {
             xs: 'flex-end',
-            sm: 'center'
+            sm: 'center',
           },
           marginTop: {
             xs: '1em',
             sm: '2em',
-            md: '0em'
-          }
+            md: '0em',
+          },
         }}
       >
         <iframe

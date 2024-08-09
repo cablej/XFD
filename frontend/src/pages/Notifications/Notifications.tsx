@@ -12,7 +12,7 @@ import {
   Select,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import {
@@ -20,20 +20,20 @@ import {
   Delete,
   Edit,
   ErrorOutline,
-  InfoOutlined
+  InfoOutlined,
 } from '@mui/icons-material';
 import {
   DataGrid,
   gridClasses,
   GridColDef,
-  GridRenderCellParams
+  GridRenderCellParams,
 } from '@mui/x-data-grid';
 import { isAfter, parseISO } from 'date-fns';
 import {
   formReadableDate,
   humanReadableDate,
   toEST,
-  toUTC
+  toUTC,
 } from 'utils/dateUtils';
 import { useAuthContext } from 'context';
 import { initialNotificationValues, MaintenanceNotification } from 'types';
@@ -62,7 +62,7 @@ const initialFormErrorValues = {
   message: false,
   startDatetime: false,
   endDatetime: false,
-  dateMessage: ''
+  dateMessage: '',
 };
 
 const initialInfoDialogValues = {
@@ -74,7 +74,7 @@ const initialInfoDialogValues = {
     />
   ),
   title: 'Success',
-  content: 'The notification was updated successfully.'
+  content: 'The notification was updated successfully.',
 };
 
 export const Notifications: React.FC = () => {
@@ -102,7 +102,7 @@ export const Notifications: React.FC = () => {
   const [formDisabled, setFormDisabled] = React.useState(true);
   const tableStyling = {
     [`& .${gridClasses.cell}`]: { py: 1 },
-    minHeight: { xs: '250px', md: 'unset' }
+    minHeight: { xs: '250px', md: 'unset' },
   };
 
   const fetchNotifications = React.useCallback(async () => {
@@ -143,7 +143,7 @@ export const Notifications: React.FC = () => {
       flex: 0.5,
       renderCell: (cellValues: any) => {
         return <>{cellValues.value.toUpperCase()}</>;
-      }
+      },
     },
     {
       field: 'timeFrame',
@@ -159,7 +159,7 @@ export const Notifications: React.FC = () => {
             <br /> {endDate}
           </>
         );
-      }
+      },
     },
     { field: 'updatedBy', headerName: 'Admin Email', flex: 2 },
     { field: 'message', headerName: 'Message', flex: 3, minWidth: 200 },
@@ -192,7 +192,7 @@ export const Notifications: React.FC = () => {
             <Edit />
           </IconButton>
         );
-      }
+      },
     },
     {
       field: 'delete',
@@ -212,8 +212,8 @@ export const Notifications: React.FC = () => {
             <Delete />
           </IconButton>
         );
-      }
-    }
+      },
+    },
   ];
 
   const handleResetForm = () => {
@@ -234,7 +234,7 @@ export const Notifications: React.FC = () => {
   const handleChange = (event: SelectChangeEvent | any) => {
     setFormValues((values) => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
     setFormDisabled(false);
   };
@@ -244,12 +244,12 @@ export const Notifications: React.FC = () => {
     if (event.target.checked) {
       setFormValues((values) => ({
         ...values,
-        status: 'active'
+        status: 'active',
       }));
     } else {
       setFormValues((values) => ({
         ...values,
-        status: 'inactive'
+        status: 'inactive',
       }));
     }
     setFormDisabled(false);
@@ -264,7 +264,7 @@ export const Notifications: React.FC = () => {
       const notification = await apiCall();
       setInfoDialogValues((prevState) => ({
         ...prevState,
-        content: successMessage
+        content: successMessage,
       }));
       setInfoDialogToggle(true);
       return notification;
@@ -279,7 +279,7 @@ export const Notifications: React.FC = () => {
           />
         ),
         title: 'Error',
-        content: `${errorMessage} ${e.message}. Check the console log for more details.`
+        content: `${errorMessage} ${e.message}. Check the console log for more details.`,
       });
       setInfoDialogToggle(true);
       throw e;
@@ -345,14 +345,14 @@ export const Notifications: React.FC = () => {
       updatedBy: user?.email || '',
       message: formValues.message,
       startDatetime: toUTC(formValues.startDatetime),
-      endDatetime: toUTC(formValues.endDatetime)
+      endDatetime: toUTC(formValues.endDatetime),
     };
     const newFormErrors = {
       maintenanceType: !formValues.maintenanceType,
       message: !formValues.message,
       startDatetime: invalidDate[0],
       endDatetime: invalidDate[0],
-      dateMessage: invalidDate[1]
+      dateMessage: invalidDate[1],
     };
     setFormErrors(newFormErrors);
     if (Object.values(newFormErrors).some((error) => error)) {
@@ -377,7 +377,7 @@ export const Notifications: React.FC = () => {
           if (body.status === 'active') {
             const updatedActiveNotification = {
               ...activeNotification,
-              status: 'inactive'
+              status: 'inactive',
             };
             if (updatedActiveNotification.id !== '1') {
               const formerActiveNotification = await handleNotificationAction(
@@ -419,12 +419,12 @@ export const Notifications: React.FC = () => {
           if (activeNotification.status === 'active') {
             const updatedActiveNotification = {
               ...activeNotification,
-              status: 'inactive'
+              status: 'inactive',
             };
             await handleNotificationAction(updatedActiveNotification, 'put');
             setInactiveNotifications([
               ...inactiveNotifications,
-              updatedActiveNotification
+              updatedActiveNotification,
             ]);
           }
           setActiveNotification(notification);

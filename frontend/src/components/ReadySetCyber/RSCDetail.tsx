@@ -28,7 +28,7 @@ export const RSCDetail: React.FC = () => {
         const transformedCategories = Object.entries(data).map(
           ([name, entries]) => ({
             name,
-            entries: entries as Entry[]
+            entries: entries as Entry[],
           })
         );
         setCategories(transformedCategories);
@@ -50,7 +50,7 @@ export const RSCDetail: React.FC = () => {
 
   const handleDownloadPDF = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: `ReadySetCyber Summary ${new Date().toLocaleDateString()}`
+    documentTitle: `ReadySetCyber Summary ${new Date().toLocaleDateString()}`,
   });
 
   return (
@@ -69,7 +69,7 @@ export const RSCDetail: React.FC = () => {
                 sx={{
                   flexGrow: 1,
                   padding: 2,
-                  backgroundColor: 'white'
+                  backgroundColor: 'white',
                 }}
                 ref={printRef}
               >

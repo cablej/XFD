@@ -9,13 +9,13 @@ const classes = {
   inp: `${PREFIX}-inp`,
   chip: `${PREFIX}-chip`,
   tagsWrapper: `${PREFIX}-tagsWrapper`,
-  error: `${PREFIX}-error`
+  error: `${PREFIX}-error`,
 };
 
 const Root = styled('form')(({ theme }) => ({
   [`&.${classes.form}`]: {
     width: '100%',
-    background: 'none'
+    background: 'none',
   },
 
   [`& .${classes.inp}`]: {
@@ -23,24 +23,24 @@ const Root = styled('form')(({ theme }) => ({
     backgroundColor: '#fff',
     width: '100%',
     padding: '1rem',
-    boxShadow: 'inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF'
+    boxShadow: 'inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF',
   },
 
   [`& .${classes.chip}`]: {
-    margin: '2px 0'
+    margin: '2px 0',
   },
 
   [`& .${classes.tagsWrapper}`]: {
     display: 'block',
-    margin: '1rem 0'
+    margin: '1rem 0',
   },
 
   [`& .${classes.error}`]: {
     display: 'block',
     margin: 0,
     paddingTop: '0.2rem',
-    color: theme.palette.error.light
-  }
+    color: theme.palette.error.light,
+  },
 }));
 
 interface Props {

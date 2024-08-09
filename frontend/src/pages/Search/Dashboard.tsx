@@ -12,7 +12,7 @@ import {
   FormControlLabel,
   FormGroup,
   TextareaAutosize,
-  ButtonGroup
+  ButtonGroup,
 } from '@mui/material';
 import { Pagination } from '@mui/material';
 import { withSearch } from '@elastic/react-search-ui';
@@ -27,7 +27,7 @@ import {
   Dropdown,
   ModalFooter,
   ModalHeading,
-  ModalRef
+  ModalRef,
 } from '@trussworks/react-uswds';
 import { ModalToggleButton } from 'components';
 import { useAuthContext } from 'context';
@@ -59,7 +59,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
     totalResults,
     setSearchTerm,
     searchTerm,
-    noResults
+    noResults,
   } = props;
 
   const [selectedDomain, setSelectedDomain] = useState('');
@@ -69,7 +69,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
     apiPut,
     setLoading,
     showAllOrganizations,
-    currentOrganization
+    currentOrganization,
   } = useAuthContext();
 
   const search:
@@ -93,7 +93,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
       : {
           name: '',
           vulnerabilityTemplate: {},
-          createVulnerabilities: false
+          createVulnerabilities: false,
         }
   );
 
@@ -104,7 +104,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
   const onChange = (name: string, value: any) => {
     setSavedSearchValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -149,7 +149,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
         resultsPerPage,
         searchTerm,
         sortDirection,
-        sortField
+        sortField,
       };
       if (!showAllOrganizations && currentOrganization) {
         if ('rootDomains' in currentOrganization)
@@ -157,7 +157,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
         else body.tagId = currentOrganization.id;
       }
       const { url } = await apiPost('/search/export', {
-        body
+        body,
       });
       return url!;
     } catch (e) {
@@ -181,10 +181,14 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
           items={[
             { title: 'Search Results', path: '/inventory', exact: true },
             { title: 'All Domains', path: '/inventory/domains' },
-            { title: 'All Vulnerabilities', path: '/inventory/vulnerabilities' }
+            {
+              title: 'All Vulnerabilities',
+              path: '/inventory/vulnerabilities',
+            },
+            { title: 'OSS Projects', path: '/inventory/projects' },
           ]}
           styles={{
-            paddingLeft: '0%'
+            paddingLeft: '0%',
           }}
         />
         <FilterTags filters={filters} removeFilter={removeFilter} />
@@ -268,7 +272,7 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
               exportCSV(
                 {
                   name: 'domains',
-                  getDataToExport: fetchDomainsExport
+                  getDataToExport: fetchDomainsExport,
                 },
                 setLoading
               )
@@ -376,8 +380,8 @@ export const DashboardUI: React.FC<ContextType & { location: any }> = (
                     count: totalResults,
                     searchPath: window.location.search,
                     sortField,
-                    sortDirection
-                  }
+                    sortDirection,
+                  },
                 };
                 if (search) {
                   await apiPut('/saved-searches/' + search.id, body);
@@ -428,7 +432,7 @@ export const Dashboard = withSearch(
     current,
     setCurrent,
     totalPages,
-    noResults
+    noResults,
   }: ContextType) => ({
     addFilter,
     removeFilter,
@@ -449,6 +453,6 @@ export const Dashboard = withSearch(
     current,
     setCurrent,
     totalPages,
-    noResults
+    noResults,
   })
 )(DashboardUI);

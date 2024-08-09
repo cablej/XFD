@@ -6,7 +6,7 @@ import {
   ButtonGroup,
   ModalFooter,
   ModalHeading,
-  ModalRef
+  ModalRef,
 } from '@trussworks/react-uswds';
 import { ModalToggleButton } from 'components';
 import { ImportExport } from 'components';
@@ -70,7 +70,7 @@ const ScansView: React.FC = () => {
     isGranular: false,
     isUserModifiable: false,
     isSingleScan: false,
-    tags: []
+    tags: [],
   });
 
   const fetchScans = useCallback(async () => {
@@ -99,7 +99,9 @@ const ScansView: React.FC = () => {
     } catch (e: any) {
       setErrors({
         global:
-          e.status === 422 ? 'Unable to delete scan' : e.message ?? e.toString()
+          e.status === 422
+            ? 'Unable to delete scan'
+            : (e.message ?? e.toString()),
       });
       console.log(e);
     }
@@ -117,13 +119,13 @@ const ScansView: React.FC = () => {
           organizations: body.organizations
             ? body.organizations.map((e) => e.value)
             : [],
-          tags: body.tags ? body.tags.map((e) => ({ id: e.value })) : []
-        }
+          tags: body.tags ? body.tags.map((e) => ({ id: e.value })) : [],
+        },
       });
       setScans(scans.concat(scan));
     } catch (e: any) {
       setErrors({
-        global: e.message ?? e.toString()
+        global: e.message ?? e.toString(),
       });
       console.log(e);
     }
@@ -176,7 +178,7 @@ const ScansView: React.FC = () => {
         new Date(scan.lastRun).getTime() === new Date(0).getTime()
           ? 'None'
           : `${formatDistanceToNow(parseISO(scan.lastRun))} ago`,
-      description: scanSchema[scan.name]?.description
+      description: scanSchema[scan.name]?.description,
     };
   });
 
@@ -200,7 +202,7 @@ const ScansView: React.FC = () => {
             <FaPlayCircle />
           </IconButton>
         );
-      }
+      },
     },
     { field: 'name', headerName: 'Name', minWidth: 100, flex: 1 },
     { field: 'tags', headerName: 'Tags', minWidth: 100, flex: 1 },
@@ -228,9 +230,9 @@ const ScansView: React.FC = () => {
             <FaTimes />
           </IconButton>
         );
-      }
+      },
     },
-    { field: 'description', headerName: 'Description', minWidth: 250, flex: 5 }
+    { field: 'description', headerName: 'Description', minWidth: 250, flex: 5 },
   ];
 
   //To-do: Add a button to toolbar to import scans
@@ -311,8 +313,8 @@ const ScansView: React.FC = () => {
                   // to be converted to objects.
                   arguments: JSON.parse(
                     (result.arguments as unknown as string) || ''
-                  )
-                }
+                  ),
+                },
               })
             );
           }

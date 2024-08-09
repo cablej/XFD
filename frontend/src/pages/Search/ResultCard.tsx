@@ -68,13 +68,13 @@ export const ResultCard: React.FC<Props> = (props) => {
     services,
     vulnerabilities,
     inner_hits,
-    onDomainSelected
+    onDomainSelected,
   } = props;
 
   const toggleExpanded = (key: string) => {
     setExpanded((expanded) => ({
       ...expanded,
-      [key]: expanded[key] ? !expanded[key] : true
+      [key]: expanded[key] ? !expanded[key] : true,
     }));
   };
 
@@ -102,7 +102,7 @@ export const ResultCard: React.FC<Props> = (props) => {
       ...acc,
       ...nextService.products.map(
         (p: any) => `${p.name}${p.version ? ' ' + p.version : ''}`
-      )
+      ),
     ],
     []
   );
@@ -124,7 +124,7 @@ export const ResultCard: React.FC<Props> = (props) => {
       ).join(', '),
       onExpand: () => toggleExpanded('products'),
       expansionText:
-        products.length <= 8 ? null : expanded.products ? 'less' : 'more'
+        products.length <= 8 ? null : expanded.products ? 'less' : 'more',
     });
   }
   if (cves.length > 0) {
@@ -133,7 +133,8 @@ export const ResultCard: React.FC<Props> = (props) => {
       count: cves.length,
       value: filterExpanded(cves, Boolean(expanded.vulns), 10).join(', '),
       onExpand: () => toggleExpanded('vulns'),
-      expansionText: cves.length <= 10 ? null : expanded.vulns ? 'less' : 'more'
+      expansionText:
+        cves.length <= 10 ? null : expanded.vulns ? 'less' : 'more',
     });
   }
   if (inner_hits?.webpage?.hits?.hits?.length! > 0) {
@@ -150,14 +151,14 @@ export const ResultCard: React.FC<Props> = (props) => {
               <React.Fragment key={idx}>
                 <code
                   dangerouslySetInnerHTML={{
-                    __html: sanitize(body, { ALLOWED_TAGS: ['em'] })
+                    __html: sanitize(body, { ALLOWED_TAGS: ['em'] }),
                   }}
                 />
               </React.Fragment>
             ))}
           </small>
         </React.Fragment>
-      ))
+      )),
     });
   }
 

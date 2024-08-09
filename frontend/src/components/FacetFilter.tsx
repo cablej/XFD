@@ -61,18 +61,18 @@ const classes = {
   count: `${PREFIX}-count`,
   inp: `${PREFIX}-inp`,
   label: `${PREFIX}-label`,
-  formControl: `${PREFIX}-formControl`
+  formControl: `${PREFIX}-formControl`,
 };
 
 const Root = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     width: '100%',
     paddingTop: 0,
-    flexWrap: 'nowrap'
+    flexWrap: 'nowrap',
   },
 
   [`& .${classes.count}`]: {
-    count: {}
+    count: {},
   },
 
   [`& .${classes.inp}`]: {
@@ -80,7 +80,7 @@ const Root = styled('div')(({ theme }) => ({
     backgroundColor: '#fff',
     width: '100%',
     padding: '1rem',
-    boxShadow: 'inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF'
+    boxShadow: 'inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF',
   },
 
   [`& .${classes.label}`]: {
@@ -92,15 +92,15 @@ const Root = styled('div')(({ theme }) => ({
     fontSize: '0.9rem',
     marginRight: 0,
     '& span': {
-      display: 'inline-block'
+      display: 'inline-block',
     },
     '& $count': {
       fontSize: '0.7rem',
-      color: theme.palette.grey[700]
-    }
+      color: theme.palette.grey[700],
+    },
   },
 
   [`& .${classes.formControl}`]: {
-    width: 'calc(100% + 8px)'
-  }
+    width: 'calc(100% + 8px)',
+  },
 }));

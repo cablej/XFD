@@ -4,7 +4,7 @@ import {
   Article,
   LibraryBooks,
   Handyman,
-  NotificationsActive
+  NotificationsActive,
 } from '@mui/icons-material';
 
 interface ResourceTypes {
@@ -15,7 +15,7 @@ const resourcetypes: ResourceTypes = {
   video: VideoLibrary,
   article: Article,
   tool: Handyman,
-  alerts: NotificationsActive
+  alerts: NotificationsActive,
 };
 
 // Filter resource visibility by response

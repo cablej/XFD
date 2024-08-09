@@ -10,7 +10,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Tooltip
+  Tooltip,
 } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -61,7 +61,7 @@ export const RSCHeader: React.FC = () => {
                   alt="Ready Set Cyber Logo"
                   style={{
                     width: '4em',
-                    height: '2em'
+                    height: '2em',
                   }}
                 />
               </IconButton>
@@ -73,7 +73,7 @@ export const RSCHeader: React.FC = () => {
                 flexGrow: 1,
                 color: '#07648D',
                 display: { xs: 'none', md: 'flex' },
-                mr: 2
+                mr: 2,
               }}
             >
               Dashboard
@@ -90,7 +90,7 @@ export const RSCHeader: React.FC = () => {
                     alt="Ready Set Cyber Logo"
                     style={{
                       width: '4em',
-                      height: '2em'
+                      height: '2em',
                     }}
                   />
                 </IconButton>
@@ -115,12 +115,12 @@ export const RSCHeader: React.FC = () => {
                   anchorEl={anchorElNav}
                   anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right'
+                    horizontal: 'right',
                   }}
                   keepMounted
                   transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'right'
+                    horizontal: 'right',
                   }}
                   open={Boolean(anchorElNav)}
                   onClose={handleCloseNavMenu}
@@ -165,12 +165,12 @@ export const RSCHeader: React.FC = () => {
                   anchorEl={anchorEl}
                   anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right'
+                    horizontal: 'right',
                   }}
                   keepMounted
                   transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'right'
+                    horizontal: 'right',
                   }}
                   open={Boolean(anchorEl)}
                   onClose={handleClose}

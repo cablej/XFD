@@ -10,7 +10,7 @@ import {
   GridRenderCellParams,
   GridRowSelectionModel,
   GridToolbar,
-  useGridApiRef
+  useGridApiRef,
 } from '@mui/x-data-grid';
 import DoneIcon from '@mui/icons-material/Done';
 import { CheckCircleOutline as CheckIcon } from '@mui/icons-material';
@@ -36,7 +36,7 @@ const transformData = (data: User[]): User[] => {
   return data.map(({ roles, ...user }) => ({
     ...user,
     roles,
-    organizations: roles.map((role) => ' ' + role.organization.name)
+    organizations: roles.map((role) => ' ' + role.organization.name),
   }));
 };
 export const RegionUsers: React.FC = () => {
@@ -77,8 +77,8 @@ export const RegionUsers: React.FC = () => {
             </Button>
           </Stack>
         );
-      }
-    }
+      },
+    },
   ];
   const memberCols: GridColDef[] = [
     { field: 'fullName', headerName: 'Name', minWidth: 100, flex: 1 },
@@ -88,38 +88,38 @@ export const RegionUsers: React.FC = () => {
       field: 'lastLoggedIn',
       headerName: 'Last Logged In',
       minWidth: 100,
-      flex: 1.5
+      flex: 1.5,
     },
     {
       field: 'organizations',
       headerName: 'Organizations',
       minWidth: 250,
-      flex: 2
-    }
+      flex: 2,
+    },
   ];
   const orgCols: GridColDef[] = [
     { field: 'name', headerName: 'Name', minWidth: 100, flex: 2 },
     { field: 'updatedAt', headerName: 'Updated At', minWidth: 100, flex: 1 },
-    { field: 'stateName', headerName: 'State', minWidth: 100, flex: 1 }
+    { field: 'stateName', headerName: 'State', minWidth: 100, flex: 1 },
   ];
   const [dialogStates, setDialogStates] = useState<DialogStates>({
     isOrgDialogOpen: false,
     isDenyDialogOpen: false,
     isApproveDialogOpen: false,
-    isInfoDialogOpen: false
+    isInfoDialogOpen: false,
   });
   const [errorStates, setErrorStates] = useState<ErrorStates>({
     getOrgsError: '',
     getUsersError: '',
     getUpdateError: '',
-    getDeleteError: ''
+    getDeleteError: '',
   });
   const [selectedUser, selectUser] = useState<User>(initializeUser);
   const [selectedOrgRows, selectOrgRows] = useState<GridRowSelectionModel>([]);
   const [organizations, setOrganizations] = useState<OrganizationType[]>([]);
   const [pendingUsers, setPendingUsers] = useState<User[]>([]);
   const [currentUsers, setCurrentUsers] = useState<User[]>([]);
-  const [infoDialogContent, setInfoDialogContent] = useState<String>('');
+  const [infoDialogContent, setInfoDialogContent] = useState<string>('');
 
   const fetchOrganizations = useCallback(async () => {
     try {
@@ -164,7 +164,7 @@ export const RegionUsers: React.FC = () => {
       return apiDelete(`/users/${userId}`).then(
         () => {
           apiRefPendingUsers.current.updateRows([
-            { id: userId, _action: 'delete' }
+            { id: userId, _action: 'delete' },
           ]);
           setPendingUsers((prevPendingUsers) =>
             prevPendingUsers.filter((user) => user.id !== userId)
@@ -184,7 +184,7 @@ export const RegionUsers: React.FC = () => {
   const addOrgToUser = useCallback(
     (userId: string, selectedOrgId: any): Promise<boolean> => {
       return apiPost(`/v2/organizations/${selectedOrgId}/users`, {
-        body: { userId, role: 'user' }
+        body: { userId, role: 'user' },
       }).then(
         (res) => {
           return updateUser(userId, res.organization.name);
@@ -201,11 +201,11 @@ export const RegionUsers: React.FC = () => {
   const updateUser = useCallback(
     (userId: string, orgName: string): Promise<boolean> => {
       return apiPut(`/v2/users/${userId}`, {
-        body: { invitePending: false }
+        body: { invitePending: false },
       }).then(
         (res) => {
           apiRefPendingUsers.current.updateRows([
-            { id: userId, _action: 'delete' }
+            { id: userId, _action: 'delete' },
           ]);
           setPendingUsers((prevPendingUsers) =>
             prevPendingUsers.filter((user) => user.id !== userId)
@@ -246,7 +246,7 @@ export const RegionUsers: React.FC = () => {
     }
     setDialogStates({
       ...dialogStates,
-      isOrgDialogOpen: false
+      isOrgDialogOpen: false,
     });
     selectUser(initializeUser);
   };
@@ -257,7 +257,7 @@ export const RegionUsers: React.FC = () => {
       setDialogStates({
         ...dialogStates,
         isDenyDialogOpen: false,
-        isInfoDialogOpen: true
+        isInfoDialogOpen: true,
       });
     }
   };
@@ -266,7 +266,7 @@ export const RegionUsers: React.FC = () => {
     selectOrgRows([]);
     setDialogStates({
       ...dialogStates,
-      isOrgDialogOpen: true
+      isOrgDialogOpen: true,
     });
     selectUser(row);
   };
@@ -274,7 +274,7 @@ export const RegionUsers: React.FC = () => {
   const handleDenyClick = (row: typeof initializeUser) => {
     setDialogStates({
       ...dialogStates,
-      isDenyDialogOpen: true
+      isDenyDialogOpen: true,
     });
     selectUser(row);
   };
@@ -282,14 +282,14 @@ export const RegionUsers: React.FC = () => {
   const handleDenyCancelClick = () => {
     setDialogStates((prevState) => ({
       ...prevState,
-      isDenyDialogOpen: false
+      isDenyDialogOpen: false,
     }));
   };
 
   const handleApproveCancelClick = () => {
     setDialogStates((prevState) => ({
       ...prevState,
-      isOrgDialogOpen: false
+      isOrgDialogOpen: false,
     }));
     selectUser(initializeUser);
   };
@@ -300,7 +300,7 @@ export const RegionUsers: React.FC = () => {
       handleCloseDialog('closeButtonClick');
       setDialogStates((prevState) => ({
         ...prevState,
-        isInfoDialogOpen: true
+        isInfoDialogOpen: true,
       }));
       setInfoDialogContent(
         `The user has been approved and is a member of Region ${regionId}.`
@@ -325,7 +325,7 @@ export const RegionUsers: React.FC = () => {
         sx={{
           maxWidth: '1700px',
           m: 'auto',
-          backgroundColor: 'white'
+          backgroundColor: 'white',
         }}
       >
         <Box sx={{ m: 'auto', maxWidth: '1500px', px: 2, py: 5 }}>
@@ -388,8 +388,8 @@ export const RegionUsers: React.FC = () => {
                 slots={{ toolbar: GridToolbar }}
                 slotProps={{
                   toolbar: {
-                    showQuickFilter: true
-                  }
+                    showQuickFilter: true,
+                  },
                 }}
               />
             </Box>
@@ -441,7 +441,7 @@ export const RegionUsers: React.FC = () => {
         handleClick={() => {
           setDialogStates((prevState) => ({
             ...prevState,
-            isInfoDialogOpen: false
+            isInfoDialogOpen: false,
           }));
         }}
         icon={<CheckIcon color="success" sx={{ fontSize: '80px' }} />}

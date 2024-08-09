@@ -15,7 +15,7 @@ import {
   Select,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { STATE_OPTIONS } from '../../constants/constants';
@@ -42,7 +42,7 @@ export const OrganizationForm: React.FC<{
   organization?: Organization;
   open: boolean;
   setOpen: (open: boolean) => void;
-  onSubmit: (values: Object) => Promise<void>;
+  onSubmit: (values: object) => Promise<void>;
   type: string;
   parent?: Organization;
 }> = ({ organization, onSubmit, type, open, setOpen, parent }) => {
@@ -53,7 +53,7 @@ export const OrganizationForm: React.FC<{
     isPassive: organization ? organization.isPassive : false,
     tags: [],
     stateName: organization ? organization.stateName : '',
-    acronym: organization ? organization.acronym : ''
+    acronym: organization ? organization.acronym : '',
   });
 
   const { apiGet } = useAuthContext();
@@ -83,22 +83,22 @@ export const OrganizationForm: React.FC<{
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
   const handleStateChange = (event: SelectChangeEvent<string | null>) => {
     setValues((values) => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   };
 
   const textFieldStyling = {
     '& .MuiOutlinedInput-root': {
       '&.Mui-focused fieldset': {
-        borderRadius: '0px'
-      }
-    }
+        borderRadius: '0px',
+      },
+    },
   };
   return (
     <StyledDialog
@@ -218,7 +218,7 @@ export const OrganizationForm: React.FC<{
               onInputChange={(event, newValue) => {
                 if (typeof newValue === 'string') {
                   setTagValue({
-                    name: newValue
+                    name: newValue,
                   });
                 } else {
                   setTagValue(newValue);
@@ -237,7 +237,7 @@ export const OrganizationForm: React.FC<{
                 ) {
                   filtered.push({
                     name: params.inputValue,
-                    title: `Add "${params.inputValue}"`
+                    title: `Add "${params.inputValue}"`,
                   });
                 }
                 return filtered;
@@ -269,7 +269,7 @@ export const OrganizationForm: React.FC<{
                 maxWidth: '100%',
                 maxHeight: '100%',
                 minWidth: '100%',
-                minHeight: '100%'
+                minHeight: '100%',
               }}
               variant="contained"
               color="primary"
@@ -324,7 +324,7 @@ export const OrganizationForm: React.FC<{
               isPassive: values.isPassive,
               tags: chosenTags,
               acronym: values.acronym,
-              parent: parent ? parent.id : undefined
+              parent: parent ? parent.id : undefined,
             });
             if (!organization) setValues(defaultValues);
             setOpen(false);

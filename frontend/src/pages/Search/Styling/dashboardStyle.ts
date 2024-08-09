@@ -12,12 +12,12 @@ export const classes = {
   pagination: `${PREFIX}-pagination`,
   exportButton: `${PREFIX}-exportButton`,
   pageSize: `${PREFIX}-pageSize`,
-  addButton: `${PREFIX}-addButton`
+  addButton: `${PREFIX}-addButton`,
 };
 
 export const Root = styled('div')(() => ({
   [`& .${classes.tableRoot}`]: {
-    marginTop: '0'
+    marginTop: '0',
   },
 
   [`&.${classes.root}`]: {
@@ -28,7 +28,7 @@ export const Root = styled('div')(() => ({
     flexFlow: 'row nowrap',
     alignItems: 'stretch',
     margin: '0',
-    overflowY: 'hidden'
+    overflowY: 'hidden',
   },
 
   [`& .${classes.contentWrapper}`]: {
@@ -37,7 +37,7 @@ export const Root = styled('div')(() => ({
     height: '100%',
     display: 'flex',
     flexFlow: 'column nowrap',
-    overflowY: 'hidden'
+    overflowY: 'hidden',
   },
 
   [`& .${classes.status}`]: {
@@ -45,7 +45,7 @@ export const Root = styled('div')(() => ({
     margin: '1rem 0 1rem 1rem',
     fontSize: '1.2rem',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   [`& .${classes.content}`]: {
@@ -53,7 +53,7 @@ export const Root = styled('div')(() => ({
     flexFlow: 'row nowrap',
     alignItems: 'stretch',
     flex: '1',
-    overflowY: 'hidden'
+    overflowY: 'hidden',
   },
 
   [`& .${classes.panel}`]: {
@@ -65,7 +65,7 @@ export const Root = styled('div')(() => ({
     display: 'flex',
     flexFlow: 'column nowrap',
     alignItems: 'stretch',
-    gap: '1rem'
+    gap: '1rem',
   },
 
   [`& .${classes.pagination}`]: {
@@ -78,27 +78,27 @@ export const Root = styled('div')(() => ({
     boxShadow: '0px -1px 2px rgba(0, 0, 0, 0.15)',
     padding: '1rem 2rem',
     '& > span': {
-      marginRight: '2rem'
+      marginRight: '2rem',
     },
     '& *:focus': {
-      outline: 'none !important'
+      outline: 'none !important',
     },
     borderRadius: 0,
-    zIndex: 9
+    zIndex: 9,
   },
 
   [`& .${classes.exportButton}`]: {
     justifyContent: 'flex-end',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   },
 
   [`& .${classes.pageSize}`]: {
     '& > p': {
-      margin: '0 1rem 0 2rem'
+      margin: '0 1rem 0 2rem',
     },
     display: 'flex',
     flexFlow: 'row nowrap',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   [`& .${classes.addButton}`]: {
@@ -106,6 +106,6 @@ export const Root = styled('div')(() => ({
     border: 'none',
     color: '#71767A',
     background: 'none',
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 }));

@@ -9,7 +9,7 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Save } from '@mui/icons-material';
 import { SelectChangeEvent } from '@mui/material/Select';
@@ -41,15 +41,15 @@ export const RegisterForm: React.FC<{
     firstName: '',
     lastName: '',
     email: '',
-    state: ''
+    state: '',
   });
 
-  const registerUserPost = async (body: Object) => {
+  const registerUserPost = async (body: object) => {
     try {
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       };
       const response = await fetch(
         process.env.REACT_APP_API_URL + '/users/register',
@@ -78,14 +78,14 @@ export const RegisterForm: React.FC<{
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleChange = (event: SelectChangeEvent) => {
     setValues((values) => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   };
 
@@ -103,7 +103,7 @@ export const RegisterForm: React.FC<{
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
-      state: values.state
+      state: values.state,
     };
     const registeredUser = await registerUserPost(body);
     if (registeredUser !== undefined) {
@@ -159,9 +159,9 @@ export const RegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           error={errorEmailMessage ? true : false}
           margin="dense"
@@ -182,9 +182,9 @@ export const RegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           margin="dense"
           size="small"
@@ -202,9 +202,9 @@ export const RegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           margin="dense"
           size="small"

@@ -56,7 +56,7 @@ export const STATE_OPTIONS = [
   'Washington',
   'West Virginia',
   'Wisconsin',
-  'Wyoming'
+  'Wyoming',
 ];
 
 export const STATE_ABBREVIATED_OPTIONS = [
@@ -117,5 +117,5 @@ export const STATE_ABBREVIATED_OPTIONS = [
   'WA', // Washington
   'WV', // West Virginia
   'WI', // Wisconsin
-  'WY' // Wyoming
+  'WY', // Wyoming
 ];

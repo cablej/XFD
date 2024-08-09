@@ -4,8 +4,8 @@ describe('generateWebpageTree', () => {
   it('no path', () => {
     const pages = [
       {
-        url: 'https://www.cisa.gov/'
-      }
+        url: 'https://www.cisa.gov/',
+      },
     ];
     const tree = generateWebpageTree(pages as any);
     expect(tree).toMatchSnapshot();
@@ -13,8 +13,8 @@ describe('generateWebpageTree', () => {
   it('basic path', () => {
     const pages = [
       {
-        url: 'https://www.cisa.gov/a/b/c'
-      }
+        url: 'https://www.cisa.gov/a/b/c',
+      },
     ];
     const tree = generateWebpageTree(pages as any);
     expect(tree).toMatchSnapshot();
@@ -22,8 +22,8 @@ describe('generateWebpageTree', () => {
   it('single path', () => {
     const pages = [
       {
-        url: 'https://www.cisa.gov/a'
-      }
+        url: 'https://www.cisa.gov/a',
+      },
     ];
     const tree = generateWebpageTree(pages as any);
     expect(tree).toMatchSnapshot();
@@ -31,8 +31,8 @@ describe('generateWebpageTree', () => {
   it('trailing slash', () => {
     const pages = [
       {
-        url: 'https://www.cisa.gov/a/'
-      }
+        url: 'https://www.cisa.gov/a/',
+      },
     ];
     const tree = generateWebpageTree(pages as any);
     expect(tree).toMatchSnapshot();

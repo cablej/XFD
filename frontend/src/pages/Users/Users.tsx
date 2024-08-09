@@ -15,7 +15,7 @@ import {
   RadioGroup,
   Select,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { SelectChangeEvent } from '@mui/material/Select';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
@@ -63,7 +63,7 @@ const initialUserFormValues = {
   lastName: '',
   email: '',
   userType: '',
-  state: ''
+  state: '',
 };
 
 type CloseReason = 'backdropClick' | 'escapeKeyDown' | 'closeButtonClick';
@@ -83,13 +83,13 @@ export const Users: React.FC = () => {
     lastName: false,
     email: false,
     userType: false,
-    state: false
+    state: false,
   });
   const [errorStates, setErrorStates] = useState<ErrorStates>({
     getUsersError: '',
     getAddUserError: '',
     getDeleteError: '',
-    getUpdateUserError: ''
+    getUpdateUserError: '',
   });
   const [values, setValues] = useState<UserFormValues>(initialUserFormValues);
 
@@ -134,26 +134,26 @@ export const Users: React.FC = () => {
       field: 'orgs',
       headerName: 'Organizations',
       minWidth: 100,
-      flex: 1
+      flex: 1,
     },
     { field: 'userType', headerName: 'User Type', minWidth: 100, flex: 0.75 },
     {
       field: 'dateToUSigned',
       headerName: 'Date ToU Signed',
       minWidth: 100,
-      flex: 0.75
+      flex: 0.75,
     },
     {
       field: 'acceptedTermsVersion',
       headerName: 'ToU Version',
       minWidth: 100,
-      flex: 0.5
+      flex: 0.5,
     },
     {
       field: 'lastLoggedInString',
       headerName: 'Last Logged In',
       minWidth: 100,
-      flex: 0.75
+      flex: 0.75,
     },
     {
       field: 'edit',
@@ -182,7 +182,7 @@ export const Users: React.FC = () => {
             </IconButton>
           </>
         );
-      }
+      },
     },
     {
       field: 'delete',
@@ -210,8 +210,8 @@ export const Users: React.FC = () => {
             </IconButton>
           </>
         );
-      }
-    }
+      },
+    },
   ];
 
   const addUserButton = user?.userType === 'globalAdmin' && (
@@ -237,7 +237,7 @@ export const Users: React.FC = () => {
       lastName: false,
       email: false,
       userType: false,
-      state: false
+      state: false,
     });
   };
 
@@ -271,7 +271,7 @@ export const Users: React.FC = () => {
       lastName: values.lastName,
       email: values.email,
       userType: values.userType,
-      state: values.state
+      state: values.state,
     };
     const { firstName, lastName, email, userType, state } = values;
     const newFormErrors = {
@@ -279,7 +279,7 @@ export const Users: React.FC = () => {
       lastName: !lastName,
       email: !email,
       userType: !userType,
-      state: !state
+      state: !state,
     };
     setFormErrors(newFormErrors);
     if (Object.values(newFormErrors).some((error) => error)) {
@@ -287,7 +287,7 @@ export const Users: React.FC = () => {
     }
     try {
       const user = await apiPost('/users/', {
-        body
+        body,
       });
       setUsers(users.concat(user));
       setErrorStates({ ...errorStates, getAddUserError: '' });
@@ -311,7 +311,7 @@ export const Users: React.FC = () => {
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
     setFormDisabled(false);
   };
@@ -319,16 +319,16 @@ export const Users: React.FC = () => {
   const handleChange = (event: SelectChangeEvent) => {
     setValues((values) => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   };
 
   const textFieldStyling = {
     '& .MuiOutlinedInput-root': {
       '&.Mui-focused fieldset': {
-        borderRadius: '0px'
-      }
-    }
+        borderRadius: '0px',
+      },
+    },
   };
 
   const updateRow = async (row: UserFormValues) => {
@@ -523,7 +523,7 @@ export const Users: React.FC = () => {
           columns={userCols}
           slots={{ toolbar: CustomToolbar }}
           slotProps={{
-            toolbar: { children: addUserButton }
+            toolbar: { children: addUserButton },
           }}
         />
       </Paper>
@@ -546,7 +546,7 @@ export const Users: React.FC = () => {
                 lastName: false,
                 email: false,
                 userType: false,
-                state: false
+                state: false,
               });
               setValues(initialUserFormValues);
             }}
@@ -577,7 +577,7 @@ export const Users: React.FC = () => {
               'email',
               'roles',
               'userType',
-              'state'
+              'state',
             ]}
             onImport={async (results) => {
               const createdUsers = [];
@@ -594,7 +594,7 @@ export const Users: React.FC = () => {
                 try {
                   createdUsers.push(
                     await apiPost('/users', {
-                      body
+                      body,
                     })
                   );
                 } catch (e) {

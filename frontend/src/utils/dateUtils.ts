@@ -21,7 +21,7 @@ export function toUTC(date: string) {
 export function toEST(date: string) {
   const parsedDate = new Date(date);
   const etDate = parsedDate.toLocaleString('en-US', {
-    timeZone: 'America/New_York'
+    timeZone: 'America/New_York',
   });
   return etDate;
 }

@@ -22,7 +22,7 @@ export const usePersistentState = <T extends any = any>(
       cookies.set('crossfeed-token', state, {
         domain: process.env.REACT_APP_COOKIE_DOMAIN,
         sameSite: 'strict',
-        secure: true
+        secure: true,
       });
     }
   }, [state, key, cookies]);

@@ -15,7 +15,7 @@ import {
   Menu,
   Paper,
   Stack,
-  Typography
+  Typography,
 } from '@mui/material';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import CustomToolbar from 'components/DataGrid/CustomToolbar';
@@ -37,7 +37,7 @@ export const stateMap: { [key: string]: string } = {
   exploitable: 'Exploitable',
   'false-positive': 'False Positive',
   'accepted-risk': 'Accepted Risk',
-  remediated: 'Remediated'
+  remediated: 'Remediated',
 };
 
 export interface VulnerabilityRow {
@@ -57,7 +57,7 @@ interface LocationState {
 }
 
 export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
-  groupBy = undefined
+  groupBy = undefined,
 }: {
   children?: React.ReactNode;
   groupBy?: string;
@@ -73,7 +73,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
         const res = await apiPut<Vulnerability>(
           '/vulnerabilities/' + vulnerabilities[index].id,
           {
-            body: body
+            body: body,
           }
         );
         const vulnCopy = [...vulnerabilities];
@@ -95,7 +95,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
       page,
       pageSize = PAGE_SIZE,
       doExport = false,
-      groupBy = undefined
+      groupBy = undefined,
     }: {
       filters: Filters<Vulnerability>;
       sort: SortingRule<Vulnerability>[];
@@ -112,7 +112,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           .reduce(
             (accum, next) => ({
               ...accum,
-              [next.id]: next.value
+              [next.id]: next.value,
             }),
             {}
           );
@@ -146,8 +146,8 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
               order: sort[0]?.desc ? 'DESC' : 'ASC',
               filters: tableFilters,
               pageSize,
-              groupBy
-            }
+              groupBy,
+            },
           }
         );
       } catch (e) {
@@ -166,7 +166,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           sort: query.sort,
           page: query.page,
           pageSize: query.pageSize ?? PAGE_SIZE,
-          groupBy
+          groupBy,
         });
         if (!resp) return;
         const { result, count } = resp;
@@ -177,7 +177,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           ...prevState,
           page: query.page - 1,
           pageSize: query.pageSize ?? PAGE_SIZE,
-          pageCount: Math.ceil(count / (query.pageSize ?? PAGE_SIZE))
+          pageCount: Math.ceil(count / (query.pageSize ?? PAGE_SIZE)),
         }));
       } catch (e) {
         console.error(e);
@@ -198,7 +198,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
     pageSize: PAGE_SIZE,
     pageCount: 0,
     sort: [],
-    filters: initialFilters
+    filters: initialFilters,
   });
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -209,7 +209,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
       page: 1,
       pageSize: PAGE_SIZE,
       sort: [],
-      filters: []
+      filters: [],
     });
   }, [fetchVulnerabilities]);
 
@@ -218,7 +218,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
       page: 1,
       pageSize: PAGE_SIZE,
       sort: [],
-      filters: initialFilters
+      filters: initialFilters,
     });
   }, [fetchVulnerabilities, initialFilters]);
 
@@ -234,7 +234,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
       Date.now(),
       parseISO(vuln.createdAt)
     )} days`,
-    state: vuln.state + (vuln.substate ? ` (${vuln.substate})` : '')
+    state: vuln.state + (vuln.substate ? ` (${vuln.substate})` : ''),
   }));
 
   const vulCols: GridColDef[] = [
@@ -260,7 +260,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
             {cellValues.row.title}
           </Button>
         );
-      }
+      },
     },
     {
       field: 'severity',
@@ -272,7 +272,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           Low: 1,
           Medium: 2,
           High: 3,
-          Critical: 4
+          Critical: 4,
         };
         return (
           severityLevels[cellParams1.value] - severityLevels[cellParams2.value]
@@ -283,7 +283,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           Low: 1,
           Medium: 2,
           High: 3,
-          Critical: 4
+          Critical: 4,
         };
         return (
           <Stack>
@@ -296,19 +296,19 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
                 height: '.5em',
                 width: '5em',
                 backgroundColor: getSeverityColor({
-                  id: cellValues.row.severity ?? ''
-                })
+                  id: cellValues.row.severity ?? '',
+                }),
               }}
             ></Box>
           </Stack>
         );
-      }
+      },
     },
     {
       field: 'kev',
       headerName: 'KEV',
       minWidth: 50,
-      flex: 0.5
+      flex: 0.5,
     },
     {
       field: 'domain',
@@ -331,19 +331,19 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
             {cellValues.row.domain}
           </Button>
         );
-      }
+      },
     },
     {
       field: 'product',
       headerName: 'Product',
       minWidth: 100,
-      flex: 1
+      flex: 1,
     },
     {
       field: 'createdAt',
       headerName: 'Days Open',
       minWidth: 100,
-      flex: 0.5
+      flex: 0.5,
     },
     {
       field: 'state',
@@ -363,7 +363,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
             (vuln) => vuln.id === cellValues.row.id
           );
           updateVulnerability(index, {
-            substate: substate
+            substate: substate,
           });
         };
 
@@ -387,7 +387,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
               open={open}
               onClose={handleClose}
               MenuListProps={{
-                'aria-labelledby': 'basic-button'
+                'aria-labelledby': 'basic-button',
               }}
             >
               {Object.keys(stateMap).map((substate) => (
@@ -407,7 +407,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
             </Menu>
           </div>
         );
-      }
+      },
     },
     {
       field: 'viewDetails',
@@ -427,8 +427,8 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
             <OpenInNewIcon />
           </IconButton>
         );
-      }
-    }
+      },
+    },
   ];
   // TODO: Get server side filtering and client side filtering to work together or replace one.
   return (
@@ -438,7 +438,11 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
           items={[
             { title: 'Search Results', path: '/inventory', exact: true },
             { title: 'All Domains', path: '/inventory/domains' },
-            { title: 'All Vulnerabilities', path: '/inventory/vulnerabilities' }
+            {
+              title: 'All Vulnerabilities',
+              path: '/inventory/vulnerabilities',
+            },
+            { title: 'OSS Projects', path: '/inventory/projects' },
           ]}
         ></Subnav>
         <br></br>
@@ -488,7 +492,7 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
                     page: model.page + 1,
                     pageSize: model.pageSize,
                     sort: paginationModel.sort,
-                    filters: paginationModel.filters
+                    filters: paginationModel.filters,
                   });
                 }}
                 filterMode="server"
@@ -499,8 +503,8 @@ export const Vulnerabilities: React.FC<{ groupBy?: string }> = ({
                     sort: paginationModel.sort,
                     filters: model.items.map((item) => ({
                       id: item.field,
-                      value: item.value
-                    }))
+                      value: item.value,
+                    })),
                   });
                 }}
                 pageSizeOptions={[15, 30, 50, 100]}

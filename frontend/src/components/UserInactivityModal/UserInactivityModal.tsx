@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Typography
+  Typography,
 } from '@mui/material';
 
 interface InactiveUserModalProps {
@@ -16,7 +16,7 @@ interface InactiveUserModalProps {
 const InactiveUserModal = ({
   isOpen,
   onCountdownEnd,
-  countdown
+  countdown,
 }: InactiveUserModalProps) => {
   const [remainingTime, setRemainingTime] = useState(countdown);
 

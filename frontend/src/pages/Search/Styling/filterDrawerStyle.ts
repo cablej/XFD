@@ -18,7 +18,7 @@ export const classes = {
   applied: `${PREFIX}-applied`,
   filter: `${PREFIX}-filter`,
   savedSearchHeader: `${PREFIX}-savedSearchHeader`,
-  savedSearchText: `${PREFIX}-savedSearchText`
+  savedSearchText: `${PREFIX}-savedSearchText`,
 };
 
 export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
@@ -33,7 +33,7 @@ export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
       fontSize: '1.3rem',
       fontWeight: 400,
       margin: 0,
-      marginLeft: '1rem'
+      marginLeft: '1rem',
     },
     '& button': {
       outline: 'none',
@@ -41,11 +41,11 @@ export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
       color: '#71767A',
       background: 'none',
       cursor: 'pointer',
-      textDecoration: 'underline'
-    }
+      textDecoration: 'underline',
+    },
   },
   [`& .${classes.details}`]: {
-    paddingTop: 0
+    paddingTop: 0,
     // maxHeight: 250,
     // overflowY: 'auto'
   },
@@ -59,16 +59,16 @@ export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
     '& svg': {
       fontSize: '0.7rem',
       color: theme.palette.primary.main,
-      marginRight: 3
-    }
+      marginRight: 3,
+    },
   },
   [`& .${classes.filter}`]: {
     display: 'flex',
     flexFlow: 'row nowrap',
     alignItems: 'center',
     '& > span': {
-      display: 'block'
-    }
+      display: 'block',
+    },
   },
   [`& .${classes.savedSearchHeader}`]: {
     alignItems: 'left',
@@ -77,7 +77,7 @@ export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
     justifyContent: 'space-between',
     '& h3': {
       fontWeight: 400,
-      margin: 0
+      margin: 0,
     },
     '& button': {
       outline: 'none',
@@ -85,10 +85,10 @@ export const StyledWrapper = styled(Wrapper)(({ theme }) => ({
       color: '#71767A',
       background: 'none',
       cursor: 'pointer',
-      textDecoration: 'underline'
-    }
+      textDecoration: 'underline',
+    },
   },
   [`& .${classes.savedSearchText}`]: {
-    fontSize: '12px'
-  }
+    fontSize: '12px',
+  },
 }));

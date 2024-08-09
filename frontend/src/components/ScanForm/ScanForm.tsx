@@ -7,7 +7,7 @@ import {
   Dropdown,
   TextInput,
   Checkbox,
-  Label
+  Label,
 } from '@trussworks/react-uswds';
 import MultiSelect from 'pages/Scans/MultiSelect';
 import { OrganizationOption } from 'pages/Scans/ScansView';
@@ -42,7 +42,7 @@ export const ScanForm: React.FC<{
   onSubmit,
   type,
   scan,
-  scanSchema
+  scanSchema,
 }) => {
   const setDefault = () => ({
     name: scan ? scan.name : 'censys',
@@ -53,7 +53,7 @@ export const ScanForm: React.FC<{
     isUserModifiable: scan ? scan.isUserModifiable : false,
     isSingleScan: scan ? scan.isSingleScan : false,
     organizations: scan ? propValues.organizations : [],
-    tags: scan ? propValues.tags : []
+    tags: scan ? propValues.tags : [],
   });
   const [organizationOptions, setOrganizationOptions] =
     useState<OrganizationOption[]>(organizationOption);
@@ -74,7 +74,7 @@ export const ScanForm: React.FC<{
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -95,7 +95,7 @@ export const ScanForm: React.FC<{
           isUserModifiable: scan.isUserModifiable,
           isSingleScan: scan.isSingleScan,
           organizations: propValues.organizations,
-          tags: propValues.tags
+          tags: propValues.tags,
         }));
       }
     } catch (e) {
@@ -110,7 +110,7 @@ export const ScanForm: React.FC<{
     tags,
     scan,
     scanSchema,
-    values.name
+    values.name,
   ]);
 
   useEffect(() => {
@@ -130,7 +130,7 @@ export const ScanForm: React.FC<{
           frequencyUnit: values.frequencyUnit,
           isGranular: values.isGranular,
           isUserModifiable: values.isUserModifiable,
-          isSingleScan: values.isSingleScan
+          isSingleScan: values.isSingleScan,
         });
       }}
       className={classes.form}
@@ -240,7 +240,7 @@ export const ScanForm: React.FC<{
             style={{
               display: 'inline-block',
               width: '150px',
-              marginRight: '15px'
+              marginRight: '15px',
             }}
             value={values.frequency}
             onChange={(e) => {

@@ -23,8 +23,8 @@ export const testUsers: User[] = [
       'Organization 2',
       'Organization 3',
       'Organization 4',
-      'Organization 5'
-    ]
+      'Organization 5',
+    ],
   },
   {
     id: 'def-456',
@@ -43,7 +43,7 @@ export const testUsers: User[] = [
     apiKeys: [],
     regionId: '1',
     state: 'New Jersey',
-    organizations: []
+    organizations: [],
   },
   {
     id: 'ghi-789',
@@ -62,7 +62,7 @@ export const testUsers: User[] = [
     apiKeys: [],
     regionId: '1',
     state: 'Virginia',
-    organizations: []
+    organizations: [],
   },
   {
     id: 'jkl-123',
@@ -81,7 +81,7 @@ export const testUsers: User[] = [
     apiKeys: [],
     regionId: '1',
     state: 'Virginia',
-    organizations: []
+    organizations: [],
   },
   {
     id: 'mno-456',
@@ -100,8 +100,8 @@ export const testUsers: User[] = [
     apiKeys: [],
     regionId: '2',
     state: 'California',
-    organizations: []
-  }
+    organizations: [],
+  },
 ];
 type organizations = {
   id: string;
@@ -109,13 +109,13 @@ type organizations = {
   updatedAt: string;
   name: string;
   userType?: string;
-  rootDomains: Array<String>;
-  ipBlocks: Array<String>;
+  rootDomains: Array<string>;
+  ipBlocks: Array<string>;
   isPassive: boolean;
-  pendingDomains: Array<String>;
-  userRoles: Array<String>;
+  pendingDomains: Array<string>;
+  userRoles: Array<string>;
   members?: number;
-  tags: Array<Object>;
+  tags: Array<object>;
 };
 export const testOrganizations: organizations[] = [
   {
@@ -134,9 +134,9 @@ export const testOrganizations: organizations[] = [
         id: 'abc-789',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'qrs-123',
@@ -154,9 +154,9 @@ export const testOrganizations: organizations[] = [
         id: 'lmn-123',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'efg-456',
@@ -174,9 +174,9 @@ export const testOrganizations: organizations[] = [
         id: 'hij-789',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'bcd-234',
@@ -194,9 +194,9 @@ export const testOrganizations: organizations[] = [
         id: 'nop-567',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'qrs-345',
@@ -214,9 +214,9 @@ export const testOrganizations: organizations[] = [
         id: 'tuv-678',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'wxy-789',
@@ -233,9 +233,9 @@ export const testOrganizations: organizations[] = [
         id: 'efg-567',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'hij-123',
@@ -253,9 +253,9 @@ export const testOrganizations: organizations[] = [
         id: 'cde-234',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'rst-123',
@@ -273,9 +273,9 @@ export const testOrganizations: organizations[] = [
         id: 'efg-567',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'klm-456',
@@ -293,9 +293,9 @@ export const testOrganizations: organizations[] = [
         id: 'lmn-567',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'ghi-678',
@@ -313,9 +313,9 @@ export const testOrganizations: organizations[] = [
         id: 'ijk-789',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
+        name: 'Sample Data',
+      },
+    ],
   },
   {
     id: 'mno-345',
@@ -333,8 +333,8 @@ export const testOrganizations: organizations[] = [
         id: 'stu-234',
         createdAt: '2023-10-03T20:38:45.889Z',
         updatedAt: '2023-10-03T20:38:45.889Z',
-        name: 'Sample Data'
-      }
-    ]
-  }
+        name: 'Sample Data',
+      },
+    ],
+  },
 ];

@@ -17,5 +17,5 @@ export const initialNotificationValues = {
   updatedBy: '',
   message: '',
   startDatetime: format(new Date(), 'yyyy-MM-dd HH:mm'),
-  endDatetime: format(new Date(), 'yyyy-MM-dd HH:mm')
+  endDatetime: format(new Date(), 'yyyy-MM-dd HH:mm'),
 };

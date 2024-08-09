@@ -8,7 +8,7 @@ import {
   sevLabels,
   resultsPerPage,
   getSeverityColor,
-  severities
+  severities,
 } from './utils';
 import * as RiskStyles from './style';
 import { Pagination } from '@mui/lab';
@@ -25,7 +25,7 @@ const TopVulnerableDomains = (props: { data: Point[] }) => {
     chartLarge,
     chipWrapper,
     chartHeader,
-    footer
+    footer,
   } = RiskStyles.classesRisk;
   const [current, setCurrent] = useState(1);
   const [labels, setLabels] = useState(sevLabels);
@@ -46,7 +46,7 @@ const TopVulnerableDomains = (props: { data: Point[] }) => {
   const dataVal = Object.keys(domainToSevMap)
     .map((key) => ({
       label: key,
-      ...domainToSevMap[key]
+      ...domainToSevMap[key],
     }))
     .sort((a, b) => {
       let diff = 0;
@@ -101,17 +101,17 @@ const TopVulnerableDomains = (props: { data: Point[] }) => {
                 top: 10,
                 right: 40,
                 bottom: 150,
-                left: 260
+                left: 260,
               }}
               theme={{
                 fontSize: 12,
                 axis: {
                   legend: {
                     text: {
-                      fontWeight: 'bold'
-                    }
-                  }
-                }
+                      fontWeight: 'bold',
+                    },
+                  },
+                },
               }}
               onClick={(event) => {
                 history.push(
@@ -130,7 +130,7 @@ const TopVulnerableDomains = (props: { data: Point[] }) => {
                 tickRotation: 0,
                 legend: '',
                 legendPosition: 'middle',
-                legendOffset: 40
+                legendOffset: 40,
               }}
               axisLeft={{
                 ariaHidden: true,
@@ -139,7 +139,7 @@ const TopVulnerableDomains = (props: { data: Point[] }) => {
                 tickRotation: 0,
                 legend: '',
                 legendPosition: 'middle',
-                legendOffset: -65
+                legendOffset: -65,
               }}
               animate={true}
               ariaLabel={

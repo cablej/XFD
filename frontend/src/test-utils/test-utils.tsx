@@ -20,7 +20,7 @@ const customRender = (ui: any, options: CustomRenderOptions = {}) => {
         <AuthContext.Provider
           value={{
             ...authCtx,
-            ...authContext
+            ...authContext,
           }}
         >
           {children}

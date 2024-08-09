@@ -406,6 +406,7 @@ describe('projects', () => {
       // Send a request to the endpoint that lists open-source projects for the organization
       const response = await request(app)
         .get(`/projects`)
+        .query({ orgId: organization.id })
         .set(
           'Authorization',
           createUserToken({
@@ -413,7 +414,7 @@ describe('projects', () => {
             userType: UserType.GLOBAL_VIEW
           })
         )
-        .send({ orgId: organization.id })
+        //.send({ orgId: organization.id })
         .expect(200);
 
       // Verify the response contains the two open-source projects
@@ -467,6 +468,7 @@ describe('projects', () => {
       // Send a request to the endpoint that lists open-source projects for the organization
       const response = await request(app)
         .get(`/projects`)
+        .query({ orgId: organization.id })
         .set(
           'Authorization',
           createUserToken({
@@ -474,7 +476,6 @@ describe('projects', () => {
             userType: UserType.GLOBAL_ADMIN
           })
         )
-        .send({ orgId: organization.id })
         .expect(200);
 
       // Verify the response contains the two open-source projects
@@ -521,13 +522,14 @@ describe('projects', () => {
       // Send a request to the endpoint that lists open-source projects for the organization
       const response = await request(app)
         .get(`/projects`)
+        .query({ orgId: organization.id })
         .set(
           'Authorization',
           createUserToken({
             roles: [{ org: organization.id, role: 'user' }]
           })
         )
-        .send({ orgId: organization.id })
+        //.send({ orgId: organization.id })
         .expect(200);
       // Verify the response contains the two open-source projects
       expect(response.body.length).toBe(2);
@@ -580,13 +582,14 @@ describe('projects', () => {
       // Request with a user token that is not associated with organization1
       const response = await request(app)
         .get(`/projects`)
+        .query({ orgId: organization1.id })
         .set(
           'Authorization',
           createUserToken({
             roles: [{ org: organization2.id, role: 'user' }]
           })
         )
-        .send({ orgId: organization1.id })
+        //.send({ orgId: organization1.id })
         .expect(403); // Expecting a 403 Forbidden for unauthorized access
     });
   });

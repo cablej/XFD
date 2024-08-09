@@ -29,7 +29,7 @@ export const classesRisk = {
   vulnCount: `${PREFIX}-vulnCount`,
   chip: `${PREFIX}-chip`,
   chipWrapper: `${PREFIX}-chipWrapper`,
-  note: `${PREFIX}-note`
+  note: `${PREFIX}-note`,
 };
 
 export const RiskRoot = styled('div')(({ theme }) => ({
@@ -40,11 +40,11 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     boxShadow: 'none',
     '& em': {
       fontStyle: 'normal',
-      backgroundColor: 'yellow'
-    }
+      backgroundColor: 'yellow',
+    },
   },
   [`& .${classesRisk.cardTitle}`]: {
-    fontSize: '14px'
+    fontSize: '14px',
   },
   [`& .${classesRisk.cardColumnHeadings}`]: {
     display: 'flex',
@@ -54,22 +54,22 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     paddingLeft: 16,
     paddingRight: 128,
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   [`& .${classesRisk.cardSmall}`]: {
     width: '100%',
     height: '355px',
     '& h3': {
-      textAlign: 'center'
+      textAlign: 'center',
     },
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   [`& .${classesRisk.chartSmall}`]: {
-    height: '85%'
+    height: '85%',
   },
   [`& .${classesRisk.chartLarge}`]: {
     height: '85.5%',
-    width: '90%'
+    width: '90%',
   },
   [`& .${classesRisk.chartHeader}`]: {
     display: 'flex',
@@ -78,19 +78,19 @@ export const RiskRoot = styled('div')(({ theme }) => ({
       paddingLeft: 190,
       color: '#71767A',
       margin: '10px 0 0 0',
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   },
   [`& .${classesRisk.cardBig}`]: {
     width: '100%',
     height: '889px',
     '& h3': {
-      textAlign: 'center'
+      textAlign: 'center',
     },
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   [`& .${classesRisk.body}`]: {
-    padding: '20px 30px'
+    padding: '20px 30px',
   },
   [`& .${classesRisk.header}`]: {
     height: '60px',
@@ -100,7 +100,7 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     color: '#07648D',
     fontWeight: 'bold',
     paddingLeft: 20,
-    paddingTop: 1
+    paddingTop: 1,
   },
   [`& .${classesRisk.footer}`]: {
     height: '60px',
@@ -112,11 +112,11 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     alignItems: 'center',
     padding: '1rem 2rem',
     '& > span': {
-      marginRight: '2rem'
+      marginRight: '2rem',
     },
     '& *:focus': {
-      outline: 'none !important'
-    }
+      outline: 'none !important',
+    },
   },
   [`& .${classesRisk.seeAll}`]: {
     float: 'right',
@@ -125,8 +125,8 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     '& p a': {
       color: '#71767A',
       fontSize: '12px',
-      fontWeight: '400'
-    }
+      fontWeight: '400',
+    },
   },
   [`& .${classesRisk.root}`]: {
     position: 'relative',
@@ -136,7 +136,7 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     flexFlow: 'row nowrap',
     alignItems: 'stretch',
     margin: '0',
-    overflowY: 'hidden'
+    overflowY: 'hidden',
   },
   [`& .${classesRisk.contentWrapper}`]: {
     position: 'relative',
@@ -145,40 +145,40 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     display: 'flex',
     flexFlow: 'column nowrap',
     overflowY: 'hidden',
-    marginTop: '1rem'
+    marginTop: '1rem',
   },
   [`& .${classesRisk.content}`]: {
     display: 'flex',
     flexFlow: 'row nowrap',
     alignItems: 'stretch',
-    flex: '1'
+    flex: '1',
   },
   [`& .${classesRisk.panel}`]: {
     position: 'relative',
     height: '100%',
     overflowY: 'auto',
     padding: '0 1rem 2rem 1rem',
-    flex: '0 0 50%'
+    flex: '0 0 50%',
   },
   [`& .${classesRisk.miniCardRoot}`]: {
     boxSizing: 'border-box',
     marginBottom: '1rem',
     '& em': {
       fontStyle: 'normal',
-      backgroundColor: 'yellow'
+      backgroundColor: 'yellow',
     },
     '&:hover': {
       background: '#FCFCFC',
       boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)',
       borderRadius: '4px',
-      cursor: 'pointer'
+      cursor: 'pointer',
     },
     '&:last-child hr': {
-      display: 'none'
+      display: 'none',
     },
     height: 45,
     width: '100%',
-    borderRadius: '4px'
+    borderRadius: '4px',
   },
   [`& .${classesRisk.cardInner}`]: {
     paddingLeft: 30,
@@ -188,23 +188,23 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     '& div': {
       display: 'inline',
       fontSize: '14px',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     '& button': {
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
     },
-    height: 45
+    height: 45,
   },
   [`& .${classesRisk.miniCardLeft}`]: {
     display: 'flex',
     flex: 1,
     justifyContent: 'flex-start',
-    color: '#3D4551'
+    color: '#3D4551',
   },
   [`& .${classesRisk.miniCardCenter}`]: {
     display: 'flex',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   [`& .${classesRisk.button}`]: {
     outline: 'none',
@@ -213,15 +213,15 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     color: '#07648D',
     margin: '0 0.2rem',
     cursor: 'pointer',
-    fontSize: '12px'
+    fontSize: '12px',
   },
   [`& .${classesRisk.underlined}`]: {
     width: '80px',
-    fontWeight: 'normal'
+    fontWeight: 'normal',
   },
   [`& .${classesRisk.vulnCount}`]: {
     color: '#B51D09',
-    flex: 0.5
+    flex: 0.5,
   },
   [`& .${classesRisk.chip}`]: {
     color: '#3D4551',
@@ -235,18 +235,18 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     marginRight: '10px',
     '&:hover': {
       background: '#F8DFE2',
-      border: '1px solid #D75B57'
+      border: '1px solid #D75B57',
     },
     '&:focus': {
       background: '#F8DFE2',
       border: '1px solid #D75B57',
-      outline: 0
+      outline: 0,
     },
     '&:default': {
       background: '#F8DFE2',
       border: '1px solid #D75B57',
-      outline: 0
-    }
+      outline: 0,
+    },
   },
   [`& .${classesRisk.chipWrapper}`]: {
     display: 'flex',
@@ -254,13 +254,13 @@ export const RiskRoot = styled('div')(({ theme }) => ({
     alignItems: 'flex-start',
     padding: '5px 10px',
     marginTop: '5px',
-    marginLeft: '15px'
+    marginLeft: '15px',
   },
   [`& .${classesRisk.note}`]: {
     font: '12px',
     fontFamily: 'Public Sans',
     margin: '10px 10px 10px 25px',
     fontStyle: 'italic',
-    color: '#71767A'
-  }
+    color: '#71767A',
+  },
 }));

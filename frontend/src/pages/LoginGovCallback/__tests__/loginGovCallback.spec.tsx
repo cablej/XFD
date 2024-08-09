@@ -44,8 +44,8 @@ const renderMocked = () => {
   return render(<LoginGovCallback />, {
     authContext: {
       apiPost: mockPost,
-      login: mockLogin
-    }
+      login: mockLogin,
+    },
   });
 };
 
@@ -64,8 +64,8 @@ it('can handle successful OAuth callback', async () => {
         state: 'fake_oauth_state',
         code: 'fake_oauth_code',
         nonce: 'FAKE_NONCE',
-        origState: 'FAKE_STATE'
-      }
+        origState: 'FAKE_STATE',
+      },
     });
   });
   await waitFor(() => {

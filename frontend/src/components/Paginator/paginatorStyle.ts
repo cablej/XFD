@@ -5,7 +5,7 @@ const PREFIX = 'Paginator';
 
 export const classes = {
   pagination: `${PREFIX}-pagination`,
-  exportButton: `${PREFIX}-exportButton`
+  exportButton: `${PREFIX}-exportButton`,
 };
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -17,17 +17,17 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     alignItems: 'center',
     padding: '1rem 2rem',
     '& > span': {
-      marginRight: '2rem'
+      marginRight: '2rem',
     },
     '& *:focus': {
-      outline: 'none !important'
+      outline: 'none !important',
     },
     width: '100%',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
 
   [`& .${classes.exportButton}`]: {
     justifyContent: 'flex-end',
-    marginLeft: 'auto'
-  }
+    marginLeft: 'auto',
+  },
 }));

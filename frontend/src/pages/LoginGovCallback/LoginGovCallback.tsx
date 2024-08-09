@@ -24,8 +24,8 @@ export const LoginGovCallback: React.FC = () => {
           state,
           code,
           nonce,
-          origState
-        }
+          origState,
+        },
       });
       await login(token);
       localStorage.removeItem('nonce');

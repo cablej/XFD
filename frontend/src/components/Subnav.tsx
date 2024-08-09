@@ -59,7 +59,7 @@ const classes = {
   link: `${PREFIX}-link`,
   active: `${PREFIX}-active`,
   flex: `${PREFIX}-flex`,
-  styles: `${PREFIX}-styles`
+  styles: `${PREFIX}-styles`,
 };
 
 const StyledPaper = styled('div')(({ theme }) => ({
@@ -70,7 +70,7 @@ const StyledPaper = styled('div')(({ theme }) => ({
     display: 'flex',
     flexFlow: 'row nowrap',
     alignItems: 'center',
-    paddingLeft: '15%'
+    paddingLeft: '15%',
   },
   [`.${classes.link}`]: {
     display: 'flex',
@@ -78,13 +78,13 @@ const StyledPaper = styled('div')(({ theme }) => ({
     borderBottom: '2px solid transparent',
     textDecoration: 'none',
     color: '#4e4e4e',
-    fontWeight: 500
+    fontWeight: 500,
   },
   [`.${classes.active}`]: {
     borderBottom: `2px solid ${theme.palette.primary.main}`,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   [`.${classes.flex}`]: {
-    flex: 1
-  }
+    flex: 1,
+  },
 }));

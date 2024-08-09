@@ -4,7 +4,7 @@ import {
   GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarExport,
-  GridToolbarDensitySelector
+  GridToolbarDensitySelector,
 } from '@mui/x-data-grid';
 
 export default function CustomToolbar(props: any) {

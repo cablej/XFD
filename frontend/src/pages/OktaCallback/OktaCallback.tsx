@@ -25,8 +25,8 @@ export const OktaCallback: React.FC = () => {
         '/auth/okta-callback',
         {
           body: {
-            code: code
-          }
+            code: code,
+          },
         }
       );
       console.log('Response: ', response);

@@ -4,7 +4,7 @@ import { API } from 'aws-amplify';
 
 const baseHeaders: HeadersInit = {
   'Content-Type': 'application/json',
-  Accept: 'application/json'
+  Accept: 'application/json',
 };
 
 type ApiMethod = (apiName: string, path: string, init?: any) => Promise<any>;
@@ -29,8 +29,8 @@ export const useApi = (onError?: OnError) => {
       headers: {
         ...headers,
         ...baseHeaders,
-        Authorization: getToken()
-      }
+        Authorization: getToken(),
+      },
     };
   }, []);
 
@@ -53,6 +53,7 @@ export const useApi = (onError?: OnError) => {
           showLoading && setRequestCount((cnt) => cnt - 1);
           return result as T;
         } catch (e: any) {
+          console.error('API call error:', e); // debugging
           showLoading && setRequestCount((cnt) => cnt - 1);
           onError && onError(e);
           throw e;
@@ -71,11 +72,11 @@ export const useApi = (onError?: OnError) => {
     apiPatch: useMemo(
       () => apiMethod(API.patch.bind(API), 'patch'),
       [apiMethod]
-    )
+    ),
   };
 
   return {
     ...api,
-    loading: requestCount > 0
+    loading: requestCount > 0,
   };
 };

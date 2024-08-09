@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField
+  TextField,
 } from '@mui/material';
 import { Save } from '@mui/icons-material';
 import { User } from 'types';
@@ -34,15 +34,15 @@ export const RSCRegisterForm: React.FC<{
   const defaultValues = () => ({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
   });
 
-  const registerRSCUserPost = async (body: Object) => {
+  const registerRSCUserPost = async (body: object) => {
     try {
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       };
       const response = await fetch(
         process.env.REACT_APP_API_URL + '/readysetcyber/register',
@@ -72,7 +72,7 @@ export const RSCRegisterForm: React.FC<{
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -91,7 +91,7 @@ export const RSCRegisterForm: React.FC<{
     const body = {
       firstName: values.firstName,
       lastName: values.lastName,
-      email: values.email
+      email: values.email,
     };
     const registeredUser = await registerRSCUserPost(body);
     if (registeredUser !== undefined) {
@@ -149,9 +149,9 @@ export const RSCRegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           error={errorEmailMessage ? true : false}
           margin="dense"
@@ -172,9 +172,9 @@ export const RSCRegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           margin="dense"
           size="small"
@@ -192,9 +192,9 @@ export const RSCRegisterForm: React.FC<{
           sx={{
             '& .MuiOutlinedInput-root': {
               '&.Mui-focused fieldset': {
-                borderRadius: '0px'
-              }
-            }
+                borderRadius: '0px',
+              },
+            },
           }}
           margin="dense"
           size="small"

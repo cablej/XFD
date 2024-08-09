@@ -62,7 +62,7 @@ export const NavItem: React.FC<Props> = (props) => {
       ) : (
         <Button
           className={classes(classesNav.link, {
-            [classesNav.activeLink]: !!match
+            [classesNav.activeLink]: !!match,
           })}
           onClick={onClick ? onClick : onClickButton}
           style={{ outline: 'none' }}
@@ -79,11 +79,11 @@ export const NavItem: React.FC<Props> = (props) => {
           keepMounted
           anchorOrigin={{
             vertical: 'center',
-            horizontal: 'center'
+            horizontal: 'center',
           }}
           transformOrigin={{
             vertical: 'center',
-            horizontal: 'center'
+            horizontal: 'center',
           }}
         >
           {nested.map((item) => (
@@ -112,7 +112,7 @@ const classesNav = {
   activeLink: `${PREFIX}-activeLink`,
   activeMobileLink: `${PREFIX}-activeMobileLink`,
   link: `${PREFIX}-link`,
-  userLink: `${PREFIX}-userLink`
+  userLink: `${PREFIX}-userLink`,
 };
 
 // TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
@@ -120,15 +120,15 @@ const Root = styled('div')(({ theme }) => ({
   [`& .${classesNav.inner}`]: {
     maxWidth: 1440,
     width: '100%',
-    margin: '0 auto'
+    margin: '0 auto',
   },
 
   [`& .${classesNav.menuButton}`]: {
     marginRight: theme.spacing(2),
     display: 'block',
     [theme.breakpoints.up('lg')]: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
 
   [`& .${classesNav.activeLink}`]: {
@@ -139,8 +139,8 @@ const Root = styled('div')(({ theme }) => ({
       left: 6,
       width: '85%',
       height: 2,
-      backgroundColor: 'white'
-    }
+      backgroundColor: 'white',
+    },
   },
 
   [`& .${classesNav.activeMobileLink}`]: {
@@ -153,8 +153,8 @@ const Root = styled('div')(({ theme }) => ({
       left: 0,
       height: '100%',
       width: '85%',
-      backgroundColor: theme.palette.primary.main
-    }
+      backgroundColor: theme.palette.primary.main,
+    },
   },
 
   [`& .${classesNav.link}`]: {
@@ -164,14 +164,14 @@ const Root = styled('div')(({ theme }) => ({
     margin: `0 ${theme.spacing()}px`,
     padding: theme.spacing(),
     borderBottom: '2px solid transparent',
-    fontWeight: 600
+    fontWeight: 600,
   },
 
   [`& .${classesNav.userLink}`]: {
     display: 'flex',
     alignItems: 'center',
     '& svg': {
-      marginRight: theme.spacing()
-    }
-  }
+      marginRight: theme.spacing(),
+    },
+  },
 }));

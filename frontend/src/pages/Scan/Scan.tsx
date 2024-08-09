@@ -6,7 +6,7 @@ import {
   Organization as OrganizationType,
   OrganizationTag,
   Scan,
-  ScanSchema
+  ScanSchema,
 } from 'types';
 import { Header } from '@trussworks/react-uswds';
 import { OrganizationOption } from 'pages/Scans/ScansView';
@@ -37,7 +37,7 @@ const ScanComponent: React.FC = () => {
     isGranular: false,
     isUserModifiable: false,
     isSingleScan: false,
-    tags: []
+    tags: [],
   });
 
   const fetchScan = useCallback(async () => {
@@ -71,19 +71,19 @@ const ScanComponent: React.FC = () => {
             : [],
           tags: body.tags
             ? body.tags.map((e) => ({
-                id: e.value
+                id: e.value,
               }))
-            : []
-        }
+            : [],
+        },
       });
       setFeedbackMessage({
         message: 'Scan successfully updated',
-        type: 'success'
+        type: 'success',
       });
     } catch (e) {
       setFeedbackMessage({
         message: 'Error updating scan',
-        type: 'error'
+        type: 'error',
       });
       console.log(e);
     }
@@ -108,7 +108,7 @@ const ScanComponent: React.FC = () => {
       frequency: scan.frequency,
       frequencyUnit: oldFrequencyUnit,
       isGranular: scan.isGranular,
-      isSingleScan: scan.isSingleScan
+      isSingleScan: scan.isSingleScan,
     }));
 
     //retrieves the organizations that are currently
@@ -119,7 +119,7 @@ const ScanComponent: React.FC = () => {
         const thisOrganization: OrganizationType = scan.organizations[org];
         const thisOrganizationOption: OrganizationOption = {
           label: thisOrganization.name,
-          value: thisOrganization.id
+          value: thisOrganization.id,
         };
         defaultOrganizations.push(thisOrganizationOption);
       }
@@ -128,8 +128,8 @@ const ScanComponent: React.FC = () => {
         organizations: defaultOrganizations,
         tags: scan.tags.map((tag) => ({
           label: tag.name,
-          value: tag.id
-        }))
+          value: tag.id,
+        })),
       }));
     }
   };

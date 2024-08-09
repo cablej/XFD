@@ -46,5 +46,5 @@ export const initializeUser: User = {
   regionId: null,
   state: null,
   organizations: [],
-  isRegistered: null
+  isRegistered: null,
 };

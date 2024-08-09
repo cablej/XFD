@@ -11,12 +11,12 @@ const PREFIX = 'Organizations';
 
 const classes = {
   header: `${PREFIX}-header`,
-  headerLabel: `${PREFIX}-headerLabel`
+  headerLabel: `${PREFIX}-headerLabel`,
 };
 
 const Root = styled('div')(({ theme }) => ({
   [`& .${classes.header}`]: {
-    background: '#F9F9F9'
+    background: '#F9F9F9',
   },
 
   [`& .${classes.headerLabel}`]: {
@@ -27,8 +27,8 @@ const Root = styled('div')(({ theme }) => ({
     fontWeight: 500,
     fontStyle: 'normal',
     fontSize: '24px',
-    color: '#07648D'
-  }
+    color: '#07648D',
+  },
 }));
 
 export const Organizations: React.FC = () => {
@@ -71,7 +71,7 @@ export const Organizations: React.FC = () => {
                 'stateFips',
                 'stateName',
                 'county',
-                'countyFips'
+                'countyFips',
               ]}
               onImport={async (results) => {
                 // TODO: use a batch call here instead.
@@ -93,9 +93,9 @@ export const Organizations: React.FC = () => {
                           tags: ((result.tags as unknown as string) || '')
                             .split(',')
                             .map((tag) => ({
-                              name: tag
-                            }))
-                        }
+                              name: tag,
+                            })),
+                        },
                       })
                     );
                   } catch (e: any) {

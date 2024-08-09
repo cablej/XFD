@@ -22,13 +22,13 @@ const MultiSelect = (
       {...props}
       components={{
         DropdownIndicator,
-        IndicatorSeparator: () => null
+        IndicatorSeparator: () => null,
       }}
       styles={{
         container: (provided, state) => ({
           ...provided,
           maxWidth: '30rem',
-          zIndex: props.zIndex
+          zIndex: props.zIndex,
         }),
         control: (provided, state) => ({
           ...provided,
@@ -36,8 +36,8 @@ const MultiSelect = (
           borderWidth: 1,
           marginTop: '0.5rem',
           minHeight: '2.5rem',
-          borderRadius: 0
-        })
+          borderRadius: 0,
+        }),
       }}
     />
   );

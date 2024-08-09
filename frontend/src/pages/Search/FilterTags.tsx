@@ -27,8 +27,8 @@ export const FilterTags: React.FC<Props> = (props) => {
           {
             ...nextFilter,
             value: nextFilter.values.join(', '),
-            label: nextFilter.field.split('.').pop()
-          }
+            label: nextFilter.field.split('.').pop(),
+          },
         ],
         []
       ),

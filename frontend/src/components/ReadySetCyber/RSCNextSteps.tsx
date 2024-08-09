@@ -21,7 +21,7 @@ export const RSCNextSteps: React.FC = () => {
         padding: 2,
         backgroundColor: '#F5FAFC',
         borderRadius: 1,
-        border: '.1rem solid #B8D9E8'
+        border: '.1rem solid #B8D9E8',
       }}
     >
       <Stack spacing={2}>
@@ -36,7 +36,7 @@ export const RSCNextSteps: React.FC = () => {
             bgcolor: 'white',
             padding: 2,
             borderRadius: 2,
-            border: '.1rem solid #0078AE'
+            border: '.1rem solid #0078AE',
           }}
         >
           <Stack
@@ -69,7 +69,7 @@ export const RSCNextSteps: React.FC = () => {
             bgcolor: 'white',
             padding: 2,
             borderRadius: 2,
-            border: '.1rem solid #0078AE'
+            border: '.1rem solid #0078AE',
           }}
         >
           <Stack

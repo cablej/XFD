@@ -11,7 +11,7 @@ type Option = { value: any; label: string };
 
 export const selectFilter = <T extends object>(opts: string[] | Option[]) => {
   const SelectFilter: React.FC<Props<T>> = ({
-    column: { filterValue, setFilter, id }
+    column: { filterValue, setFilter, id },
   }) => {
     return (
       <div className={classes.root}>

@@ -9,7 +9,7 @@ interface Props<T extends object> {
 }
 
 export const ColumnFilter = <T extends object>({
-  column: { filterValue, setFilter, id }
+  column: { filterValue, setFilter, id },
 }: Props<T>) => {
   const [search, setSearch] = useState('');
 

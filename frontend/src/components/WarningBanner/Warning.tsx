@@ -11,7 +11,7 @@ export const CrossfeedWarning: React.FC = (props) => {
     borderWidth: 2,
     padding: theme.spacing(1),
     backgroundColor: 'inherit',
-    bottom: '1rem'
+    bottom: '1rem',
   }));
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', py: 5, px: 1 }}>

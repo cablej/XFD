@@ -5,10 +5,10 @@ import { useAuthContext } from '../AuthContext';
 import { AuthContextProvider } from 'context/AuthContextProvider';
 
 const mockedApi = {
-  apiGet: jest.fn()
+  apiGet: jest.fn(),
 };
 jest.mock('hooks/useApi', () => ({
-  useApi: () => mockedApi
+  useApi: () => mockedApi,
 }));
 
 interface Props {
@@ -25,7 +25,7 @@ const InnerTestComp: React.FC<Props> = ({ onLogin, onSetOrg }) => {
     maximumRole,
     touVersion,
     userMustSign,
-    login
+    login,
   } = useAuthContext();
 
   return (
@@ -94,7 +94,7 @@ it('parses extendedOrg for provided organization', async () => {
   await waitFor(() => {
     expect(getByTestId('org')).toHaveTextContent(
       JSON.stringify({
-        ...testOrganization
+        ...testOrganization,
       })
     );
   });
@@ -103,7 +103,7 @@ it('parses extendedOrg for provided organization', async () => {
 it('sets user as max role for globalView userType', async () => {
   const { getByTestId } = await renderLoggedIn({
     ...testUser,
-    userType: 'globalView'
+    userType: 'globalView',
   });
   expect(getByTestId('maxRole')).toHaveTextContent('user');
 });
@@ -115,10 +115,10 @@ it('sets max role as admin when user has any admin role', async () => {
       {
         role: 'admin',
         organization: {
-          id: 'some-org-id'
-        }
-      }
-    ]
+          id: 'some-org-id',
+        },
+      },
+    ],
   });
   expect(getByTestId('maxRole')).toHaveTextContent('admin');
 });
@@ -126,7 +126,7 @@ it('sets max role as admin when user has any admin role', async () => {
 it('sets touVersion based on max role and current terms', async () => {
   const { getByTestId } = await renderLoggedIn({
     ...testUser,
-    userType: 'globalView'
+    userType: 'globalView',
   });
   expect(getByTestId('touVersion')).toHaveTextContent('v1-user');
 });
@@ -134,7 +134,7 @@ it('sets touVersion based on max role and current terms', async () => {
 it('CISA users do not have to sign terms', async () => {
   const { getByTestId } = await renderLoggedIn({
     ...testUser,
-    email: 'anything@cisa.dhs.gov'
+    email: 'anything@cisa.dhs.gov',
   });
   expect(getByTestId('userMustSign')).toHaveTextContent('false');
 });
@@ -143,7 +143,7 @@ it('users have to sign if they have not accepted terms', async () => {
   const { getByTestId } = await renderLoggedIn({
     ...testUser,
     dateAcceptedTerms: null,
-    email: 'anything@not_cisa_dhs.gov'
+    email: 'anything@not_cisa_dhs.gov',
   });
   expect(getByTestId('userMustSign')).toHaveTextContent('true');
 });
@@ -153,7 +153,7 @@ it('users have to sign if they have not signed newer terms', async () => {
     ...testUser,
     dateAcceptedTerms: new Date(),
     email: 'anything@not_cisa_dhs.gov',
-    acceptedTermsVersion: 'v0-user'
+    acceptedTermsVersion: 'v0-user',
   });
   expect(getByTestId('userMustSign')).toHaveTextContent('true');
 });

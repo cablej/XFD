@@ -3,10 +3,10 @@ import { render } from 'test-utils/test-utils';
 import { Layout } from '../Layout';
 
 jest.mock('components/Header', () => ({
-  Header: () => <div>HEADER</div>
+  Header: () => <div>HEADER</div>,
 }));
 jest.mock('components/GovBanner', () => ({
-  GovBanner: () => <div>GOV_BANNER</div>
+  GovBanner: () => <div>GOV_BANNER</div>,
 }));
 
 afterAll(() => {

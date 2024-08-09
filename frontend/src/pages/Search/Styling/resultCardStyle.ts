@@ -55,7 +55,7 @@ export const classes = {
   count: `${PREFIX}-count`,
   data: `${PREFIX}-data`,
   lastSeen: `${PREFIX}-lastSeen`,
-  expandMore: `${PREFIX}-expandMore`
+  expandMore: `${PREFIX}-expandMore`,
 };
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -70,14 +70,14 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
       selected ? '0px 1px 6px rgba(0, 0, 0, 0.25)' : 'none',
     '& em': {
       fontStyle: 'normal',
-      backgroundColor: 'yellow'
-    }
+      backgroundColor: 'yellow',
+    },
   },
 
   [`& .${classes.inner}`]: {
     padding: '1.5rem',
     paddingTop: '0.875rem',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
 
   [`& .${classes.domainRow}`]: {
@@ -93,7 +93,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: '0.5rem 0',
 
     '&:focus': {
-      outline: 'none !important'
+      outline: 'none !important',
     },
     '& h4': {
       fontWeight: 400,
@@ -104,40 +104,40 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
       margin: 0,
       textAlign: 'left',
       wordBreak: 'break-all',
-      paddingRight: '1rem'
-    }
+      paddingRight: '1rem',
+    },
   },
 
   [`& .${classes.ipRow}`]: {
     display: 'flex',
     flexFlow: 'row nowrap',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   [`& .${classes.row}`]: {
     padding: '0.5rem 0',
-    margin: 0
+    margin: 0,
   },
 
   [`& .${classes.label}`]: {
     fontSize: '0.8rem',
     color: '#4e4e4e',
-    display: 'block'
+    display: 'block',
   },
 
   [`& .${classes.count}`]: {
-    color: theme.palette.error.light
+    color: theme.palette.error.light,
   },
 
   [`& .${classes.data}`]: {
     display: 'block',
-    color: '#3D4551'
+    color: '#3D4551',
   },
 
   [`& .${classes.lastSeen}`]: {
     display: 'block',
-    textAlign: 'right'
+    textAlign: 'right',
   },
 
   [`& .${classes.expandMore}`]: {
@@ -146,6 +146,6 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     background: 'none',
     color: theme.palette.secondary.main,
     margin: '0 0.2rem',
-    cursor: 'pointer'
-  }
+    cursor: 'pointer',
+  },
 }));

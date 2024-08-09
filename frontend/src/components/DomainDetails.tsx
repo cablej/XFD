@@ -11,13 +11,13 @@ import {
   ListItem,
   ListItemText,
   Collapse,
-  Button
+  Button,
 } from '@mui/material';
 import {
   ExpandLess,
   ExpandMore,
   Launch as LinkOffIcon,
-  KeyboardBackspace
+  KeyboardBackspace,
 } from '@mui/icons-material';
 import { Domain } from 'types';
 import { useDomainApi } from 'hooks';
@@ -42,7 +42,7 @@ const classes = {
   lastSeen: `${PREFIX}-lastSeen`,
   vulnDescription: `${PREFIX}-vulnDescription`,
   listRoot: `${PREFIX}-listRoot`,
-  nested: `${PREFIX}-nested`
+  nested: `${PREFIX}-nested`,
 };
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -51,8 +51,8 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.25)',
     marginBottom: '1rem',
     '& *:focus': {
-      outline: 'none !important'
-    }
+      outline: 'none !important',
+    },
   },
 
   [`& .${classes.title}`]: {
@@ -69,17 +69,17 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     '& > h4': {
       wordBreak: 'break-all',
       paddingRight: '2rem',
-      margin: '0'
+      margin: '0',
     },
 
     '& > a, & > h4 a': {
       color: 'white',
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   },
 
   [`& .${classes.section}`]: {
-    marginBottom: '1.5rem'
+    marginBottom: '1.5rem',
   },
 
   [`& .${classes.subtitle}`]: {
@@ -87,45 +87,45 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: '0 0 0.2rem 0',
     fontSize: '1.2rem',
     fontWeight: 500,
-    color: '#3D4551'
+    color: '#3D4551',
   },
 
   [`& .${classes.inner}`]: {
-    padding: '1.5rem'
+    padding: '1.5rem',
   },
 
   [`& .${classes.accordion}`]: {
     color: '#3D4551',
-    textAlign: 'left'
+    textAlign: 'left',
   },
 
   [`& .${classes.accordionHeaderRow}`]: {
     color: '#000',
-    backgroundColor: '#eaeaea !important'
+    backgroundColor: '#eaeaea !important',
   },
 
   [`& .${classes.accordionHeading}`]: {
-    flex: '1 0 33%'
+    flex: '1 0 33%',
   },
 
   [`& .${classes.lastSeen}`]: {
-    flex: '0 0 125px'
+    flex: '0 0 125px',
   },
 
   [`& .${classes.vulnDescription}`]: {
     flex: '1 1 15%',
     textOverflow: 'hidden',
-    textAlign: 'right'
+    textAlign: 'right',
   },
 
   [`& .${classes.listRoot}`]: {
     width: '100%',
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
   },
 
   [`& .${classes.nested}`]: {
-    paddingLeft: theme.spacing(2)
-  }
+    paddingLeft: theme.spacing(2),
+  },
 }));
 
 interface Props {
@@ -194,8 +194,8 @@ export const DomainDetails: React.FC<Props> = (props) => {
         ...acc,
         {
           label: name,
-          value: Array.from(value).join(', ')
-        }
+          value: Array.from(value).join(', '),
+        },
       ],
       [] as any
     );
@@ -209,7 +209,7 @@ export const DomainDetails: React.FC<Props> = (props) => {
     if (domain.ip) {
       ret.push({
         label: 'IP',
-        value: domain.ip
+        value: domain.ip,
       });
     }
     ret.push({
@@ -217,30 +217,30 @@ export const DomainDetails: React.FC<Props> = (props) => {
       value: `${differenceInCalendarDays(
         Date.now(),
         parseISO(domain.createdAt)
-      )} days ago`
+      )} days ago`,
     });
     ret.push({
       label: 'Last Seen',
       value: `${differenceInCalendarDays(
         Date.now(),
         parseISO(domain.updatedAt)
-      )} days ago`
+      )} days ago`,
     });
     if (domain.country) {
       ret.push({
         label: 'Country',
-        value: domain.country
+        value: domain.country,
       });
     }
     if (domain.cloudHosted) {
       ret.push({
         label: 'Cloud Hosted',
-        value: 'Yes'
+        value: 'Yes',
       });
     }
     ret.push({
       label: 'Organization',
-      value: domain.organization.name
+      value: domain.organization.name,
     });
     return ret;
   }, [domain]);
@@ -475,7 +475,7 @@ export const DomainDetails: React.FC<Props> = (props) => {
                           items={[
                             {
                               label: 'Products',
-                              value: products
+                              value: products,
                             },
                             {
                               label: 'Banner',
@@ -484,8 +484,8 @@ export const DomainDetails: React.FC<Props> = (props) => {
                                   user?.userType === 'globalAdmin') &&
                                 service.banner
                                   ? service.banner
-                                  : 'None'
-                            }
+                                  : 'None',
+                            },
                           ]}
                         />
                       </AccordionDetails>

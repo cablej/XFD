@@ -11,7 +11,7 @@ import {
   TableInstance,
   Row,
   useFilters,
-  Filters
+  Filters,
 } from 'react-table';
 import { TableHead } from './TableHead';
 import { TableBody } from './TableBody';
@@ -46,7 +46,7 @@ export const Table = <T extends object>(props: TableProps<T>) => {
     disableFilters = false,
     renderPagination,
     renderExpanded,
-    tableRef
+    tableRef,
   } = props;
 
   const stateReducer = (nextState: any, action: any, prevState: any) => {
@@ -73,8 +73,8 @@ export const Table = <T extends object>(props: TableProps<T>) => {
         pageSize,
         pageIndex: 0,
         filters: initialFilterBy ?? [],
-        globalFilter: []
-      }
+        globalFilter: [],
+      },
     },
     useFilters,
     useSortBy,
@@ -85,7 +85,7 @@ export const Table = <T extends object>(props: TableProps<T>) => {
   useImperativeHandle(tableRef, () => instance);
 
   const {
-    state: { sortBy, pageIndex, filters }
+    state: { sortBy, pageIndex, filters },
   } = instance;
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export const Table = <T extends object>(props: TableProps<T>) => {
         sort: sortBy,
         page: pageIndex + 1,
         pageSize,
-        filters
+        filters,
       });
   }, [fetchData, sortBy, filters, pageIndex, pageSize]);
 

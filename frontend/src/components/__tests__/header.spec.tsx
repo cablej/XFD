@@ -3,7 +3,7 @@ import { render, testUser, testOrganization } from 'test-utils';
 import { Header } from '../Header';
 
 jest.mock('@elastic/react-search-ui', () => ({
-  withSearch: () => (comp: any) => comp
+  withSearch: () => (comp: any) => comp,
 }));
 
 describe('Header component', () => {
@@ -21,8 +21,8 @@ describe('Header component', () => {
     const { queryByText } = render(<Header />, {
       authContext: {
         user: { ...testUser, userType: 'standard', isRegistered: false },
-        currentOrganization: { ...testOrganization }
-      }
+        currentOrganization: { ...testOrganization },
+      },
     });
     ['Vulnerabilities', 'Risk Summary', 'Scans'].forEach((expected) => {
       expect(queryByText(expected)).not.toBeInTheDocument();
@@ -33,8 +33,8 @@ describe('Header component', () => {
     const { getByText, queryByText } = render(<Header />, {
       authContext: {
         user: { ...testUser, userType: 'standard', isRegistered: true },
-        currentOrganization: { ...testOrganization }
-      }
+        currentOrganization: { ...testOrganization },
+      },
     });
     ['Overview', 'Inventory'].forEach((expected) => {
       expect(getByText(expected)).toBeInTheDocument();
@@ -48,8 +48,8 @@ describe('Header component', () => {
     const { getByText } = render(<Header />, {
       authContext: {
         user: { ...testUser, userType: 'standard', isRegistered: true },
-        currentOrganization: { ...testOrganization }
-      }
+        currentOrganization: { ...testOrganization },
+      },
     });
     ['Overview', 'Inventory'].forEach((expected) => {
       expect(getByText(expected)).toBeInTheDocument();
@@ -63,8 +63,8 @@ describe('Header component', () => {
     const { getByText } = render(<Header />, {
       authContext: {
         user: { ...testUser, userType: 'globalAdmin', isRegistered: true },
-        currentOrganization: { ...testOrganization }
-      }
+        currentOrganization: { ...testOrganization },
+      },
     });
     ['Overview', 'Inventory'].forEach((expected) => {
       expect(getByText(expected)).toBeInTheDocument();

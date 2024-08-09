@@ -51,7 +51,7 @@ export const Import = <T extends object>(props: ImportProps<T>) => {
         header: true,
         dynamicTyping: true,
         complete: ({ data, errors }) =>
-          errors.length ? reject(errors) : resolve(data as T[])
+          errors.length ? reject(errors) : resolve(data as T[]),
       })
     );
     setLoading((l) => l - 1);
@@ -106,7 +106,7 @@ export const Import = <T extends object>(props: ImportProps<T>) => {
                 style={{
                   fontSize: '1rem',
                   padding: '0.5rem',
-                  marginLeft: '1rem'
+                  marginLeft: '1rem',
                 }}
               >
                 X
@@ -136,7 +136,7 @@ export const exportCSV = async <T extends object>(
   }
   const csv = Papa.unparse({
     fields: props.fieldsToExport ?? [],
-    data: data
+    data: data,
   });
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
   FileSaver.saveAs(blob, `${filename}.csv`);

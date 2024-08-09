@@ -22,7 +22,7 @@ export const RSCDefaultSideNav: React.FC = () => {
         sx={{
           width: '100%',
           maxWidth: 360,
-          bgcolor: 'background.paper'
+          bgcolor: 'background.paper',
         }}
       >
         <List>

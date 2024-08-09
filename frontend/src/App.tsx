@@ -4,14 +4,14 @@ import {
   Switch,
   Route,
   Redirect,
-  useLocation
+  useLocation,
 } from 'react-router-dom';
 import { API, Auth } from 'aws-amplify';
 import { AuthContextProvider, CFThemeProvider, SearchProvider } from 'context';
 import {
   MatomoProvider,
   createInstance,
-  useMatomo
+  useMatomo,
 } from '@jonkoops/matomo-tracker-react';
 import {
   AdminTools,
@@ -27,12 +27,15 @@ import {
   Risk,
   Organization,
   Organizations,
+  Projects,
+  Project,
+  ProjectCreate,
   SearchPage,
   Settings,
   TermsOfUse,
   Users,
   Vulnerabilities,
-  Vulnerability
+  Vulnerability,
 } from 'pages';
 import { Layout, RouteGuard } from 'components';
 import './styles.scss';
@@ -46,16 +49,16 @@ API.configure({
   endpoints: [
     {
       name: 'crossfeed',
-      endpoint: process.env.REACT_APP_API_URL
-    }
-  ]
+      endpoint: process.env.REACT_APP_API_URL,
+    },
+  ],
 });
 
 if (process.env.REACT_APP_USE_COGNITO) {
   Auth.configure({
     region: 'us-east-1',
     userPoolId: process.env.REACT_APP_USER_POOL_ID,
-    userPoolWebClientId: process.env.REACT_APP_USER_POOL_CLIENT_ID
+    userPoolWebClientId: process.env.REACT_APP_USER_POOL_CLIENT_ID,
   });
 }
 
@@ -66,9 +69,9 @@ const instance = createInstance({
   heartBeat: {
     // optional, enabled by default
     active: true, // optional, default value: true
-    seconds: 15 // optional, default value: `15
+    seconds: 15, // optional, default value: `15
   },
-  linkTracking: false // optional, default value: true
+  linkTracking: false, // optional, default value: true
   // configurations: { // optional, default value: {}
   //   // any valid matomo configuration, all below are optional
   //   disableCookies: true,
@@ -146,6 +149,16 @@ const App: React.FC = () => (
                     permissions={['globalView', 'regionalAdmin', 'standard']}
                   />
                   <RouteGuard
+                    path="/inventory/projects"
+                    component={Projects}
+                    permissions={['globalView', 'regionalAdmin', 'standard']}
+                  />
+                  <RouteGuard
+                    path="/inventory/project/:projectId"
+                    component={Project}
+                    permissions={['globalView', 'regionalAdmin', 'standard']}
+                  />
+                  <RouteGuard
                     path="/feeds"
                     component={Feeds}
                     permissions={['globalView']}
@@ -204,7 +217,7 @@ const App: React.FC = () => (
                       'globalView',
                       'readySetCyber',
                       'regionalAdmin',
-                      'standard'
+                      'standard',
                     ]}
                     unauth={RSCLogin}
                   />
@@ -215,7 +228,7 @@ const App: React.FC = () => (
                       'globalView',
                       'readySetCyber',
                       'regionalAdmin',
-                      'standard'
+                      'standard',
                     ]}
                     unauth={RSCLogin}
                   />

@@ -8,7 +8,7 @@ import {
   Modal,
   ModalFooter,
   ModalHeading,
-  ModalRef
+  ModalRef,
 } from '@trussworks/react-uswds';
 import { ModalToggleButton } from 'components';
 import { NoResults } from 'components/NoResults';
@@ -22,7 +22,7 @@ const Feeds = () => {
     totalResults: 0,
     current: 1,
     resultsPerPage: 20,
-    totalPages: 0
+    totalPages: 0,
   });
   const [noResults, setNoResults] = useState(false);
   const modalRef = useRef<ModalRef>(null);
@@ -41,13 +41,12 @@ const Feeds = () => {
           ...pageState,
           current: page,
           totalResults: res.count,
-          totalPages: Math.ceil(res.count / pageState.resultsPerPage)
+          totalPages: Math.ceil(res.count / pageState.resultsPerPage),
         }));
         setNoResults(res.count === 0);
       } catch (e) {
         console.error(e);
       }
-      // eslint-disable-next-line
     },
     [apiGet, pageState.resultsPerPage]
   );
@@ -74,16 +73,16 @@ const Feeds = () => {
               title: 'My Saved Searches',
               path: '/feeds',
               exact: true,
-              users: ALL_USERS
+              users: ALL_USERS,
             },
             {
               title: 'P&E APP',
               path: {
-                pathname: `${process.env.REACT_APP_API_URL}/pe`
+                pathname: `${process.env.REACT_APP_API_URL}/pe`,
               },
               users: GLOBAL_VIEW,
-              externalLink: true
-            }
+              externalLink: true,
+            },
           ].filter(({ users }) => (users & userLevel) > 0)}
         ></Subnav>
         <div className={classes.content}>
@@ -103,7 +102,7 @@ const Feeds = () => {
                 'vulnerabilities.cve': 'CVE',
                 'vulnerabilities.severity': 'Severity',
                 ip: 'IP',
-                name: 'Domain'
+                name: 'Domain',
               };
               if (search.searchTerm)
                 filterDisplay.push(`Search: ${search.searchTerm}`);

@@ -28,10 +28,10 @@ const TopVulnerablePorts = (props: { data: Point[] }) => {
               axis: {
                 legend: {
                   text: {
-                    fontWeight: 'bold'
-                  }
-                }
-              }
+                    fontWeight: 'bold',
+                  },
+                },
+              },
             }}
             onClick={(event) => {
               history.push(
@@ -51,7 +51,7 @@ const TopVulnerablePorts = (props: { data: Point[] }) => {
               tickRotation: 0,
               legend: 'Count',
               legendPosition: 'middle',
-              legendOffset: 40
+              legendOffset: 40,
             }}
             axisLeft={{
               ariaHidden: true,
@@ -60,7 +60,7 @@ const TopVulnerablePorts = (props: { data: Point[] }) => {
               tickRotation: 0,
               legend: 'Port',
               legendPosition: 'middle',
-              legendOffset: -65
+              legendOffset: -65,
             }}
             animate={true}
             ariaLabel={'Top Vulnerable Ports - y-axis: Port, x-axis: Count'}

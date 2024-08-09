@@ -7,7 +7,7 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useMemo
+  useMemo,
 } from 'react';
 import { useAuthContext } from 'context';
 import { Table, Paginator } from 'components';
@@ -16,7 +16,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button
+  Button,
 } from '@mui/material';
 
 import { OrganizationTag, Organization as OrganizationType } from 'types';
@@ -38,7 +38,7 @@ export const Reports: React.FC = () => {
       if (!showAllOrganizations && currentOrganization) {
         try {
           const { url } = await apiPost('/reports/export/', {
-            body: { currentOrganization, reportName }
+            body: { currentOrganization, reportName },
           });
           window.open(url);
           return url;
@@ -63,7 +63,7 @@ export const Reports: React.FC = () => {
       setTags(organization.tags);
       if (!showAllOrganizations && currentOrganization) {
         const result = await apiPost('/reports/list/', {
-          body: { currentOrganization }
+          body: { currentOrganization },
         });
 
         const output = result.map((a: any) => {
@@ -85,7 +85,7 @@ export const Reports: React.FC = () => {
             team: team,
             lastModified: date,
             size: size_in_mb,
-            eTag: a.eTag
+            eTag: a.eTag,
           };
         });
         setReports(output);

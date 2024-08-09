@@ -8,7 +8,7 @@ import {
   DialogTitle,
   MenuItem,
   Select,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Save } from '@mui/icons-material';
 import { SelectChangeEvent } from '@mui/material/Select';
@@ -27,7 +27,7 @@ export const UpdateStateForm: React.FC<{
   onClose: () => void;
 }> = ({ open, userId, onClose }) => {
   const defaultValues = () => ({
-    state: ''
+    state: '',
   });
 
   const [values, setValues] = useState<UpdateStateFormValues>(defaultValues);
@@ -38,19 +38,19 @@ export const UpdateStateForm: React.FC<{
   const handleChange = (event: SelectChangeEvent) => {
     setValues((values: any) => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     }));
   };
 
   const onSave = async () => {
     setIsLoading(true);
     const body = {
-      state: values.state
+      state: values.state,
     };
 
     try {
       await apiPut(`/v2/users/${userId}`, {
-        body
+        body,
       });
       setIsLoading(false);
       onClose();

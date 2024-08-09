@@ -3,7 +3,7 @@ import { OrganizationTag } from './organization';
 export interface Scan {
   id: string;
   name: string;
-  arguments: Object;
+  arguments: object;
   frequency: number;
   lastRun: string;
   isGranular: boolean;

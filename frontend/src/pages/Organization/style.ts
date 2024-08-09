@@ -11,12 +11,12 @@ export const organizationClasses = {
   orgName: `${PREFIX}-orgName`,
   textField: `${PREFIX}-textField`,
   root: `${PREFIX}-root`,
-  headerRow: `${PREFIX}-headerRow`
+  headerRow: `${PREFIX}-headerRow`,
 };
 
 export const OrganizationRoot = styled('div')(({ theme }) => ({
   [`& .${organizationClasses.header}`]: {
-    background: '#F9F9F9'
+    background: '#F9F9F9',
   },
 
   [`& .${organizationClasses.headerLabel}`]: {
@@ -30,19 +30,19 @@ export const OrganizationRoot = styled('div')(({ theme }) => ({
     fontSize: '24px',
     '& a': {
       textDecoration: 'none',
-      color: '#C9C9C9'
+      color: '#C9C9C9',
     },
     '& svg': {
       verticalAlign: 'middle',
       lineHeight: '100%',
-      fontSize: '26px'
-    }
+      fontSize: '26px',
+    },
   },
 
   [`& .${organizationClasses.chip}`]: {
     color: 'white',
     marginRight: '10px',
-    marginTop: '10px'
+    marginTop: '10px',
   },
 
   [`& .${organizationClasses.settingsWrapper}`]: {
@@ -52,35 +52,35 @@ export const OrganizationRoot = styled('div')(({ theme }) => ({
     borderRadius: '0px',
     padding: '25px',
     maxWidth: '900px',
-    margin: '0 auto'
+    margin: '0 auto',
   },
 
   [`& .${organizationClasses.buttons}`]: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
 
   [`& .${organizationClasses.orgName}`]: {
     background: '#F5F5F5 !important',
-    paddingBottom: '10px'
+    paddingBottom: '10px',
   },
 
   [`& .${organizationClasses.textField}`]: {
-    background: '#F5F5F5 !important'
+    background: '#F5F5F5 !important',
   },
 
   [`& .${organizationClasses.root}`]: {
     maxWidth: '1400px',
     margin: '0 auto',
     '@media screen and (min-width: 480px)': {
-      padding: '1rem 1rem'
+      padding: '1rem 1rem',
     },
     '@media screen and (min-width: 640px)': {
-      padding: '1rem 1.5rem'
+      padding: '1rem 1.5rem',
     },
     '@media screen and (min-width: 1024px)': {
-      padding: '1rem 2rem'
-    }
+      padding: '1rem 2rem',
+    },
   },
 
   [`& .${organizationClasses.headerRow}`]: {
@@ -98,19 +98,19 @@ export const OrganizationRoot = styled('div')(({ theme }) => ({
       padding: '0.5rem 0',
       '@media screen and (min-width: 640px)': {
         flex: '0 0 220px',
-        padding: 0
-      }
+        padding: 0,
+      },
     },
     '& span': {
       display: 'block',
       flex: '1 1 auto',
       marginLeft: 'calc(1rem + 20px)',
       '@media screen and (min-width: 640px)': {
-        marginLeft: 'calc(1rem + 20px)'
+        marginLeft: 'calc(1rem + 20px)',
       },
       '@media screen and (min-width: 1024px)': {
-        marginLeft: 0
-      }
-    }
-  }
+        marginLeft: 0,
+      },
+    },
+  },
 }));

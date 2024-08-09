@@ -20,7 +20,7 @@ export const AuthCreateAccount: React.FC = () => {
   const [values, setValues] = useState<FormData>({
     firstName: '',
     lastName: '',
-    organization: undefined
+    organization: undefined,
   });
   const [errors, setErrors] = useState<Errors>({});
   const [publicOrgs, setPublicOrgs] = useState<{ name: string; id: string }[]>(
@@ -32,13 +32,13 @@ export const AuthCreateAccount: React.FC = () => {
     const publicOrgs = await apiGet('/organizations/public');
     publicOrgs.unshift({
       name: 'None',
-      id: ''
+      id: '',
     });
     setPublicOrgs(publicOrgs);
     if (publicOrgs.length > 0)
       setValues((values) => ({
         ...values,
-        organization: publicOrgs[0].id
+        organization: publicOrgs[0].id,
       }));
   }, [apiGet, setValues]);
 
@@ -53,7 +53,7 @@ export const AuthCreateAccount: React.FC = () => {
   const onChange = (name: string, value: any) => {
     setValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -62,16 +62,16 @@ export const AuthCreateAccount: React.FC = () => {
     try {
       if (!user) throw Error('Unable to register');
       const updated: User = await apiPut(`/users/${user.id}`, {
-        body: values
+        body: values,
       });
 
       setUser(updated);
       history.push('/', {
-        message: 'Your account has been successfully created.'
+        message: 'Your account has been successfully created.',
       });
     } catch (e: any) {
       setErrors({
-        global: e.message ?? e.toString()
+        global: e.message ?? e.toString(),
       });
     }
   };

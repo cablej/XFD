@@ -20,7 +20,7 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
     initialState: {
       resultsPerPage: 15,
       sortField: 'name',
-      sortDirection: 'asc'
+      sortDirection: 'asc',
     },
 
     onResultClick: () => {
@@ -56,7 +56,7 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
         resultsPerPage,
         searchTerm,
         sortDirection,
-        sortField
+        sortField,
       } = state;
       const body: any = {
         current,
@@ -64,7 +64,7 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
         resultsPerPage,
         searchTerm,
         sortDirection,
-        sortField
+        sortField,
       };
       if (!showAllOrganizations && currentOrganization) {
         if ('rootDomains' in currentOrganization)
@@ -72,12 +72,12 @@ export const SearchProvider: React.FC<SearchProviderProps> = ({ children }) => {
         else body.tagId = currentOrganization.id;
       }
       const responseJson = await apiPost<ApiResponse>('/search', {
-        body
+        body,
       });
       const responseJsonWithDisjunctiveFacetCounts =
         await applyDisjunctiveFaceting(responseJson, state, ['fromRootDomain']);
       return buildState(responseJsonWithDisjunctiveFacetCounts, resultsPerPage);
-    }
+    },
   };
 
   // Use an organization-specific key so that the search results

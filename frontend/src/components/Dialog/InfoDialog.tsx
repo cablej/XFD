@@ -4,7 +4,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Grid
+  Grid,
 } from '@mui/material';
 
 type DialogComponentProps = {
@@ -22,7 +22,7 @@ const InfoDialog: React.FC<DialogComponentProps> = ({
   icon,
   title,
   content,
-  screenWidth = 'sm'
+  screenWidth = 'sm',
 }) => {
   return (
     <Dialog open={isOpen} fullWidth maxWidth={screenWidth}>

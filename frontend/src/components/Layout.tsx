@@ -14,7 +14,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const parseTextToJSX = (text: String) => {
+const parseTextToJSX = (text: string) => {
   const lines = text.split('\n');
   return lines.map((line, index) => {
     const parts = line.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
@@ -119,7 +119,7 @@ const PREFIX = 'Layout';
 const classes = {
   root: `${PREFIX}-root`,
   overrides: `${PREFIX}-overrides`,
-  content: `${PREFIX}-content`
+  content: `${PREFIX}-content`,
 };
 
 const StyledScopedCssBaseline = styled(ScopedCssBaseline)(({ theme }) => ({
@@ -127,18 +127,18 @@ const StyledScopedCssBaseline = styled(ScopedCssBaseline)(({ theme }) => ({
     position: 'relative',
     height: '100vh',
     display: 'flex',
-    flexFlow: 'column nowrap'
+    flexFlow: 'column nowrap',
     // overflow: 'auto'
   },
 
   [`& .${classes.overrides}`]: {
     WebkitFontSmoothing: 'unset',
-    MozOsxFontSmoothing: 'unset'
+    MozOsxFontSmoothing: 'unset',
   },
 
   [`& .${classes.content}`]: {
     flex: '1',
     display: 'block',
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 }));

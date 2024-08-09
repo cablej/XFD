@@ -25,7 +25,7 @@ export const useDomainApi = (showAll?: boolean) => {
         .reduce(
           (accum, next) => ({
             ...accum,
-            [next.id]: next.value
+            [next.id]: next.value,
           }),
           {}
         );
@@ -44,8 +44,8 @@ export const useDomainApi = (showAll?: boolean) => {
             page,
             sort: sort[0]?.id ?? 'name',
             order: sort[0]?.desc ? 'DESC' : 'ASC',
-            filters: tableFilters
-          }
+            filters: tableFilters,
+          },
         }
       );
 
@@ -53,7 +53,7 @@ export const useDomainApi = (showAll?: boolean) => {
         domains: result,
         count,
         url,
-        pageCount: Math.ceil(count / pageSize)
+        pageCount: Math.ceil(count / pageSize),
       };
     },
     [apiPost, showAll, currentOrganization]
@@ -68,6 +68,6 @@ export const useDomainApi = (showAll?: boolean) => {
 
   return {
     listDomains,
-    getDomain
+    getDomain,
   };
 };

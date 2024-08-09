@@ -28,7 +28,7 @@ export const offsets: any = {
   'New Jersey': [34, 1],
   Delaware: [33, 0],
   Maryland: [47, 10],
-  'District of Columbia': [49, 21]
+  'District of Columbia': [49, 21],
 };
 
 export const sevLabels = ['', 'Low', 'Medium', 'High', 'Critical'];
@@ -39,7 +39,7 @@ export const severities: VulnSeverities[] = [
   { label: 'Critical', sevList: ['Critical'] },
   { label: 'High', sevList: ['High'] },
   { label: 'Medium', sevList: ['Medium'] },
-  { label: 'Low', sevList: ['Low'] }
+  { label: 'Low', sevList: ['Low'] },
 ];
 
 export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

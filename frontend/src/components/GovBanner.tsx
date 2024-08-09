@@ -19,7 +19,7 @@ const classes = {
   infoInner: `${PREFIX}-infoInner`,
   info: `${PREFIX}-info`,
   infoIcon: `${PREFIX}-infoIcon`,
-  infoText: `${PREFIX}-infoText`
+  infoText: `${PREFIX}-infoText`,
 };
 
 // TODO jss-to-styled codemod: The Fragment root was replaced by div. Change the tag if needed.
@@ -31,7 +31,7 @@ const Root = styled('div')(({ theme }) => ({
     backgroundColor: '#f0f0f0',
     fontSize: '0.75rem',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   [`& .${classes.inner}`]: {
@@ -43,12 +43,12 @@ const Root = styled('div')(({ theme }) => ({
     margin: '0 auto',
     padding: `2px 24px`,
     [theme.breakpoints.down('md')]: {
-      padding: '2px 8px'
-    }
+      padding: '2px 8px',
+    },
   },
 
   [`& .${classes.flag}`]: {
-    padding: `0 ${theme.spacing()}px`
+    padding: `0 ${theme.spacing()}px`,
   },
 
   [`& .${classes.textWrap}`]: {
@@ -57,30 +57,30 @@ const Root = styled('div')(({ theme }) => ({
     alignItems: 'center',
     flexGrow: 1,
     [theme.breakpoints.down('sm')]: {
-      padding: `5px 0`
-    }
+      padding: `5px 0`,
+    },
   },
 
   [`& .${classes.text}`]: {
     flex: '0 1 auto',
     marginRight: theme.spacing(),
     [theme.breakpoints.down('sm')]: {
-      flex: '0 0 100%'
-    }
+      flex: '0 0 100%',
+    },
   },
 
   [`& .${classes.btn}`]: {
     border: 'none',
     background: 'none',
     padding: 0,
-    outline: 'none'
+    outline: 'none',
   },
 
   [`& .${classes.btnExpand}`]: {
     display: 'flex',
     alignItems: 'center',
     color: '#005ea2',
-    textDecoration: 'underline'
+    textDecoration: 'underline',
   },
 
   [`& .${classes.infoInner}`]: {
@@ -88,7 +88,7 @@ const Root = styled('div')(({ theme }) => ({
     margin: '0 auto',
     lineHeight: 1.5,
     flexFlow: 'row wrap',
-    padding: `${theme.spacing(3)} 16px`
+    padding: `${theme.spacing(3)} 16px`,
   },
 
   [`& .${classes.info}`]: {
@@ -97,20 +97,20 @@ const Root = styled('div')(({ theme }) => ({
     padding: `${theme.spacing(2)} ${theme.spacing(2)}`,
     [theme.breakpoints.down('md')]: {
       flex: '0 0 100%',
-      padding: `${theme.spacing(2)} 0`
-    }
+      padding: `${theme.spacing(2)} 0`,
+    },
   },
 
   [`& .${classes.infoIcon}`]: {
-    minWidth: 40
+    minWidth: 40,
   },
 
   [`& .${classes.infoText}`]: {
     fontSize: '0.87rem',
     '& p': {
-      margin: `0 ${theme.spacing(2)}`
-    }
-  }
+      margin: `0 ${theme.spacing(2)}`,
+    },
+  },
 }));
 
 export const GovBanner: React.FC = () => {

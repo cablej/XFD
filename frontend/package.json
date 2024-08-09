@@ -93,7 +93,7 @@
     "express": "^4.18.2",
     "helmet": "^7.0.0",
     "jest-date-mock": "^1.0.8",
-    "prettier": "^3.0.3",
+    "prettier": "^3.3.3",
     "sass": "^1.55.0",
     "serverless": "^3.30",
     "serverless-better-credentials": "^1.2.0",
@@ -148,8 +148,8 @@
   "scripts": {
     "build": "react-scripts --max_old_space_size=8192 build",
     "eject": "react-scripts eject",
-    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
-    "lint:fix": "eslint 'src/**/*.{ts,tsx,js,jsx}' --fix",
+    "lint": "eslint \"**/*.{js,jsx,json,md}\"", // prettier --check \"**/*.{js,jsx,json,md}\""
+    "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "start": "react-scripts --max_old_space_size=8192 start",
     "test": "react-scripts test",
     "typecheck": "tsc --noEmit"

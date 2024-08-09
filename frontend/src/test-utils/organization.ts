@@ -18,5 +18,5 @@ export const testOrganization = {
   county: 'Calcasieu Parish',
   countyFips: 22019,
   acronym: 'TEST',
-  type: 'Federal'
+  type: 'Federal',
 };

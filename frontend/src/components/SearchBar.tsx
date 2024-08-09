@@ -12,7 +12,7 @@ const classes = {
   inp: `${PREFIX}-inp`,
   icon: `${PREFIX}-icon`,
   autocompleteRoot: `${PREFIX}-autocompleteRoot`,
-  actionBtn: `${PREFIX}-actionBtn`
+  actionBtn: `${PREFIX}-actionBtn`,
 };
 
 const Root = styled('div')(({ theme }) => ({
@@ -25,7 +25,7 @@ const Root = styled('div')(({ theme }) => ({
     flexFlow: 'row nowrap',
     alignItems: 'center',
     transition: 'box-shadow 0.3s linear',
-    borderRadius: '5px'
+    borderRadius: '5px',
   },
 
   [`& .${classes.inner}`]: {
@@ -33,7 +33,7 @@ const Root = styled('div')(({ theme }) => ({
     maxWidth: 1400,
     margin: '0 auto',
     background: 'none',
-    position: 'relative'
+    position: 'relative',
   },
 
   [`& .${classes.inp}`]: {
@@ -46,11 +46,11 @@ const Root = styled('div')(({ theme }) => ({
     fontWeight: 300,
     background: 'none',
     '&::placeholder': {
-      color: '#71767A'
+      color: '#71767A',
     },
     '&:focus': {
-      outline: 'none !important'
-    }
+      outline: 'none !important',
+    },
   },
 
   [`& .${classes.icon}`]: {
@@ -59,7 +59,7 @@ const Root = styled('div')(({ theme }) => ({
     top: '50%',
     transform: 'translateY(-50%)',
     fontSize: '1.5rem',
-    color: '#71767A'
+    color: '#71767A',
   },
 
   [`& .${classes.autocompleteRoot}`]: {
@@ -67,13 +67,13 @@ const Root = styled('div')(({ theme }) => ({
     top: 60,
     left: 20,
     padding: '1rem',
-    minWidth: 600
+    minWidth: 600,
   },
 
   [`& .${classes.actionBtn}`]: {
     borderColor: '#28A0CB',
-    color: '#28A0CB'
-  }
+    color: '#28A0CB',
+  },
 }));
 
 interface Props

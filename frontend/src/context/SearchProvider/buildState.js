@@ -29,7 +29,7 @@ function getHighlight(hit, fieldName) {
 function buildResults(hits) {
   const addEachKeyValueToObject = (acc, [key, value]) => ({
     ...acc,
-    [key]: value
+    [key]: value,
   });
 
   const toObject = (value, snippet) => {
@@ -40,7 +40,7 @@ function buildResults(hits) {
     const hit = Object.entries(record._source)
       .map(([fieldName, fieldValue]) => [
         fieldName,
-        toObject(fieldValue, getHighlight(record, fieldName))
+        toObject(fieldValue, getHighlight(record, fieldName)),
       ])
       .reduce(addEachKeyValueToObject, {});
     return { ...hit, inner_hits: record.inner_hits };
@@ -71,6 +71,6 @@ export default function buildState(response, resultsPerPage) {
     totalPages,
     totalResults,
     noResults: totalResults === 0,
-    ...(facets && { facets })
+    ...(facets && { facets }),
   };
 }

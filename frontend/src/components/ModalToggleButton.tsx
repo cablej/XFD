@@ -35,7 +35,7 @@ export const ModalToggleButton = ({
     'data-open-modal'?: boolean;
   } = {
     'data-close-modal': true,
-    'data-open-modal': true
+    'data-open-modal': true,
   };
 
   if (opener && !closer) delete dataProps['data-close-modal'];

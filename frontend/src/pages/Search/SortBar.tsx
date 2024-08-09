@@ -5,7 +5,7 @@ import {
   FormControl,
   MenuItem,
   SelectProps,
-  IconButton
+  IconButton,
 } from '@mui/material';
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { ContextType } from 'context/SearchProvider';
@@ -28,7 +28,7 @@ export const SortBar: React.FC<Props> = (props) => {
     setSort,
     saveSearch,
     children,
-    existingSavedSearch
+    existingSavedSearch,
   } = props;
 
   const toggleDirection = () => {

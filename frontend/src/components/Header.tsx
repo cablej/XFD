@@ -8,12 +8,12 @@ import {
   Drawer,
   ListItem,
   List,
-  TextField
+  TextField,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
   AccountCircle as UserIcon,
-  ArrowDropDown
+  ArrowDropDown,
 } from '@mui/icons-material';
 import { NavItem } from './NavItem';
 import { useRouteMatch } from 'react-router-dom';
@@ -38,19 +38,19 @@ const classes = {
   lgNav: `${PREFIX}-lgNav`,
   mobileNav: `${PREFIX}-mobileNav`,
   selectOrg: `${PREFIX}-selectOrg`,
-  option: `${PREFIX}-option`
+  option: `${PREFIX}-option`,
 };
 
 const Root = styled('div')(({ theme }) => ({
   [`.${classes.inner}`]: {
     maxWidth: '1440px',
     width: '100%',
-    margin: '0 auto'
+    margin: '0 auto',
   },
 
   [`.${classes.menuButton}`]: {
     marginLeft: theme.spacing(2),
-    display: 'flex'
+    display: 'flex',
   },
 
   [`.${classes.logo}`]: {
@@ -59,11 +59,11 @@ const Root = styled('div')(({ theme }) => ({
     padding: theme.spacing(),
     paddingLeft: 0,
     [theme.breakpoints.down('xl')]: {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
   [`.${classes.spacing}`]: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   [`.${classes.activeMobileLink}`]: {
     fontWeight: 700,
@@ -75,8 +75,8 @@ const Root = styled('div')(({ theme }) => ({
       left: 0,
       height: '100%',
       width: 2,
-      backgroundColor: theme.palette.primary.main
-    }
+      backgroundColor: theme.palette.primary.main,
+    },
   },
 
   [`.${classes.link}`]: {
@@ -86,32 +86,32 @@ const Root = styled('div')(({ theme }) => ({
     margin: `0 ${theme.spacing()}px`,
     padding: theme.spacing(),
     borderBottom: '2px solid transparent',
-    fontWeight: 600
+    fontWeight: 600,
   },
   [`.${classes.userLink}`]: {
     [theme.breakpoints.down('md')]: {
-      display: 'flex'
+      display: 'flex',
     },
     [theme.breakpoints.up('lg')]: {
       display: 'flex',
       alignItems: 'center',
       marginLeft: '1rem',
       '& svg': {
-        marginRight: theme.spacing()
+        marginRight: theme.spacing(),
       },
       border: 'none',
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   },
   [`.${classes.lgNav}`]: {
     display: 'flex',
     [theme.breakpoints.down('sm')]: {
-      display: 'flex'
-    }
+      display: 'flex',
+    },
   },
 
   [`.${classes.mobileNav}`]: {
-    padding: `${theme.spacing(2)} ${theme.spacing()}px`
+    padding: `${theme.spacing(2)} ${theme.spacing()}px`,
   },
   [`.${classes.selectOrg}`]: {
     border: '1px solid #FFFFFF',
@@ -120,26 +120,26 @@ const Root = styled('div')(({ theme }) => ({
     padding: '3px',
     marginLeft: '20px',
     '& svg': {
-      color: 'white'
+      color: 'white',
     },
     '& input': {
       color: 'white',
-      width: '100%'
+      width: '100%',
     },
     '& input:focus': {
-      outlineWidth: 0
+      outlineWidth: 0,
     },
     '& fieldset': {
-      borderStyle: 'none'
+      borderStyle: 'none',
     },
     '& div div': {
-      paddingTop: '0 !important'
+      paddingTop: '0 !important',
     },
     '& div div div': {
-      marginTop: '-3px !important'
+      marginTop: '-3px !important',
     },
-    height: '45px'
-  }
+    height: '45px',
+  },
 }));
 
 const GLOBAL_ADMIN = 3;
@@ -168,7 +168,7 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
     setShowMaps,
     user,
     logout,
-    apiGet
+    apiGet,
   } = useAuthContext();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -221,15 +221,15 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
       path: '/',
       users: STANDARD_USER,
       exact: true,
-      onClick: toggleDrawer(false)
+      onClick: toggleDrawer(false),
     },
     {
       title: 'Inventory',
       path: '/inventory',
       users: STANDARD_USER,
       exact: false,
-      onClick: toggleDrawer(false)
-    }
+      onClick: toggleDrawer(false),
+    },
   ].filter(({ users }) => users <= userLevel);
 
   const userMenu: NavItemType = {
@@ -245,40 +245,40 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
         title: 'Admin Tools',
         path: '/admin-tools',
         users: GLOBAL_ADMIN,
-        exact: true
+        exact: true,
       },
       {
         title: 'User Registration',
         path: '/region-admin-dashboard',
         users: REGIONAL_ADMIN,
-        exact: true
+        exact: true,
       },
       {
         title: 'Manage Organizations',
         path: '/organizations',
         users: REGIONAL_ADMIN,
-        exact: true
+        exact: true,
       },
       {
         title: 'Manage Users',
         path: '/users',
         users: GLOBAL_ADMIN,
-        exact: true
+        exact: true,
       },
       {
         title: 'My Settings',
         path: '/settings',
         users: STANDARD_USER,
-        exact: true
+        exact: true,
       },
       {
         title: 'Logout',
         path: '/settings',
         users: STANDARD_USER,
         onClick: logout,
-        exact: true
-      }
-    ].filter(({ users }) => users <= userLevel)
+        exact: true,
+      },
+    ].filter(({ users }) => users <= userLevel),
   };
 
   const orgPageMatch = useRouteMatch('/organizations/:id');
@@ -346,7 +346,7 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                       history.push('/inventory?q=' + value);
                     setSearchTerm(value, {
                       shouldClearFilters: false,
-                      autocompleteResults: false
+                      autocompleteResults: false,
                     });
                   }}
                 />
@@ -363,12 +363,12 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                     autoComplete={false}
                     className={classes.selectOrg}
                     classes={{
-                      option: classes.option
+                      option: classes.option,
                     }}
                     value={
                       showAllOrganizations
                         ? { name: 'All Organizations' }
-                        : currentOrganization ?? undefined
+                        : (currentOrganization ?? undefined)
                     }
                     filterOptions={(options, state) => {
                       // If already selected, show all
@@ -381,11 +381,10 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                       ) {
                         return options;
                       }
-                      return options.filter(
-                        (option) =>
-                          option?.name
-                            .toLowerCase()
-                            .includes(state.inputValue.toLowerCase())
+                      return options.filter((option) =>
+                        option?.name
+                          .toLowerCase()
+                          .includes(state.inputValue.toLowerCase())
                       );
                     }}
                     disableClearable
@@ -425,7 +424,7 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                         inputProps={{
                           ...params.inputProps,
                           id: 'autocomplete-input',
-                          autoComplete: 'new-password' // disable autocomplete and autofill
+                          autoComplete: 'new-password', // disable autocomplete and autofill
                         }}
                       />
                     )}
@@ -456,8 +455,8 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
         PaperProps={{
           sx: {
             backgroundColor: 'primary.main',
-            color: 'white'
-          }
+            color: 'white',
+          },
         }}
       >
         <List className={classes.mobileNav}>
@@ -499,6 +498,6 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
 export const Header = withSearch(
   ({ searchTerm, setSearchTerm }: ContextType) => ({
     searchTerm,
-    setSearchTerm
+    setSearchTerm,
   })
 )(HeaderNoCtx);

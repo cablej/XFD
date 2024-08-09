@@ -10,9 +10,9 @@ function getValueFacet(aggregations, fieldName) {
         data: value.buckets.map((bucket) => ({
           // Boolean values and date values require using `key_as_string`
           value: bucket.key_as_string || bucket.key,
-          count: bucket.doc_count
-        }))
-      }
+          count: bucket.doc_count,
+        })),
+      },
     ];
   }
 }
@@ -45,7 +45,7 @@ const FACETS = [
   'vulnerabilities.cve',
   'vulnerabilities.severity',
   'organization.name',
-  'services.products.cpe'
+  'services.products.cpe',
 ];
 export default function buildStateFacets(aggregations) {
   const facets = {};

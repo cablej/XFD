@@ -4,14 +4,14 @@ import {
   Accordion as MuiAccordion,
   AccordionSummary as MuiAccordionSummary,
   IconButton,
-  Paper
+  Paper,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { classes, StyledWrapper } from './Styling/filterDrawerStyle';
 import {
   Delete,
   ExpandMore,
-  FiberManualRecordRounded
+  FiberManualRecordRounded,
 } from '@mui/icons-material';
 import { FaFilter } from 'react-icons/fa';
 import { TaggedArrayInput, FacetFilter } from 'components';
@@ -76,7 +76,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
       filters.reduce(
         (allFilters, nextFilter) => ({
           ...allFilters,
-          [nextFilter.field]: nextFilter.values
+          [nextFilter.field]: nextFilter.values,
         }),
         {} as Record<string, string[]>
       ),
@@ -123,7 +123,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
         classes={{
           root: classes.root,
           disabled: classes.disabled,
-          expanded: classes.expanded
+          expanded: classes.expanded,
         }}
       >
         <AccordionSummary
@@ -132,7 +132,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
             root: classes.root2,
             content: classes.content,
             disabled: classes.disabled2,
-            expanded: classes.expanded2
+            expanded: classes.expanded2,
           }}
         >
           <div>IP(s)</div>
@@ -153,7 +153,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
         classes={{
           root: classes.root,
           disabled: classes.disabled,
-          expanded: classes.expanded
+          expanded: classes.expanded,
         }}
       >
         <AccordionSummary
@@ -162,7 +162,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
             root: classes.root2,
             content: classes.content,
             disabled: classes.disabled2,
-            expanded: classes.expanded2
+            expanded: classes.expanded2,
           }}
         >
           <div>Domain(s)</div>
@@ -184,7 +184,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
           classes={{
             root: classes.root,
             disabled: classes.disabled,
-            expanded: classes.expanded
+            expanded: classes.expanded,
           }}
         >
           <AccordionSummary
@@ -193,7 +193,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
               root: classes.root2,
               content: classes.content,
               disabled: classes.disabled2,
-              expanded: classes.expanded2
+              expanded: classes.expanded2,
             }}
           >
             <div>Root Domain(s)</div>
@@ -220,7 +220,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
           classes={{
             root: classes.root,
             disabled: classes.disabled,
-            expanded: classes.expanded
+            expanded: classes.expanded,
           }}
         >
           <AccordionSummary
@@ -229,7 +229,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
               root: classes.root2,
               content: classes.content,
               disabled: classes.disabled2,
-              expanded: classes.expanded2
+              expanded: classes.expanded2,
             }}
           >
             <div>Port(s)</div>
@@ -254,7 +254,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
           classes={{
             root: classes.root,
             disabled: classes.disabled,
-            expanded: classes.expanded
+            expanded: classes.expanded,
           }}
         >
           <AccordionSummary
@@ -263,7 +263,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
               root: classes.root2,
               content: classes.content,
               disabled: classes.disabled2,
-              expanded: classes.expanded2
+              expanded: classes.expanded2,
             }}
           >
             <div>CVE(s)</div>
@@ -292,7 +292,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
           classes={{
             root: classes.root,
             disabled: classes.disabled,
-            expanded: classes.expanded
+            expanded: classes.expanded,
           }}
         >
           <AccordionSummary
@@ -301,7 +301,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
               root: classes.root2,
               content: classes.content,
               disabled: classes.disabled2,
-              expanded: classes.expanded2
+              expanded: classes.expanded2,
             }}
           >
             <div>Severity</div>
@@ -329,7 +329,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
         classes={{
           root: classes.root,
           disabled: classes.disabled,
-          expanded: classes.expanded
+          expanded: classes.expanded,
         }}
       >
         <AccordionSummary
@@ -338,7 +338,7 @@ export const FilterDrawer: React.FC<Props> = (props) => {
             root: classes.root2,
             content: classes.content,
             disabled: classes.disabled2,
-            expanded: classes.expanded2
+            expanded: classes.expanded2,
           }}
         >
           <div className={classes.header}>
@@ -397,13 +397,13 @@ export const FilterDrawer: React.FC<Props> = (props) => {
                             style={{
                               cursor: 'pointer',
                               textAlign: 'left',
-                              width: '100%'
+                              width: '100%',
                             }}
                           >
                             {cellValues.value}
                           </div>
                         );
-                      }
+                      },
                     },
                     {
                       field: 'actions',
@@ -431,23 +431,23 @@ export const FilterDrawer: React.FC<Props> = (props) => {
                             </IconButton>
                           </div>
                         );
-                      }
-                    }
+                      },
+                    },
                   ]}
                   initialState={{
                     pagination: {
                       paginationModel: {
-                        pageSize: 5
-                      }
-                    }
+                        pageSize: 5,
+                      },
+                    },
                   }}
                   pageSizeOptions={[5, 10]}
                   disableRowSelectionOnClick
                   sx={{
                     disableColumnfilter: 'true',
                     '& .MuiDataGrid-row:hover': {
-                      cursor: 'pointer'
-                    }
+                      cursor: 'pointer',
+                    },
                   }}
                 />
               ) : (

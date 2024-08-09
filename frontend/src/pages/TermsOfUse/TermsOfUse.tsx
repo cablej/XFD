@@ -26,16 +26,16 @@ export const TermsOfUse: React.FC = () => {
     try {
       if (!accepted) throw Error('Must accept terms');
       const updated: User = await apiPost(`/users/me/acceptTerms`, {
-        body: { version: touVersion }
+        body: { version: touVersion },
       });
 
       setUser(updated);
       history.push('/', {
-        message: 'Your account has been successfully created.'
+        message: 'Your account has been successfully created.',
       });
     } catch (e: any) {
       setErrors({
-        global: e.message ?? e.toString()
+        global: e.message ?? e.toString(),
       });
     }
   };

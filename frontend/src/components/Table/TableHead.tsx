@@ -8,7 +8,7 @@ interface TableHeadProps<T extends object> {
 }
 
 export const TableHead = <T extends object>({
-  headerGroups
+  headerGroups,
 }: PropsWithChildren<TableHeadProps<T>>) => (
   <thead>
     {headerGroups.map((headerGroup) => {
@@ -29,7 +29,7 @@ export const TableHead = <T extends object>({
                       <div
                         className="margin-left-05"
                         style={{
-                          visibility: column.isSorted ? 'visible' : 'hidden'
+                          visibility: column.isSorted ? 'visible' : 'hidden',
                         }}
                       >
                         {column.isSortedDesc ? (

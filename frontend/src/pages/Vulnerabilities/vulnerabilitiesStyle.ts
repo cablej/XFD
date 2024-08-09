@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 const PREFIX = 'Vulnerabilities';
 
 export const classesVulns = {
-  contentWrapper: `${PREFIX}-contentWrapper`
+  contentWrapper: `${PREFIX}-contentWrapper`,
 };
 
 export const Root = styled('div')(({ theme }) => ({
@@ -13,6 +13,6 @@ export const Root = styled('div')(({ theme }) => ({
     height: '100%',
     display: 'flex',
     flexFlow: 'column nowrap',
-    overflowY: 'hidden'
-  }
+    overflowY: 'hidden',
+  },
 }));

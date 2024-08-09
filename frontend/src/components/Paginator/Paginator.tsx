@@ -21,9 +21,9 @@ export const Paginator = <T extends object>(
     table: {
       pageCount,
       gotoPage,
-      state: { pageIndex, pageSize }
+      state: { pageIndex, pageSize },
     },
-    totalResults
+    totalResults,
   } = props;
   return (
     <StyledPaper classes={{ root: classes.pagination }}>

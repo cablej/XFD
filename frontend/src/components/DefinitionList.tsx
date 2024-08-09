@@ -31,18 +31,18 @@ const classes = {
   root: `${PREFIX}-root`,
   content: `${PREFIX}-content`,
   list: `${PREFIX}-list`,
-  item: `${PREFIX}-item`
+  item: `${PREFIX}-item`,
 };
 
 const Root = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     width: '100%',
-    margin: '0 0 1.5rem 0'
+    margin: '0 0 1.5rem 0',
   },
 
   [`&. ${classes.list}`]: {
     width: '100%',
-    margin: 0
+    margin: 0,
   },
 
   [`& .${classes.item}`]: {
@@ -54,11 +54,11 @@ const Root = styled('div')(({ theme }) => ({
       color: '#71767A',
       display: 'block',
       margin: 0,
-      paddingRight: '0.5rem'
+      paddingRight: '0.5rem',
     },
     '& > dd': {
       color: '#3D4551',
-      margin: 0
-    }
-  }
+      margin: 0,
+    },
+  },
 }));

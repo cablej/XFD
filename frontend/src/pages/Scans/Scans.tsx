@@ -13,13 +13,13 @@ export const Scans: React.FC = () => {
           {
             title: 'Scans',
             path: `/scans`,
-            exact: true
+            exact: true,
           },
           {
             title: 'Scan History',
             path: `/scans/history`,
-            exact: true
-          }
+            exact: true,
+          },
         ]}
       ></Subnav>
       <div className={classes.root}>

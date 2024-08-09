@@ -10,7 +10,7 @@ import {
   Scan,
   ScanSchema,
   OrganizationTag,
-  PendingDomain
+  PendingDomain,
 } from 'types';
 import { Column } from 'react-table';
 import { Table } from 'components';
@@ -36,7 +36,7 @@ import {
   Switch as SwitchInput,
   Tab,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { ChevronRight, ControlPoint } from '@mui/icons-material';
@@ -68,7 +68,7 @@ export const Organization: React.FC = () => {
     firstName: '',
     lastName: '',
     email: '',
-    role: ''
+    role: '',
   });
   const [tabValue, setTabValue] = React.useState('1');
   const [tagValue, setTagValue] = React.useState<AutocompleteType | null>(null);
@@ -99,7 +99,7 @@ export const Organization: React.FC = () => {
       accessor: ({ user }) => user?.fullName,
       width: 200,
       disableFilters: true,
-      id: 'name'
+      id: 'name',
     },
     {
       Header: 'Email',
@@ -107,7 +107,7 @@ export const Organization: React.FC = () => {
       width: 150,
       minWidth: 150,
       id: 'email',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Role',
@@ -126,7 +126,7 @@ export const Organization: React.FC = () => {
       width: 50,
       minWidth: 50,
       id: 'approved',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: () => {
@@ -168,8 +168,8 @@ export const Organization: React.FC = () => {
           </>
         );
       },
-      disableFilters: true
-    }
+      disableFilters: true,
+    },
   ];
 
   const scanColumns: Column<Scan>[] = [
@@ -178,7 +178,7 @@ export const Organization: React.FC = () => {
       accessor: 'name',
       width: 150,
       id: 'name',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Description',
@@ -186,7 +186,7 @@ export const Organization: React.FC = () => {
       width: 200,
       minWidth: 200,
       id: 'description',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Mode',
@@ -195,7 +195,7 @@ export const Organization: React.FC = () => {
       width: 150,
       minWidth: 150,
       id: 'mode',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Action',
@@ -217,60 +217,60 @@ export const Organization: React.FC = () => {
           </Button>
         );
       },
-      disableFilters: true
-    }
+      disableFilters: true,
+    },
   ];
 
   const scanTaskColumns: Column<ScanTask>[] = [
     {
       Header: 'ID',
       accessor: 'id',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Status',
       accessor: 'status',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Type',
       accessor: 'type',
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Name',
       accessor: ({ scan }) => scan?.name,
-      disableFilters: true
+      disableFilters: true,
     },
     {
       Header: 'Created At',
       accessor: ({ createdAt }) => dateAccessor(createdAt),
       disableFilters: true,
-      disableSortBy: true
+      disableSortBy: true,
     },
     {
       Header: 'Requested At',
       accessor: ({ requestedAt }) => dateAccessor(requestedAt),
       disableFilters: true,
-      disableSortBy: true
+      disableSortBy: true,
     },
     {
       Header: 'Started At',
       accessor: ({ startedAt }) => dateAccessor(startedAt),
       disableFilters: true,
-      disableSortBy: true
+      disableSortBy: true,
     },
     {
       Header: 'Finished At',
       accessor: ({ finishedAt }) => dateAccessor(finishedAt),
       disableFilters: true,
-      disableSortBy: true
+      disableSortBy: true,
     },
     {
       Header: 'Output',
       accessor: 'output',
-      disableFilters: true
-    }
+      disableFilters: true,
+    },
   ];
 
   const fetchOrganization = useCallback(async () => {
@@ -345,20 +345,20 @@ export const Organization: React.FC = () => {
   const updateOrganization = async (body: any) => {
     try {
       const org = await apiPut('/organizations/' + organization?.id, {
-        body: organization
+        body: organization,
       });
       setOrganization(org);
       setFeedbackMessage({
         message: 'Organization successfully updated',
-        type: 'success'
+        type: 'success',
       });
     } catch (e: any) {
       setFeedbackMessage({
         message:
           e.status === 422
             ? 'Error updating organization'
-            : e.message ?? e.toString(),
-        type: 'error'
+            : (e.message ?? e.toString()),
+        type: 'error',
       });
       console.error(e);
     }
@@ -371,8 +371,8 @@ export const Organization: React.FC = () => {
         `/organizations/${organization?.id}/granularScans/${scan.id}/update`,
         {
           body: {
-            enabled
-          }
+            enabled,
+          },
         }
       );
       setOrganization({
@@ -381,13 +381,15 @@ export const Organization: React.FC = () => {
           ? organization.granularScans.concat([scan])
           : organization.granularScans.filter(
               (granularScan) => granularScan.id !== scan.id
-            )
+            ),
       });
     } catch (e: any) {
       setFeedbackMessage({
         message:
-          e.status === 422 ? 'Error updating scan' : e.message ?? e.toString(),
-        type: 'error'
+          e.status === 422
+            ? 'Error updating scan'
+            : (e.message ?? e.toString()),
+        type: 'error',
       });
       console.error(e);
     }
@@ -399,7 +401,7 @@ export const Organization: React.FC = () => {
       const pendingDomains: PendingDomain[] = await apiPost(
         `/organizations/${organization?.id}/initiateDomainVerification`,
         {
-          body: { domain }
+          body: { domain },
         }
       );
       setOrganization({ ...organization, pendingDomains });
@@ -408,8 +410,8 @@ export const Organization: React.FC = () => {
         message:
           e.status === 422
             ? 'Error creating domain'
-            : e.message ?? e.toString(),
-        type: 'error'
+            : (e.message ?? e.toString()),
+        type: 'error',
       });
       console.error(e);
     }
@@ -422,7 +424,7 @@ export const Organization: React.FC = () => {
         await apiPost(
           `/organizations/${organization?.id}/checkDomainVerification`,
           {
-            body: { domain }
+            body: { domain },
           }
         );
       if (resp.success && resp.organization) {
@@ -430,13 +432,13 @@ export const Organization: React.FC = () => {
         setDialog({ open: false });
         setFeedbackMessage({
           message: 'Domain ' + inputValue + ' successfully verified!',
-          type: 'success'
+          type: 'success',
         });
       } else {
         setDialog({
           ...dialog,
           domainVerificationStatusMessage:
-            'Record not yet found. Note that DNS records may take up to 72 hours to propagate. You can come back later to check the verification status.'
+            'Record not yet found. Note that DNS records may take up to 72 hours to propagate. You can come back later to check the verification status.',
         });
       }
     } catch (e: any) {
@@ -444,8 +446,8 @@ export const Organization: React.FC = () => {
         message:
           e.status === 422
             ? 'Error verifying domain'
-            : e.message ?? e.toString(),
-        type: 'error'
+            : (e.message ?? e.toString()),
+        type: 'error',
       });
       console.error(e);
     }
@@ -462,10 +464,10 @@ export const Organization: React.FC = () => {
         lastName: newUserValues.lastName,
         email: newUserValues.email,
         organization: organization?.id,
-        organizationAdmin: newUserValues.role === 'admin'
+        organizationAdmin: newUserValues.role === 'admin',
       };
       const user: User = await apiPost('/users/', {
-        body
+        body,
       });
       const newRole = user.roles[user.roles.length - 1];
       newRole.user = user;
@@ -479,8 +481,10 @@ export const Organization: React.FC = () => {
     } catch (e: any) {
       setFeedbackMessage({
         message:
-          e.status === 422 ? 'Error inviting user' : e.message ?? e.toString(),
-        type: 'error'
+          e.status === 422
+            ? 'Error inviting user'
+            : (e.message ?? e.toString()),
+        type: 'error',
       });
       console.log(e);
     }
@@ -493,7 +497,7 @@ export const Organization: React.FC = () => {
   const onInviteUserChange = (name: string, value: any) => {
     setNewUserValues((values) => ({
       ...values,
-      [name]: value
+      [name]: value,
     }));
   };
   const filter = createFilterOptions<AutocompleteType>();
@@ -540,7 +544,7 @@ export const Organization: React.FC = () => {
                     open: true,
                     type: props.type,
                     label: props.label,
-                    stage: 1
+                    stage: 1,
                   });
                 }}
               ></Chip>
@@ -557,7 +561,7 @@ export const Organization: React.FC = () => {
                   open: true,
                   type: props.type,
                   label: props.label,
-                  stage: 0
+                  stage: 0,
                 });
               }}
             />
@@ -592,7 +596,7 @@ export const Organization: React.FC = () => {
                 onChange={(event, newValue) => {
                   if (typeof newValue === 'string') {
                     setTagValue({
-                      name: newValue
+                      name: newValue,
                     });
                   } else {
                     setTagValue(newValue);
@@ -611,7 +615,7 @@ export const Organization: React.FC = () => {
                   ) {
                     filtered.push({
                       name: params.inputValue,
-                      title: `Add "${params.inputValue}"`
+                      title: `Add "${params.inputValue}"`,
                     });
                   }
                   return filtered;
@@ -756,7 +760,7 @@ export const Organization: React.FC = () => {
             disabled
             variant="standard"
             InputProps={{
-              className: organizationClasses.orgName
+              className: organizationClasses.orgName,
             }}
           ></TextField>
         </Grid>
@@ -782,7 +786,7 @@ export const Organization: React.FC = () => {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setOrganization({
                     ...organization,
-                    isPassive: event.target.checked
+                    isPassive: event.target.checked,
                   });
                 }}
                 color="primary"
@@ -837,7 +841,7 @@ export const Organization: React.FC = () => {
             onChange={onInviteUserTextChange}
             variant="filled"
             InputProps={{
-              className: organizationClasses.textField
+              className: organizationClasses.textField,
             }}
           />
           <TextField
@@ -852,7 +856,7 @@ export const Organization: React.FC = () => {
             onChange={onInviteUserTextChange}
             variant="filled"
             InputProps={{
-              className: organizationClasses.textField
+              className: organizationClasses.textField,
             }}
           />
           <TextField
@@ -867,7 +871,7 @@ export const Organization: React.FC = () => {
             onChange={onInviteUserTextChange}
             variant="filled"
             InputProps={{
-              className: organizationClasses.textField
+              className: organizationClasses.textField,
             }}
           />
           <br></br>
@@ -915,7 +919,7 @@ export const Organization: React.FC = () => {
       <Table<Scan> columns={scanColumns} data={scans} fetchData={fetchScans} />
       <h2>Organization Scan History</h2>
       <Table<ScanTask> columns={scanTaskColumns} data={scanTasks} />
-    </React.Fragment>
+    </React.Fragment>,
   ];
 
   return (

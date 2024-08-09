@@ -17,5 +17,5 @@ export const testUser: AuthUser = {
   isRegistered: true,
   apiKeys: [],
   regionId: '1234',
-  state: 'LA'
+  state: 'LA',
 };

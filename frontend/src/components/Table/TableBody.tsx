@@ -11,7 +11,7 @@ export const TableBody = <T extends object>({
   prepareRow,
   visibleColumns,
   getTableBodyProps,
-  renderExpanded
+  renderExpanded,
 }: PropsWithChildren<TableBodyProps<T>>) => {
   return (
     <tbody {...getTableBodyProps()}>

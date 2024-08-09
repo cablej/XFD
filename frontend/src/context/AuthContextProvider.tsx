@@ -8,7 +8,7 @@ import {
   getExtendedOrg,
   getMaximumRole,
   getTouVersion,
-  getUserMustSign
+  getUserMustSign,
 } from './userStateUtils';
 import Cookies from 'universal-cookie';
 import { Snackbar } from '@mui/material';
@@ -22,7 +22,7 @@ interface AuthContextProviderProps {
 }
 
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
-  children
+  children,
 }) => {
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [token, setToken] = usePersistentState<string | null>('token', null);
@@ -44,7 +44,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     localStorage.clear();
     await Auth.signOut();
     cookies.remove('crossfeed-token', {
-      domain: process.env.REACT_APP_COOKIE_DOMAIN
+      domain: process.env.REACT_APP_COOKIE_DOMAIN,
     });
 
     if (shouldReload) {
@@ -71,7 +71,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     const user: User = await apiGet<User>('/users/me');
     setAuthUser({
       ...user,
-      isRegistered: user.firstName !== ''
+      isRegistered: user.firstName !== '',
     });
   }, [setAuthUser, apiGet]);
 
@@ -79,7 +79,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     async (user: User) => {
       setAuthUser({
         ...user,
-        isRegistered: user.firstName !== ''
+        isRegistered: user.firstName !== '',
       });
     },
     [setAuthUser]
@@ -93,8 +93,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
           '/auth/callback',
           {
             body: {
-              token: session.getIdToken().getJwtToken()
-            }
+              token: session.getIdToken().getJwtToken(),
+            },
           }
         );
         setToken(token);
@@ -122,7 +122,6 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   useEffect(() => {
     refreshUser();
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -154,7 +153,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
         userMustSign,
         setFeedbackMessage,
         userType: '',
-        ...api
+        ...api,
       }}
     >
       {api.loading && (

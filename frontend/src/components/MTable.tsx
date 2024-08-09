@@ -8,24 +8,24 @@ import {
   TableHead,
   TableRow,
   TableFooter,
-  TableProps
+  TableProps,
 } from '@mui/material';
 
 const PREFIX = 'MTable';
 
 const classes = {
   head: `${PREFIX}-head`,
-  cell: `${PREFIX}-cell`
+  cell: `${PREFIX}-cell`,
 };
 
 const StyledTable = styled(Table)(({ theme }) => ({
   [`& .${classes.head}`]: {
-    backgroundColor: '#E8EAEC'
+    backgroundColor: '#E8EAEC',
   },
 
   [`& .${classes.cell}`]: {
-    fontSize: '1rem'
-  }
+    fontSize: '1rem',
+  },
 }));
 
 interface Props<T extends object> extends TableProps {

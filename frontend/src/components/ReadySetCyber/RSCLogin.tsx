@@ -9,7 +9,7 @@ import {
   DialogTitle,
   Grid,
   Link,
-  Typography
+  Typography,
 } from '@mui/material';
 import { RSCRegisterForm } from 'components/ReadySetCyber/RSCRegisterForm';
 import { CrossfeedWarning } from 'components/WarningBanner';
@@ -19,14 +19,14 @@ import { I18n } from 'aws-amplify';
 const TOTP_ISSUER = process.env.REACT_APP_TOTP_ISSUER;
 I18n.putVocabulariesForLanguage('en-US', {
   'Setup TOTP': 'Set up 2FA',
-  'Confirm TOTP Code': 'Enter 2FA Code'
+  'Confirm TOTP Code': 'Enter 2FA Code',
 });
 
 interface Errors extends Partial<FormData> {
   global?: string;
 }
 export const RSCLogin: React.FC<{ showSignUp?: boolean }> = ({
-  showSignUp = false
+  showSignUp = false,
 }) => {
   const { apiPost, refreshUser } = useAuthContext();
   const [errors, setErrors] = useState<Errors>({});
@@ -44,62 +44,62 @@ export const RSCLogin: React.FC<{ showSignUp?: boolean }> = ({
         label: 'Email',
         placeholder: 'Enter your email address',
         required: true,
-        autoFocus: true
+        autoFocus: true,
       },
       password: {
         label: 'Password',
         placeholder: 'Enter your password',
-        required: true
-      }
+        required: true,
+      },
     },
     confirmSignIn: {
       confirmation_code: {
         label: 'Confirmation Code',
         placeholder: 'Enter code from your authenticator app',
-        autoFocus: true
-      }
+        autoFocus: true,
+      },
     },
     resetPassword: {
       username: {
         label: 'Email',
         placeholder: 'Enter your email address',
         required: true,
-        autoFocus: true
-      }
+        autoFocus: true,
+      },
     },
     confirmResetPassword: {
       confirmation_code: {
         label: 'Confirmation Code',
         placeholder: 'Enter code sent to your email address',
-        autoFocus: true
-      }
+        autoFocus: true,
+      },
     },
     confirmSignUp: {
       confirmation_code: {
         label: 'Confirmation Code',
         placeholder: 'Enter code sent to your email address',
-        autoFocus: true
-      }
+        autoFocus: true,
+      },
     },
     setupTOTP: {
       QR: {
         // Set the issuer and name so that the authenticator app shows them.
         // TODO: Set the issuer to the email, once this is resolved: https://github.com/aws-amplify/amplify-ui/issues/3387.
-        totpIssuer: TOTP_ISSUER
+        totpIssuer: TOTP_ISSUER,
       },
       confirmation_code: {
         label:
           'Set up 2FA by scanning the QR code with an authenticator app on your phone.',
-        autoFocus: true
-      }
-    }
+        autoFocus: true,
+      },
+    },
   };
 
   const onSubmit: React.FormEventHandler = async (e) => {
     e.preventDefault();
     try {
       const { redirectUrl, state, nonce } = await apiPost('/auth/login', {
-        body: {}
+        body: {},
       });
       localStorage.setItem('state', state);
       localStorage.setItem('nonce', nonce);
@@ -107,7 +107,7 @@ export const RSCLogin: React.FC<{ showSignUp?: boolean }> = ({
     } catch (e) {
       console.error(e);
       setErrors({
-        global: 'Something went wrong logging in.'
+        global: 'Something went wrong logging in.',
       });
     }
   };

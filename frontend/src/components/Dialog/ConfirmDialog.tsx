@@ -4,7 +4,7 @@ import {
   Dialog as MuiDialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
 } from '@mui/material';
 
 type DialogComponentProps = {
@@ -26,7 +26,7 @@ const ConfirmDialog: React.FC<DialogComponentProps> = ({
   title,
   content,
   disabled = false,
-  screenWidth = 'sm'
+  screenWidth = 'sm',
 }) => {
   return (
     <MuiDialog open={isOpen} onClose={onClose} fullWidth maxWidth={screenWidth}>

@@ -7,7 +7,7 @@ const PREFIX = 'NoResults';
 
 const classes = {
   card: `${PREFIX}-card`,
-  logo: `${PREFIX}-logo`
+  logo: `${PREFIX}-logo`,
 };
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -30,16 +30,16 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
       color: theme.palette.primary.main,
       fontSize: '18px',
       width: '70%',
-      margin: '0 auto'
+      margin: '0 auto',
     },
-    padding: '1rem'
+    padding: '1rem',
   },
 
   [`& .${classes.logo}`]: {
     width: '100px',
     marginBottom: 25,
-    margin: '0 auto'
-  }
+    margin: '0 auto',
+  },
 }));
 
 interface Props {

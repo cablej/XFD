@@ -11,25 +11,25 @@ export const createColumns = (pdfExport: any) =>
       Header: 'Filename',
       accessor: 'reportName',
       id: 'filename',
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Team',
       accessor: 'team',
       id: 'team',
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Date Uploaded',
       accessor: 'lastModified',
       id: 'dateUploaded',
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Size (MB)',
       accessor: 'size',
       id: 'size',
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     },
     {
       Header: 'Download',
@@ -43,6 +43,6 @@ export const createColumns = (pdfExport: any) =>
         </IconButton>
       ),
       id: 'download',
-      Filter: ColumnFilter
-    }
+      Filter: ColumnFilter,
+    },
   ] as Column<Report>[];

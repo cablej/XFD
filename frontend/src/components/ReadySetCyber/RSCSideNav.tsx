@@ -24,7 +24,7 @@ export const RSCSideNav: React.FC<Props> = ({ categories }) => {
         sx={{
           width: '100%',
           maxWidth: 360,
-          bgcolor: 'background.paper'
+          bgcolor: 'background.paper',
         }}
       >
         <List>

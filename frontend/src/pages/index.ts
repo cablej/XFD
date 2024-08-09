@@ -20,3 +20,6 @@ export { default as Scan } from './Scan';
 export { default as Settings } from './Settings';
 export { default as Users } from './Users';
 export { default as Vulnerabilities } from './Vulnerabilities';
+export { Project } from './Project';
+export { Projects } from './Projects';
+export { ProjectCreate } from './ProjectCreate';

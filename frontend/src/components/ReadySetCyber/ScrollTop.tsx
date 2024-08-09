@@ -10,7 +10,7 @@ export const ScrollTop: React.FC = () => {
   // Use `window` instead of `body` as `document` will be `undefined` when the
   // hooks first runs. By default, useScrollTrigger will attach itself to `window`.
   const trigger = useScrollTrigger({
-    threshold: 100
+    threshold: 100,
   });
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -23,7 +23,7 @@ export const ScrollTop: React.FC = () => {
           position: 'fixed',
           bottom: 32,
           right: 32,
-          zIndex: 1
+          zIndex: 1,
         }}
       >
         <Fab

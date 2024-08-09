@@ -12,7 +12,7 @@ export const RSCNavItem: React.FC<Props> = (props) => {
     <HashLink
       style={{
         textDecoration: 'none',
-        color: 'black'
+        color: 'black',
       }}
       to={`#${name}`}
     >

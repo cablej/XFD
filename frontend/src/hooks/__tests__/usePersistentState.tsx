@@ -16,7 +16,7 @@ interface TestCompProps {
 const TestComp: React.FC<TestCompProps> = ({
   storagekey,
   defaultVal,
-  onclick
+  onclick,
 }) => {
   const [state, setState] = usePersistentState<any>(storagekey, defaultVal);
 

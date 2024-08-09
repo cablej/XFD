@@ -17,7 +17,7 @@ export interface Category {
 }
 export const FloatingNav: React.FC<Props> = ({ categories }) => {
   const trigger = useScrollTrigger({
-    threshold: 100
+    threshold: 100,
   });
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -37,7 +37,7 @@ export const FloatingNav: React.FC<Props> = ({ categories }) => {
             position: 'fixed',
             bottom: 80,
             right: 32,
-            zIndex: 1
+            zIndex: 1,
           }}
         >
           <Fab
@@ -58,14 +58,14 @@ export const FloatingNav: React.FC<Props> = ({ categories }) => {
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left'
+          horizontal: 'left',
         }}
         transformOrigin={{
           vertical: 'bottom',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         MenuListProps={{
-          'aria-labelledby': 'basic-button'
+          'aria-labelledby': 'basic-button',
         }}
       >
         {categories.map((category, index) => (
@@ -74,7 +74,7 @@ export const FloatingNav: React.FC<Props> = ({ categories }) => {
               style={{
                 textDecoration: 'none',
                 color: 'black',
-                outline: 'none'
+                outline: 'none',
               }}
               to={`#${category.name}`}
             >

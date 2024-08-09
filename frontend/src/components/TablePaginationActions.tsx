@@ -5,20 +5,20 @@ import {
   KeyboardArrowLeft,
   KeyboardArrowRight,
   LastPage as LastPageIcon,
-  FirstPage as FirstPageIcon
+  FirstPage as FirstPageIcon,
 } from '@mui/icons-material';
 
 const PREFIX = 'TablePaginationActions';
 
 const classes = {
-  root: `${PREFIX}-root`
+  root: `${PREFIX}-root`,
 };
 
 const Root = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
     flexShrink: 0,
-    marginLeft: theme.spacing(2.5)
-  }
+    marginLeft: theme.spacing(2.5),
+  },
 }));
 
 interface Props {

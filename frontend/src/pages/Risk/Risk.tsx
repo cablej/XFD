@@ -15,7 +15,7 @@ import {
   Geography,
   ZoomableGroup,
   Marker,
-  Annotation
+  Annotation,
 } from 'react-simple-maps';
 import { scaleLinear } from 'd3-scale';
 import { Vulnerability } from 'types';
@@ -85,11 +85,11 @@ const Risk: React.FC = (props) => {
             (!orgId && showAllOrganizations) || !currentOrganization
               ? {}
               : orgId || 'rootDomains' in currentOrganization
-              ? {
-                  organization: orgId ? orgId : currentOrganization?.id
-                }
-              : { tag: currentOrganization.id }
-        }
+                ? {
+                    organization: orgId ? orgId : currentOrganization?.id,
+                  }
+                : { tag: currentOrganization.id },
+        },
       });
       const max = Math.max(...result.vulnerabilities.byOrg.map((p) => p.value));
       colorScale = scaleLinear<string>()
@@ -115,7 +115,7 @@ const Risk: React.FC = (props) => {
   const MapCard = ({
     title,
     geoUrl,
-    findFn
+    findFn,
   }: {
     title: string;
     geoUrl: string;
@@ -134,7 +134,7 @@ const Risk: React.FC = (props) => {
             style={{
               width: '90%',
               display: 'block',
-              margin: 'auto'
+              margin: 'auto',
             }}
           >
             <ZoomableGroup zoom={1}>
@@ -237,7 +237,7 @@ const Risk: React.FC = (props) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh'
+          height: '100vh',
         }}
       >
         <Card style={{ maxWidth: 400, textAlign: 'center' }}>
