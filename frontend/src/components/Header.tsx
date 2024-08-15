@@ -368,7 +368,7 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                     value={
                       showAllOrganizations
                         ? { name: 'All Organizations' }
-                        : (currentOrganization ?? undefined)
+                        : currentOrganization ?? undefined
                     }
                     filterOptions={(options, state) => {
                       // If already selected, show all
@@ -381,10 +381,11 @@ const HeaderNoCtx: React.FC<ContextType> = (props) => {
                       ) {
                         return options;
                       }
-                      return options.filter((option) =>
-                        option?.name
-                          .toLowerCase()
-                          .includes(state.inputValue.toLowerCase())
+                      return options.filter(
+                        (option) =>
+                          option?.name
+                            .toLowerCase()
+                            .includes(state.inputValue.toLowerCase())
                       );
                     }}
                     disableClearable
