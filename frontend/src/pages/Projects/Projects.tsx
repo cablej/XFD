@@ -196,8 +196,14 @@ const Projects: React.FC = () => {
     id: project.id,
     url: project.url,
     name: project.name,
-    updatedAt: `${differenceInCalendarDays(new Date(), project.updatedAt)} days ago`,
-    createdAt: `${differenceInCalendarDays(new Date(), project.createdAt)} days ago`,
+    updatedAt: `${differenceInCalendarDays(
+      new Date(),
+      project.updatedAt
+    )} days ago`,
+    createdAt: `${differenceInCalendarDays(
+      new Date(),
+      project.createdAt
+    )} days ago`,
     hipcheck: project.hipcheck,
     organizations: (
       <div>
