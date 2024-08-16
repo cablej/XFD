@@ -99,7 +99,9 @@ const ScansView: React.FC = () => {
     } catch (e: any) {
       setErrors({
         global:
-          e.status === 422 ? 'Unable to delete scan' : e.message ?? e.toString()
+          e.status === 422
+            ? 'Unable to delete scan'
+            : (e.message ?? e.toString())
       });
       console.log(e);
     }
