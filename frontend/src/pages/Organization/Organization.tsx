@@ -357,7 +357,7 @@ export const Organization: React.FC = () => {
         message:
           e.status === 422
             ? 'Error updating organization'
-            : e.message ?? e.toString(),
+            : (e.message ?? e.toString()),
         type: 'error'
       });
       console.error(e);
@@ -386,7 +386,9 @@ export const Organization: React.FC = () => {
     } catch (e: any) {
       setFeedbackMessage({
         message:
-          e.status === 422 ? 'Error updating scan' : e.message ?? e.toString(),
+          e.status === 422
+            ? 'Error updating scan'
+            : (e.message ?? e.toString()),
         type: 'error'
       });
       console.error(e);
@@ -408,7 +410,7 @@ export const Organization: React.FC = () => {
         message:
           e.status === 422
             ? 'Error creating domain'
-            : e.message ?? e.toString(),
+            : (e.message ?? e.toString()),
         type: 'error'
       });
       console.error(e);
@@ -444,7 +446,7 @@ export const Organization: React.FC = () => {
         message:
           e.status === 422
             ? 'Error verifying domain'
-            : e.message ?? e.toString(),
+            : (e.message ?? e.toString()),
         type: 'error'
       });
       console.error(e);
@@ -479,7 +481,9 @@ export const Organization: React.FC = () => {
     } catch (e: any) {
       setFeedbackMessage({
         message:
-          e.status === 422 ? 'Error inviting user' : e.message ?? e.toString(),
+          e.status === 422
+            ? 'Error inviting user'
+            : (e.message ?? e.toString()),
         type: 'error'
       });
       console.log(e);

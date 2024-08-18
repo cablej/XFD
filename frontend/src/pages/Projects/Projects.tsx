@@ -21,7 +21,7 @@ import { ProjectCreate } from '../ProjectCreate/index'; // Adjust the import pat
 import { ProjectFormData } from 'pages/ProjectCreate/ProjectCreate';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Projects: React.FC = () => {
+export const Projects: React.FC = () => {
   const { currentOrganization, apiGet } = useAuthContext();
   const { fetchProjectsByOrg, createProject, error } = useProjectApi();
   const [projects, setProjects] = useState<Project[]>([]);
@@ -190,9 +190,9 @@ const Projects: React.FC = () => {
   // });
 
   const projectRows = projects.map((project) => ({
+    name: project.name,
     id: project.id,
     url: project.url,
-    name: project.name,
     updatedAt: `${differenceInCalendarDays(
       new Date(),
       project.updatedAt
@@ -236,9 +236,9 @@ const Projects: React.FC = () => {
   }));
 
   const projectCols: GridColDef[] = [
-    { field: 'id', headerName: 'ID', minWidth: 100, flex: 1.5 },
-    { field: 'url', headerName: 'URL', minWidth: 100, flex: 3 },
-    { field: 'name', headerName: 'Name', minWidth: 100, flex: 1 },
+    { field: 'name', headerName: 'Name', minWidth: 200, flex: 2.5 },
+    { field: 'id', headerName: 'ID', minWidth: 100, flex: 1.25 },
+    { field: 'url', headerName: 'URL', minWidth: 50, flex: 1.25 },
     { field: 'createdAt', headerName: 'Created At', minWidth: 75, flex: 1 },
     { field: 'updatedAt', headerName: 'Updated At', minWidth: 75, flex: 1 },
     { field: 'hipcheck', headerName: 'Hipcheck Score', minWidth: 100, flex: 1 },
@@ -259,9 +259,10 @@ const Projects: React.FC = () => {
             aria-label={`View details for ${cellValues.row.name}`}
             tabIndex={cellValues.tabIndex}
             color="primary"
-            onClick={() =>
-              history.push('/inventory/project/' + cellValues.row.id)
-            }
+            onClick={() => {
+              console.log(cellValues.row.id);
+              history.push('/inventory/project/' + cellValues.row.id);
+            }}
           >
             <OpenInNewIcon />
           </IconButton>
@@ -334,5 +335,7 @@ const Projects: React.FC = () => {
     </div>
   );
 };
+
+// export default Projects;
 
 export default Projects;
