@@ -72,7 +72,7 @@ export const OrganizationList: React.FC<{
         message:
           e.status === 422
             ? 'Error when submitting organization entry.'
-            : (e.message ?? e.toString()),
+            : e.message ?? e.toString(),
         type: 'error'
       });
       console.error(e);
