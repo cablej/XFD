@@ -11,13 +11,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
   Checkbox,
   FormControlLabel,
-  IconButton
+  FormGroup
 } from '@mui/material';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Project as ProjectInterface } from 'types/project';
 import { useProjectApi } from 'hooks/useProjectApi';
 
@@ -28,9 +25,7 @@ export const Project: React.FC = () => {
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false); // For modal dialog
-  const [formData, setFormData] = useState<{ orgNames: string[] }>({
-    orgNames: ['']
-  }); // For organization input
+  const [selectedOrgs, setSelectedOrgs] = useState<string[]>([]); // For selected organizations
   const [deleteAll, setDeleteAll] = useState<boolean>(false); // For delete all option
   const { fetchProjectById, delProjectById } = useProjectApi();
   const history = useHistory();
@@ -55,78 +50,48 @@ export const Project: React.FC = () => {
     }
   }, [projectId, fetchProjectById]);
 
-  const handleAddOrgName = () => {
-    setFormData((prev) => ({
-      ...prev,
-      orgNames: [...prev.orgNames, '']
-    }));
-  };
-
-  const handleRemoveOrgName = (index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      orgNames: prev.orgNames.filter((_, i) => i !== index)
-    }));
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, index?: number) => {
-    const { name, value } = e.target;
-    if (name === 'orgName' && index !== undefined) {
-      const newOrgNames = [...formData.orgNames];
-      newOrgNames[index] = value;
-      setFormData((prev) => ({
-        ...prev,
-        orgNames: newOrgNames
-      }));
-    }
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const orgId = event.target.name;
+    setSelectedOrgs((prev) =>
+      event.target.checked
+        ? [...prev, orgId]
+        : prev.filter((id) => id !== orgId)
+    );
   };
 
   const handleDelete = async () => {
     if (projectId && project) {
-      if (deleteAll) {
-        // Delete from all organizations
-        try {
-          for (const org of project.organizations) {
-            const response = await delProjectById(projectId, org.id);
-            if (response === undefined) {
-              console.error(
-                `Failed to delete project from organization ${org.name}:`
-              );
-            }
+      const orgsToDelete = deleteAll
+        ? project.organizations
+        : project.organizations.filter((org) => selectedOrgs.includes(org.id));
+      try {
+        for (const org of orgsToDelete) {
+          const response = await delProjectById(projectId, org.id);
+          if (response === undefined) {
+            console.error(
+              `Failed to delete project from organization ${org.name}:`
+            );
           }
-          history.push('/projects'); // Redirect to the projects list after deletion
-        } catch (error) {
-          console.error('An error occurred while deleting the project:', error);
         }
-      } else {
-        // Delete from specific organizations
-        const orgNames = formData.orgNames.map((name) => name.trim());
-        const orgsToDelete = project.organizations.filter((org) =>
-          orgNames.includes(org.name)
-        );
 
-        if (orgsToDelete.length !== orgNames.length) {
-          // Warning if any organization entered does not belong to the project
-          alert(
-            'One or more of the organizations you entered do not belong to this project.'
+        // After deletion, check if the project still exists
+        try {
+          const updatedProject = await fetchProjectById(projectId);
+          if (updatedProject) {
+            setProject(updatedProject); // If the project still exists, update the state
+            history.push(`/inventory/projects/${projectId}`); // Redirect back to the project page
+          } else {
+            history.push('/inventory/projects'); // If the project no longer exists, redirect to the projects list
+          }
+        } catch (error) {
+          console.error(
+            'An error occurred while checking the project existence:',
+            error
           );
-          history.push(`/projects/${projectId}`);
-          return;
+          history.push('/inventory/projects'); // In case of an error, redirect to the projects list
         }
-
-        try {
-          for (const org of orgsToDelete) {
-            const response = await delProjectById(projectId, org.id);
-            if (response === undefined) {
-              console.error(
-                `Failed to delete project from organization ${org.name}`
-              );
-            }
-          }
-          history.push('/projects'); // Redirect to the projects list after deletion
-        } catch (error) {
-          console.error('An error occurred while deleting the project:', error);
-        }
+      } catch (error) {
+        console.error('An error occurred while deleting the project:', error);
       }
     }
   };
@@ -195,39 +160,24 @@ export const Project: React.FC = () => {
           <DialogContentText id="alert-dialog-description">
             {deleteAll
               ? 'Are you sure you want to delete the project from all organizations? This action cannot be undone.'
-              : 'Enter the names of the organizations you would like to delete the project from:'}
+              : 'Select the organizations you would like to delete the project from:'}
           </DialogContentText>
           {!deleteAll && (
-            <Box>
-              {formData.orgNames.map((orgName, index) => (
-                <Box
-                  key={index}
-                  sx={{ display: 'flex', alignItems: 'center', mb: 2 }}
-                >
-                  <TextField
-                    required
-                    name="orgName"
-                    label={`Organization ${index + 1}`}
-                    value={orgName}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      handleChange(e, index)
-                    }
-                    fullWidth
-                  />
-                  <IconButton onClick={handleAddOrgName} color="primary">
-                    <AddCircleIcon />
-                  </IconButton>
-                  {formData.orgNames.length > 1 && (
-                    <IconButton
-                      onClick={() => handleRemoveOrgName(index)}
-                      color="secondary"
-                    >
-                      <RemoveCircleIcon />
-                    </IconButton>
-                  )}
-                </Box>
+            <FormGroup>
+              {project.organizations.map((org) => (
+                <FormControlLabel
+                  key={org.id}
+                  control={
+                    <Checkbox
+                      checked={selectedOrgs.includes(org.id)}
+                      onChange={handleCheckboxChange}
+                      name={org.id}
+                    />
+                  }
+                  label={org.name}
+                />
               ))}
-            </Box>
+            </FormGroup>
           )}
           <FormControlLabel
             control={
