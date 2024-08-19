@@ -137,7 +137,7 @@ export const Project: React.FC = () => {
         </Typography>
         <Typography variant="body1">
           <strong>Hipcheck Scan Results:</strong>{' '}
-          {JSON.stringify(project.hipcheck)}
+          {JSON.stringify(project.hipcheckResults)}
         </Typography>
         <Button
           variant="contained"

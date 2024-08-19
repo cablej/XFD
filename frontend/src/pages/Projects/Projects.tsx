@@ -201,7 +201,10 @@ export const Projects: React.FC = () => {
       new Date(),
       project.createdAt
     )} days ago`,
-    hipcheck: project.hipcheck,
+    hipcheck:
+      'recommendation' in project.hipcheckResults
+        ? project.hipcheckResults.recommendation.risk_score
+        : '',
     organizations: (
       <div>
         <Button
