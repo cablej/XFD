@@ -31,6 +31,12 @@ export class OpenSourceProject extends BaseEntity {
   @UpdateDateColumn()
   updatedAt: Date;
 
+  @Column({ type: 'timestamp', nullable: true })
+  lastScannedAt: Date;
+
+  @Column({ type: 'int', default: 7 })
+  scanFrequency: number;
+
   @Column({
     type: 'jsonb',
     default: {}

@@ -8,13 +8,27 @@ import * as path from 'path';
 
 const OUT_PATH = path.join(__dirname, 'out-' + Math.random() + '.json');
 
+const shouldRunScan = (project: OpenSourceProject): boolean => {
+  if (!project.lastScannedAt) {
+    return true;
+  }
+
+  const curDate = new Date();
+  const nextScanDate = new Date(project.lastScannedAt);
+  nextScanDate.setDate(nextScanDate.getDate() + project.scanFrequency);
+
+  return curDate >= nextScanDate;
+};
+
 export const handler = async (commandOptions: CommandOptions) => {
   const { organizationId, organizationName, scanId } = commandOptions;
 
-  console.log('Running Hipcheck scan on hardcoded URL');
-
   const projects = await getProjects();
   for (const project of projects) {
+    if (!shouldRunScan(project)) {
+      continue;
+    }
+
     try {
       const args = [
         'check',
@@ -46,7 +60,7 @@ export const handler = async (commandOptions: CommandOptions) => {
       }
 
       project.hipcheckResults = parsedData;
-
+      project.lastScannedAt = new Date();
       await project.save();
 
       console.log(`Hipcheck completed for project: ${project.name}`);
