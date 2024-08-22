@@ -11,12 +11,15 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  FormControlLabel,
+  Radio,
+  RadioGroup
 } from '@mui/material';
 import { useAuthContext } from 'context';
 
 export interface ProjectFormData {
-  url: string;
+  urls: string[]; // Updated to support multiple URLs
   orgNames: string[];
 }
 
@@ -33,13 +36,17 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
 }) => {
   const { currentOrganization } = useAuthContext();
   const [formData, setFormData] = useState<ProjectFormData>({
-    url: '',
+    urls: [''], // Initialize with an empty string for the URL input
     orgNames: currentOrganization ? [currentOrganization.name] : ['']
   });
-  const [errorMessage] = useState<string | null>(null);
+  const [inputType, setInputType] = useState<'url' | 'csv'>('url'); // Track whether to use URL input or CSV upload
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Handle change in user input.
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, index?: number) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index?: number
+  ) => {
     const { name, value } = e.target;
     if (name === 'orgName' && index !== undefined) {
       // Update the specific index in the orgNames array
@@ -50,11 +57,36 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
         orgNames: newOrgNames
       }));
     } else if (name === 'url') {
-      // Handling for URL
+      // Handling for URL input
+      const newUrls = [...formData.urls];
+      newUrls[index!] = value;
       setFormData({
         ...formData,
-        url: value
+        urls: newUrls
       });
+    }
+  };
+
+  // Handling for CSV upload
+  const handleCSVUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const csvContent = event.target?.result as string;
+        const urls = csvContent
+          .split('\n')
+          .map((url) => url.trim())
+          .filter(Boolean);
+        setFormData({
+          ...formData,
+          urls
+        });
+      };
+      reader.onerror = () => {
+        setErrorMessage('Failed to read the CSV file');
+      };
+      reader.readAsText(file);
     }
   };
 
@@ -79,7 +111,6 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
     onSubmit(formData);
   };
 
-  // Create new modal dialog.
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Create New Project</DialogTitle>
@@ -93,13 +124,44 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
           onSubmit={handleSubmit}
         >
           <Paper elevation={3} sx={{ padding: 2, margin: 2 }}>
-            <TextField
-              required
-              name="url"
-              label="URL"
-              value={formData.url}
-              onChange={handleChange}
-            />
+            <RadioGroup
+              row
+              name="inputType"
+              value={inputType}
+              onChange={(e) => setInputType(e.target.value as 'url' | 'csv')}
+            >
+              <FormControlLabel
+                value="url"
+                control={<Radio />}
+                label="Enter URL"
+              />
+              <FormControlLabel
+                value="csv"
+                control={<Radio />}
+                label="Upload CSV"
+              />
+            </RadioGroup>
+
+            {inputType === 'url' ? (
+              <TextField
+                required
+                name="url"
+                label="URL"
+                value={formData.urls[0]}
+                onChange={(e) => handleChange(e, 0)}
+              />
+            ) : (
+              <Button variant="contained" component="label">
+                Upload CSV
+                <input
+                  type="file"
+                  accept=".csv"
+                  hidden
+                  onChange={handleCSVUpload}
+                />
+              </Button>
+            )}
+
             {formData.orgNames.map((orgName, index) => (
               <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
                 <TextField

@@ -57,8 +57,10 @@ export const Projects: React.FC = () => {
       }
 
       // API call
-      if (data.url) {
-        await createProject(data.url, orgs);
+      if (data.urls && Array.isArray(data.urls)) {
+        for (const url of data.urls) {
+          await createProject(url, orgs);
+        }
         await loadProjects();
         handleCloseModal();
         return;
