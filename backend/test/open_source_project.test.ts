@@ -45,13 +45,15 @@ describe('projects', () => {
             })
           )
           .send({
-            url: 'https://github.com/user/repo2',
+            purl: 'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6',
             hipcheckResults: { status: 'ok' },
             orgId: organization.id
           })
           .expect(201);
 
-        expect(response.body.url).toEqual('https://github.com/user/repo2');
+        expect(response.body.purl).toEqual(
+          'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6'
+        );
         expect(response.body.hipcheckResults).toEqual({ status: 'ok' });
         expect(response.body.organizations).toEqual(
           expect.arrayContaining([
@@ -84,12 +86,14 @@ describe('projects', () => {
             })
           )
           .send({
-            url: 'https://github.com/user/repo',
+            purl: 'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6',
             hipcheckResults: { status: 'ok' },
             orgId: organization.id
           })
           .expect(201);
-        expect(response.body.url).toEqual('https://github.com/user/repo');
+        expect(response.body.purl).toEqual(
+          'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6'
+        );
         expect(response.body.hipcheckResults).toEqual({ status: 'ok' });
         expect(response.body.organizations).toEqual(
           expect.arrayContaining([
@@ -129,7 +133,7 @@ describe('projects', () => {
           })
         )
         .send({
-          url: 'https://github.com/user/repo2',
+          purl: 'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6',
           hipcheckResults: { status: 'ok' },
           orgId: organization1.id
         })
@@ -151,7 +155,7 @@ describe('projects', () => {
       }).save();
 
       // Generate data for the open source project
-      const url = 'https://github.com/user/repo';
+      const purl = 'pkg:npm/%40typescript-eslint/typescript-estree@5.59.6';
       const hipcheckResults = { status: 'ok' };
 
       // Send a POST request to create an open source project
@@ -165,7 +169,7 @@ describe('projects', () => {
           })
         )
         .send({
-          url,
+          purl,
           hipcheckResults,
           orgId: organization.id
         })
@@ -184,7 +188,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo1',
+        purl: 'pkg:npm/lru-cache@6.0.0 pkg:npm/semver@7.5.1',
         name: 'repo1',
         hipcheckResults: {},
         organizations: [organization]
@@ -230,7 +234,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo1',
+        purl: 'pkg:npm/lru-cache@6.0.0 pkg:npm/semver@7.5.1',
         name: 'repo1',
         hipcheckResults: {},
         organizations: [organization1, organization2]
@@ -276,7 +280,7 @@ describe('projects', () => {
 
       // Create an open-source project
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo11',
+        purl: 'pkg:npm/%40overlookmotel/eslint-config-node@4.1.0',
         name: 'repo11',
         hipcheckResults: {},
         organizations: [organization]
@@ -316,7 +320,7 @@ describe('projects', () => {
 
       // Create open-source projects associated with organization1
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo12',
+        purl: 'pkg:npm/%40typescript-eslint/utils@5.59.6',
         name: 'repo12',
         hipcheckResults: {},
         organizations: [organization1]
@@ -345,7 +349,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo13',
+        purl: 'pkg:npm/yallist@4.0.0',
         name: 'repo13',
         hipcheckResults: {},
         organizations: [organization]
@@ -383,15 +387,13 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo21',
-        name: 'repo21',
+        purl: 'pkg:npm/%40eslint-community/regexpp@4.5.1',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
 
       const openSourceProject2 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo22',
-        name: 'repo22',
+        purl: 'pkg:npm/%40eslint/eslintrc@2.0.3',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -423,12 +425,12 @@ describe('projects', () => {
         expect.arrayContaining([
           expect.objectContaining({
             id: openSourceProject1.id,
-            url: openSourceProject1.url,
+            purl: openSourceProject1.purl,
             name: openSourceProject1.name
           }),
           expect.objectContaining({
             id: openSourceProject2.id,
-            url: openSourceProject2.url,
+            purl: openSourceProject2.purl,
             name: openSourceProject2.name
           })
         ])
@@ -445,15 +447,13 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo31',
-        name: 'repo31',
+        purl: 'pkg:npm/%40babel/plugin-syntax-object-rest-spread@7.8.3',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
 
       const openSourceProject2 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo32',
-        name: 'repo32',
+        purl: 'pkg:npm/%40babel/plugin-syntax-bigint@7.8.3',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -484,12 +484,12 @@ describe('projects', () => {
         expect.arrayContaining([
           expect.objectContaining({
             id: openSourceProject1.id,
-            url: openSourceProject1.url,
+            purl: openSourceProject1.purl,
             name: openSourceProject1.name
           }),
           expect.objectContaining({
             id: openSourceProject2.id,
-            url: openSourceProject2.url,
+            purl: openSourceProject2.purl,
             name: openSourceProject2.name
           })
         ])
@@ -506,15 +506,13 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo41',
-        name: 'repo41',
+        purl: 'pkg:npm/%40babel/plugin-syntax-logical-assignment-operators@7.10.4',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
 
       const openSourceProject2 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo42',
-        name: 'repo42',
+        purl: 'pkg:npm/escape-string-regexp@1.0.5',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -537,12 +535,12 @@ describe('projects', () => {
         expect.arrayContaining([
           expect.objectContaining({
             id: openSourceProject1.id,
-            url: openSourceProject1.url,
+            purl: openSourceProject1.purl,
             name: openSourceProject1.name
           }),
           expect.objectContaining({
             id: openSourceProject2.id,
-            url: openSourceProject2.url,
+            purl: openSourceProject2.purl,
             name: openSourceProject2.name
           })
         ])
@@ -566,15 +564,13 @@ describe('projects', () => {
 
       // Create open-source projects associated with organization1
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo51',
-        name: 'repo51',
+        purl: 'pkg:npm/string-width@4.2.3',
         hipcheckResults: {},
         organizations: [organization1]
       }).save();
 
       const openSourceProject2 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo52',
-        name: 'repo52',
+        purl: 'pkg:npm/yaml@1.10.2',
         hipcheckResults: {},
         organizations: [organization1]
       }).save();
@@ -605,8 +601,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo61',
-        name: 'repo61',
+        purl: 'pkg:npm/yocto-queue@0.1.0',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -640,8 +635,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo71',
-        name: 'repo71',
+        purl: 'pkg:npm/pify@3.0.0',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -676,8 +670,7 @@ describe('projects', () => {
 
       // Create two open-source projects
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo81',
-        name: 'repo81',
+        purl: 'pkg:npm/parse-json@5.2.0',
         hipcheckResults: {},
         organizations: [organization]
       }).save();
@@ -719,8 +712,7 @@ describe('projects', () => {
 
       // Create open-source projects associated with organization1
       const openSourceProject1 = await OpenSourceProject.create({
-        url: 'https://github.com/user/repo91',
-        name: 'repo91',
+        purl: 'pkg:npm/sprintf-js@1.0.3',
         hipcheckResults: {},
         organizations: [organization1]
       }).save();

@@ -10,22 +10,21 @@ import {
   Index
 } from 'typeorm';
 import { Organization } from './organization';
+import { PackageURL } from 'packageurl-js';
 
 @Entity()
-@Index(['url', 'name'], { unique: true })
+@Index('IDX_NAME_UNIQUE', ['name'], { unique: true }) // Updated to only include 'name'
 @Index(['createdAt'])
 @Index(['updatedAt'])
 export class OpenSourceProject extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  url: string;
-
+  // TO-DO: add validation function to verify string is a valid purl
   @Column()
   purl: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
   parentRepo: string;
 
   @Column()
@@ -57,11 +56,8 @@ export class OpenSourceProject extends BaseEntity {
 
   @BeforeInsert()
   setNameFromUrl() {
-    if (this.url) {
-      const match = this.url.match(/https:\/\/github.com\/(.+)/);
-      if (match && match[1]) {
-        this.name = match[1];
-      }
+    if (this.purl) {
+      this.name = PackageURL.fromString(this.purl)['name'];
     }
   }
 }

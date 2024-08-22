@@ -203,7 +203,7 @@ export const create_proj = wrapHandler(async (event) => {
   // Check if there's an existing open source project without an organization
   const existingProjects = await OpenSourceProject.createQueryBuilder('osp')
     .leftJoinAndSelect('osp.organizations', 'organizations')
-    .where('osp.url = :url', { url: validatedBody.url })
+    .where('osp.purl = :purl', { purl: validatedBody.purl })
     .getMany();
 
   if (existingProjects.length > 0) {
@@ -213,7 +213,7 @@ export const create_proj = wrapHandler(async (event) => {
     // Create a new open source project
     openSourceProject = await OpenSourceProject.create({
       // Set other properties as needed
-      url: validatedBody.url,
+      purl: validatedBody.purl,
       hipcheckResults: validatedBody.hipcheckResults
     });
     await openSourceProject.save();
@@ -245,7 +245,7 @@ export const create_proj = wrapHandler(async (event) => {
 class CreationRequest {
   @IsString()
   @IsNotEmpty()
-  url: string;
+  purl: string;
 
   @IsObject()
   @IsNotEmpty()
