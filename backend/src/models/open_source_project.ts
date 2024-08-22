@@ -23,6 +23,12 @@ export class OpenSourceProject extends BaseEntity {
   url: string;
 
   @Column()
+  purl: string;
+
+  @Column()
+  parentRepo: string;
+
+  @Column()
   name: string;
 
   @CreateDateColumn()
