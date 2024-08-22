@@ -32,6 +32,7 @@ export const handler = async (commandOptions: CommandOptions) => {
       const output = spawnSync(hcPath, args, { stdio: 'pipe' });
 
       if (output.error) {
+        console.log(output.error);
         throw output.error;
       }
 

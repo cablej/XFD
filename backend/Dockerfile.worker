@@ -81,7 +81,7 @@ COPY --from=build /app/dist/worker.bundle.js worker.bundle.js
 ENV GLOBAL_AGENT_HTTP_PROXY=http://localhost:8080
 ENV GLOBAL_AGENT_NO_PROXY=censys.io
 
-RUN curl --proto '=https' --tlsv1.2 -LsSf https://github.com/mitre/hipcheck/releases/download/hipcheck-v3.4.0/hipcheck-installer.sh | sh
+RUN curl --proto '=https' --tlsv1.2 -LsSf https://github.com/mitre/hipcheck/releases/download/hipcheck-v3.5.0/hipcheck-installer.sh | sh
 RUN $HOME/.cargo/bin/hc setup
 
 CMD ["./worker/worker-entry.sh"]
