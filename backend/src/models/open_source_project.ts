@@ -13,7 +13,7 @@ import { Organization } from './organization';
 import { PackageURL } from 'packageurl-js';
 
 @Entity()
-@Index('IDX_NAME_UNIQUE', ['name'], { unique: true }) // Updated to only include 'name'
+@Index('IDX_PURL_UNIQUE', ['purl'], { unique: true })
 @Index(['createdAt'])
 @Index(['updatedAt'])
 export class OpenSourceProject extends BaseEntity {
@@ -24,7 +24,7 @@ export class OpenSourceProject extends BaseEntity {
   @Column()
   purl: string;
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ nullable: true })
   parentRepo: string;
 
   @Column()

@@ -57,13 +57,13 @@ const Projects: React.FC = () => {
       }
 
       // API call
-      if (data.url) {
-        await createProject(data.url, orgs);
+      if (data.purl) {
+        await createProject(data.purl, orgs);
         await loadProjects();
         handleCloseModal();
         return;
       } else {
-        setErrorMessage('Please enter a valid URL.');
+        setErrorMessage('Please enter a valid PURL.');
         handleCloseModal();
         return;
       }
@@ -191,7 +191,7 @@ const Projects: React.FC = () => {
 
   const projectRows = projects.map((project) => ({
     id: project.id,
-    url: project.url,
+    purl: project.purl,
     name: project.name,
     updatedAt: `${differenceInCalendarDays(
       new Date(),
@@ -237,7 +237,7 @@ const Projects: React.FC = () => {
 
   const projectCols: GridColDef[] = [
     { field: 'id', headerName: 'ID', minWidth: 100, flex: 1.5 },
-    { field: 'url', headerName: 'URL', minWidth: 100, flex: 3 },
+    { field: 'purl', headerName: 'PURL', minWidth: 100, flex: 3 },
     { field: 'name', headerName: 'Name', minWidth: 100, flex: 1 },
     { field: 'createdAt', headerName: 'Created At', minWidth: 75, flex: 1 },
     { field: 'updatedAt', headerName: 'Updated At', minWidth: 75, flex: 1 },

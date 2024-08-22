@@ -16,7 +16,7 @@ import {
 import { useAuthContext } from 'context';
 
 export interface ProjectFormData {
-  url: string;
+  purl: string;
   orgNames: string[];
 }
 
@@ -33,7 +33,7 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
 }) => {
   const { currentOrganization } = useAuthContext();
   const [formData, setFormData] = useState<ProjectFormData>({
-    url: '',
+    purl: '',
     orgNames: currentOrganization ? [currentOrganization.name] : ['']
   });
   const [errorMessage] = useState<string | null>(null);
@@ -49,11 +49,11 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
         ...prev,
         orgNames: newOrgNames
       }));
-    } else if (name === 'url') {
-      // Handling for URL
+    } else if (name === 'purl') {
+      // Handling for PURL
       setFormData({
         ...formData,
-        url: value
+        purl: value
       });
     }
   };
@@ -95,9 +95,9 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
           <Paper elevation={3} sx={{ padding: 2, margin: 2 }}>
             <TextField
               required
-              name="url"
-              label="URL"
-              value={formData.url}
+              name="purl"
+              label="PURL"
+              value={formData.purl}
               onChange={handleChange}
             />
             {formData.orgNames.map((orgName, index) => (
