@@ -38,7 +38,7 @@ export const handler = async (commandOptions: CommandOptions) => {
         'json',
         '-v',
         'quiet',
-        project.url
+        project.purl
       ];
       console.log('Running Hipcheck scan with args', args);
 

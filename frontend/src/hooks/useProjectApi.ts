@@ -33,7 +33,7 @@ export const useProjectApi = () => {
 
   // Wrapper for create_proj call.
   const createProject = useCallback(
-    async (url: string, organizations: Organization[]) => {
+    async (purl: string, organizations: Organization[]) => {
       setLoading(true);
       // setError(null);
 
@@ -43,7 +43,7 @@ export const useProjectApi = () => {
         for (const org of organizations) {
           const response = await apiPost<Project>('/projects', {
             body: {
-              url: url,
+              purl: purl,
               hipcheckResults: {},
               orgId: org.id
             }
@@ -58,7 +58,7 @@ export const useProjectApi = () => {
           );
           throw err;
         } else if (err.response && err.response.status === 500) {
-          setError(`500 - Error. Tip: Confirm that URL is valid.`);
+          setError(`500 - Error. Tip: Confirm that PURL is valid.`);
           throw err;
         } else {
           setError(err.message);
