@@ -1,12 +1,8 @@
 import { OpenSourceProject } from '../models';
 import { spawnSync } from 'child_process';
-import { readFileSync } from 'fs';
 import { CommandOptions } from './ecs-client';
 import getProjects from './helpers/getProjects';
-import { getRepository } from 'typeorm';
 import * as path from 'path';
-
-const OUT_PATH = path.join(__dirname, 'out-' + Math.random() + '.json');
 
 const shouldRunScan = (project: OpenSourceProject): boolean => {
   if (!project.lastScannedAt) {
@@ -21,8 +17,6 @@ const shouldRunScan = (project: OpenSourceProject): boolean => {
 };
 
 export const handler = async (commandOptions: CommandOptions) => {
-  const { organizationId, organizationName, scanId } = commandOptions;
-
   const projects = await getProjects();
   for (const project of projects) {
     if (!shouldRunScan(project)) {
@@ -30,16 +24,7 @@ export const handler = async (commandOptions: CommandOptions) => {
     }
 
     try {
-      const args = [
-        'check',
-        '--target',
-        'repo',
-        '--format',
-        'json',
-        '-v',
-        'quiet',
-        project.purl
-      ];
+      const args = ['check', '--format', 'json', '-v', 'quiet', project.purl];
       console.log('Running Hipcheck scan with args', args);
 
       const hcPath = path.resolve(process.env.HOME || '', '.cargo/bin/hc');
