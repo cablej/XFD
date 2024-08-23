@@ -1,0 +1,20 @@
+---
+name: Run input action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run custom action
+        uses: ./.github/actions
+        with:
+          api-url: ${{ secrets.LOCALTUNNEL_URL }}
+          api-token: ${{ secrets.API_TOKEN }}
+          organization-id: ${{ secrets.ORG_ID }}
+          node-version: '20'
