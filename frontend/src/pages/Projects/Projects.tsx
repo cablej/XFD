@@ -57,15 +57,13 @@ export const Projects: React.FC = () => {
       }
 
       // API call
-      if (data.urls && Array.isArray(data.urls)) {
-        for (const url of data.urls) {
-          await createProject(url, orgs);
-        }
+      if (data.purl) {
+        await createProject(data.purl, orgs);
         await loadProjects();
         handleCloseModal();
         return;
       } else {
-        setErrorMessage('Please enter a valid URL.');
+        setErrorMessage('Please enter a valid PURL.');
         handleCloseModal();
         return;
       }
@@ -194,7 +192,8 @@ export const Projects: React.FC = () => {
   const projectRows = projects.map((project) => ({
     name: project.name,
     id: project.id,
-    url: project.url,
+    purl: project.purl,
+    name: project.name,
     updatedAt: `${differenceInCalendarDays(
       new Date(),
       project.updatedAt
@@ -241,9 +240,9 @@ export const Projects: React.FC = () => {
   }));
 
   const projectCols: GridColDef[] = [
-    { field: 'name', headerName: 'Name', minWidth: 200, flex: 2.5 },
-    { field: 'id', headerName: 'ID', minWidth: 100, flex: 1.25 },
-    { field: 'url', headerName: 'URL', minWidth: 50, flex: 1.25 },
+    { field: 'id', headerName: 'ID', minWidth: 100, flex: 1.5 },
+    { field: 'purl', headerName: 'PURL', minWidth: 100, flex: 3 },
+    { field: 'name', headerName: 'Name', minWidth: 100, flex: 1 },
     { field: 'createdAt', headerName: 'Created At', minWidth: 75, flex: 1 },
     { field: 'updatedAt', headerName: 'Updated At', minWidth: 75, flex: 1 },
     { field: 'hipcheck', headerName: 'Hipcheck Score', minWidth: 100, flex: 1 },

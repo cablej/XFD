@@ -17,7 +17,7 @@ export interface Hipcheck {
 
 export interface Project {
   id: string;
-  url: string;
+  purl: string;
   name: string;
   createdAt: Date;
   updatedAt: Date;

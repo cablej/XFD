@@ -19,7 +19,7 @@ import {
 import { useAuthContext } from 'context';
 
 export interface ProjectFormData {
-  urls: string[]; // Updated to support multiple URLs
+  purl: string;
   orgNames: string[];
 }
 
@@ -36,7 +36,7 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
 }) => {
   const { currentOrganization } = useAuthContext();
   const [formData, setFormData] = useState<ProjectFormData>({
-    urls: [''], // Initialize with an empty string for the URL input
+    purl: '',
     orgNames: currentOrganization ? [currentOrganization.name] : ['']
   });
   const [inputType, setInputType] = useState<'url' | 'csv'>('url'); // Track whether to use URL input or CSV upload
@@ -56,13 +56,11 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
         ...prev,
         orgNames: newOrgNames
       }));
-    } else if (name === 'url') {
-      // Handling for URL input
-      const newUrls = [...formData.urls];
-      newUrls[index!] = value;
+    } else if (name === 'purl') {
+      // Handling for PURL
       setFormData({
         ...formData,
-        urls: newUrls
+        purl: value
       });
     }
   };
@@ -124,44 +122,13 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
           onSubmit={handleSubmit}
         >
           <Paper elevation={3} sx={{ padding: 2, margin: 2 }}>
-            <RadioGroup
-              row
-              name="inputType"
-              value={inputType}
-              onChange={(e) => setInputType(e.target.value as 'url' | 'csv')}
-            >
-              <FormControlLabel
-                value="url"
-                control={<Radio />}
-                label="Enter URL"
-              />
-              <FormControlLabel
-                value="csv"
-                control={<Radio />}
-                label="Upload CSV"
-              />
-            </RadioGroup>
-
-            {inputType === 'url' ? (
-              <TextField
-                required
-                name="url"
-                label="URL"
-                value={formData.urls[0]}
-                onChange={(e) => handleChange(e, 0)}
-              />
-            ) : (
-              <Button variant="contained" component="label">
-                Upload CSV
-                <input
-                  type="file"
-                  accept=".csv"
-                  hidden
-                  onChange={handleCSVUpload}
-                />
-              </Button>
-            )}
-
+            <TextField
+              required
+              name="purl"
+              label="PURL"
+              value={formData.purl}
+              onChange={handleChange}
+            />
             {formData.orgNames.map((orgName, index) => (
               <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
                 <TextField
