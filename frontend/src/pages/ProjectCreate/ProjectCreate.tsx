@@ -11,7 +11,10 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  FormControlLabel,
+  Radio,
+  RadioGroup
 } from '@mui/material';
 import { useAuthContext } from 'context';
 
@@ -36,10 +39,14 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
     purl: '',
     orgNames: currentOrganization ? [currentOrganization.name] : ['']
   });
-  const [errorMessage] = useState<string | null>(null);
+  const [inputType, setInputType] = useState<'url' | 'csv'>('url'); // Track whether to use URL input or CSV upload
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Handle change in user input.
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, index?: number) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index?: number
+  ) => {
     const { name, value } = e.target;
     if (name === 'orgName' && index !== undefined) {
       // Update the specific index in the orgNames array
@@ -55,6 +62,29 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
         ...formData,
         purl: value
       });
+    }
+  };
+
+  // Handling for CSV upload
+  const handleCSVUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const csvContent = event.target?.result as string;
+        const urls = csvContent
+          .split('\n')
+          .map((url) => url.trim())
+          .filter(Boolean);
+        setFormData({
+          ...formData,
+          urls
+        });
+      };
+      reader.onerror = () => {
+        setErrorMessage('Failed to read the CSV file');
+      };
+      reader.readAsText(file);
     }
   };
 
@@ -79,7 +109,6 @@ const ProjectCreate: React.FC<ProjectCreateProps> = ({
     onSubmit(formData);
   };
 
-  // Create new modal dialog.
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Create New Project</DialogTitle>

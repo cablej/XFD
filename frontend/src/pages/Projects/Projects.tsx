@@ -21,7 +21,7 @@ import { ProjectCreate } from '../ProjectCreate/index'; // Adjust the import pat
 import { ProjectFormData } from 'pages/ProjectCreate/ProjectCreate';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const Projects: React.FC = () => {
+export const Projects: React.FC = () => {
   const { currentOrganization, apiGet } = useAuthContext();
   const { fetchProjectsByOrg, createProject, error } = useProjectApi();
   const [projects, setProjects] = useState<Project[]>([]);
@@ -190,6 +190,7 @@ const Projects: React.FC = () => {
   // });
 
   const projectRows = projects.map((project) => ({
+    name: project.name,
     id: project.id,
     purl: project.purl,
     name: project.name,
@@ -201,7 +202,10 @@ const Projects: React.FC = () => {
       new Date(),
       project.createdAt
     )} days ago`,
-    hipcheck: project.hipcheck,
+    hipcheck:
+      'recommendation' in project.hipcheckResults
+        ? project.hipcheckResults.recommendation.risk_score
+        : '',
     organizations: (
       <div>
         <Button
@@ -259,9 +263,10 @@ const Projects: React.FC = () => {
             aria-label={`View details for ${cellValues.row.name}`}
             tabIndex={cellValues.tabIndex}
             color="primary"
-            onClick={() =>
-              history.push('/inventory/project/' + cellValues.row.id)
-            }
+            onClick={() => {
+              console.log(cellValues.row.id);
+              history.push('/inventory/project/' + cellValues.row.id);
+            }}
           >
             <OpenInNewIcon />
           </IconButton>
@@ -334,5 +339,7 @@ const Projects: React.FC = () => {
     </div>
   );
 };
+
+// export default Projects;
 
 export default Projects;

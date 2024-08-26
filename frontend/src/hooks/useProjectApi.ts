@@ -4,9 +4,62 @@ import { useAuthContext } from 'context';
 import { Organization } from 'types';
 
 export const useProjectApi = () => {
-  const { apiPost, apiGet } = useAuthContext();
+  const { apiPost, apiGet, apiDelete } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Wrapper for del call.
+  const delProjectById = useCallback(
+    async (projectId: string, orgId: string) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response: Project = await apiDelete<Project>(
+          `/projects/${projectId}`,
+          {
+            body: {
+              orgId: orgId
+            }
+          }
+        );
+        return response;
+      } catch (err: any) {
+        if (err.response && err.response.status === 404) {
+          setError(
+            `Project for project ID ${projectId} not found; not deleted.`
+          );
+        } else {
+          setError('Failed to get and delete project.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [apiDelete]
+  );
+
+  // Wrapper for getById call.
+  const fetchProjectById = useCallback(
+    async (projectId: string) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response: Project = await apiGet<Project>(
+          `/projects/${projectId}`
+        );
+        return response;
+      } catch (err: any) {
+        if (err.response && err.response.status === 404) {
+          setError(`Projects for project ID ${projectId} not found`);
+        } else {
+          setError('Failed to fetch project.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    },
+    [apiGet]
+  );
 
   // Wrapper for listByOrg call.
   const fetchProjectsByOrg = useCallback(
@@ -73,7 +126,9 @@ export const useProjectApi = () => {
 
   return {
     fetchProjectsByOrg,
+    fetchProjectById,
     createProject,
+    delProjectById,
     loading,
     error
   };
