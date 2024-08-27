@@ -89,3 +89,21 @@ You can turn on / off some scans for your organization. To do so, go to My Accou
 If you would like only passive scans to run on your organization (and disable active scans), go to My Account -> Manage Organizations and select your organization. Navigate to the "Settings" tab. You can then turn on "Passive Mode" to only enable passive scans on your organization.
 
 ![org settings](./img/org_settings.png)
+
+### Hipcheck Scan
+
+The Hipcheck Scan evaluates an open source project's development practices and identifies active supply chain threats, providing both an immediate and long-term view of the associated risks with using a package. By default, Hipcheck performs scans on a weekly basis, but users can customize the frequency for each individual project to better suit their needs. 
+
+The scan results are categorized into four sections:
+
+- **Passing Block:** Analyses that show no issues
+- **Failing Block:** Analyses that highlight concerning issues
+- **Error Block:** Analyses that could not be completed
+- **Recommendation:** "Pass" or "Investigate" suggestion based on project's calculated risk score and risk tolerance
+
+For more information, reference the Hipcheck [documentation](https://mitre.github.io/hipcheck/docs/)
+
+### Adding Open Source Project
+
+
+
