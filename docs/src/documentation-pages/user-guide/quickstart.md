@@ -97,8 +97,8 @@ The Hipcheck Scan evaluates an open source project's development practices and i
 The scan results are categorized into four sections:
 
 - **Passing Block:** Analyses that show no issues
-- **Failing Block:** Analyses that highlight concerning issues.
-- **Error Block:** Analyses that could not be completed.
+- **Failing Block:** Analyses that highlight concerning issues
+- **Error Block:** Analyses that could not be completed
 - **Recommendation:** "Pass" or "Investigate" suggestion based on project's calculated risk score and risk tolerance
 
 For more information, reference the Hipcheck [documentation](https://mitre.github.io/hipcheck/docs/)
